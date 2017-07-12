@@ -13,10 +13,9 @@ def saveFile(fileName,content):
 # 解析日志文件并选出对应的设备ID,存储为设备ID名.txt
 def resolveFile(fileName,deviceNo,chanle):
     log_list = []
-    f = open(('File\\%s' % fileName), 'r', -1, 'UTF-8')
+    f = open(('G:\\log\\%s' % fileName), 'r', -1, 'UTF-8')
     for each_line in f:
         if (('RECV') in each_line) and (('"dev":\"' + deviceNo + '\"') in each_line):
-
             log_list.append(each_line)
     saveFile(('%s.txt' % deviceNo),log_list)
     f.close()
@@ -24,8 +23,9 @@ def resolveFile(fileName,deviceNo,chanle):
 
 
 # 根据上面方法中保存的设备ID名.txt文件找出特定通道(chanle)中的数据,并存为文件
-def resolveDiveceFile(fileName,chanle):
+def resolveDiveceFile(fileName,ch):
     log_list = []
+    chanle = int(str(ch),16)
     f = open(('File\\%s.txt' % fileName), 'r', -1, 'UTF-8')
     for each_line in f:
         if ('"rid":%d' % chanle) in each_line:
@@ -43,4 +43,4 @@ def resolveDiveceFile(fileName,chanle):
     saveFile('%s-%s.txt' % (fileName,chanle),log_list)
     f.close()
 
-resolveFile('acp-web-adapter-N.20170702.log','E70017',134)
+resolveFile('acp-web-adapter-N.20170711.log','E7001D',82)
