@@ -1,12 +1,10 @@
+''' 使用只在“任务” 级别进行操作的 ThreadPoolExecutor 来执行多线程'''
+
+from concurrent.futures import ThreadPoolExecutor
 from atexit import register
-from threading import Thread
 from time import ctime, sleep
 from re import compile
 from urllib import request
-
-
-''' 图书排名示例_01'''
-
 
 # 匹配#和数字的组合,
 pattern = compile('#([\d,]+) in Books ')
@@ -32,9 +30,11 @@ def _showRanking(isbn):
 
 def main():
     print('At ', ctime(), 'on Amazon...', )
-    for isbn in ISBNs:
-        Thread(target=_showRanking,args=(isbn,)).start() # 使用多线程可节省执行时间
-        # _showRanking(isbn)
+
+    with ThreadPoolExecutor(3) as executor:
+        for isbn in ISBNs:
+            executor.submit(_showRanking,isbn)
+        # Thread(target=_showRanking,args=(isbn,)).start() # 使用多线程可节省执行时间
 
 @register
 def _atexit():
@@ -45,4 +45,3 @@ def _atexit():
 
 if __name__ == '__main__':
     main()
-
