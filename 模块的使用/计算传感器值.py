@@ -25,12 +25,12 @@
 #     print("退出")
 
 # 大气湿度
-try:
-    while True:
-        num = int(input("请入大气湿度传感器值："))
-        result = 0
-        result = 125*(num/2**16)-6
-        print(result)
-except:
-    print("退出")
+# try:
+#     while True:
+#         num = int(input("请入大气湿度传感器值："))
+#         result = 0
+#         result = 125*(num/2**16)-6
+#         print(result)
+# except:
+#     print("退出")
 

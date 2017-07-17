@@ -40,7 +40,7 @@ def resolveDiveceFile(fileName,ch):
 
             # log_list.append(time+":"+data_temp)
 
-    saveFile('%s-%s.txt' % (fileName,chanle),log_list)
+    saveFile('%s-%s.txt' % (fileName,'0x'+str(ch)),log_list)
     f.close()
 
-resolveFile('acp-web-adapter-N.20170711.log','E7001D',82)
+resolveFile('acp-web-adapter-N.20170713.log','E7001E','81')
