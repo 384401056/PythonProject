@@ -40,12 +40,7 @@ def readDB(dbName):
     try:
         shdb = shelve.open(dbName,'r')
         print('Reading', dbName)
-
-        res = []
-        for key in shdb:
-            res.append(shdb[key])
-
-        return res
+        return [shdb[key] for key in shdb]
     finally:
         shdb.close()
 
