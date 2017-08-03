@@ -66,6 +66,8 @@ ls = re.findall(pattern,'there Theopew '
                         'agrithings')
 print(ls)
 
+
+
 pattern = r'(?im)(^th[\w ]+)' # 不区分大小写，并且可跨行查寻
 ls = re.findall(pattern,""" This line is the first, another line, that line, it's the best """)
 print(ls)
