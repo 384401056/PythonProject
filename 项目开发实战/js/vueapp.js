@@ -2,11 +2,14 @@
  * Created by Administrator on 2017/8/9.
  */
 
-new Vue({
+var vm = new Vue({
     el: '#app',
     data: {
         content: [],
-        pm: {}
+        pm: {
+            name :  '',
+            comment : ''
+        }
     },
     mounted:function(){
         this.$http.get('http://127.0.0.1:8000/' ).then(function(response){
@@ -18,11 +21,16 @@ new Vue({
     },
     methods: {
         onClick: function () {
-            this.$http.post('http://127.0.0.1:8000/post', this.pm).then(function(response){
-                console.log(response)
-                //this.$set('params', {})
+            this.$http.post('http://127.0.0.1:8000/post',
+                {
+                    name : vm.pm.name,
+                    comment : vm.pm.comment
+                },
+                {emulateJSON: true}
+            ).then(function(response){
+                console.log(response.data)
+                vm.pm = {}
             },function(response){
-                console.log(response.err)
             })
         }
     }
