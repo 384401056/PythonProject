@@ -5,6 +5,7 @@ from flask import Flask, request, redirect, escape, Markup
 from flask_cors import *  # 解决跨域问题
 
 application = Flask(__name__)
+
 CORS(application, supports_credentials=True) # 解决跨域问题
 
 DATA_FILE = 'guestbook.dat'
@@ -30,9 +31,6 @@ def load_data():
     jsonStr = json.dumps({"dataList":greeting_list})
     return jsonStr
 
-
-
-
 """ 路由 """
 @application.route('/')
 def index():
@@ -43,22 +41,13 @@ def index():
 @application.route('/post', methods=['POST'])
 def post():
     ''' 用于提交评论 '''
-    postForm = request.form
-    getArgs = request.args
-    postValues = request.values
-    re = request
-    name = request.values.get('name')
-    comment = request.values.get('comment')
-    create_at = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-    # print("name:"+ name)
-    # print("comment:"+ comment)
-    # print("create_at:"+ create_at)
+    name = str(request.form.get('name'))
+    comment = str(request.form.get('comment'))
+    create_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     # 存储数据
-    # save_data(name,comment,create_at)
+    save_data(name,comment,create_at)
     # 重定向至首页
-    # return redirect('/')
-    return "OK"
-
+    return redirect('/')
 
 
 """ 模版过滤器 """
