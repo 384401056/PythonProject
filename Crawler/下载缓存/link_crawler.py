@@ -136,7 +136,6 @@ class ScrapCallback:
 
 
 if __name__ == '__main__':
-    link_crawler('http://example.webscraping.com', '/places/default/(index|view)', delay=2, num_retries=1)
-    # link_crawler('http://example.webscraping.com', '/places/default/(index|view)', delay=3, num_retries=1, callback=ScrapCallback())
+    link_crawler('http://example.webscraping.com', '/places/default/(index|view)', delay=3, num_retries=1, callback=ScrapCallback())
     # link_crawler('http://example.webscraping.com', '/(index|view)', delay=0, num_retries=1, max_depth=1,user_agent='GoodCrawler')
 
