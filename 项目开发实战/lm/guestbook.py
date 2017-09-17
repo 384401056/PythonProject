@@ -1,14 +1,15 @@
 import shelve
 import json
 from datetime import datetime
+from math import e
 from flask import Flask, request, redirect, escape, Markup
 from flask_cors import *  # 解决跨域问题
 
-application = Flask(__name__)
 
+application = Flask(__name__)
 CORS(application, supports_credentials=True) # 解决跨域问题
 
-DATA_FILE = 'guestbook.dat'
+DATA_FILE = 'guestbook' # 数据文件名,不要后缀.
 
 def save_data(name, comment, create_at):
     ''' 保存提交的数据 '''
@@ -26,17 +27,19 @@ def save_data(name, comment, create_at):
 def load_data():
     '''返回已经提交后的数据'''
     database = shelve.open(DATA_FILE)
-    greeting_list = database.get('greeting_list', [])
-    database.close()
-    jsonStr = json.dumps({"dataList":greeting_list})
-    return jsonStr
+    try:
+        greeting_list = database.get('greeting_list', [])
+        jsonStr = json.dumps({"dataList":greeting_list})
+        return jsonStr
+    finally:
+        database.close()
+
 
 """ 路由 """
 @application.route('/')
 def index():
     ''' 当访问首页时调用的方法 '''
     return load_data()
-
 
 @application.route('/post', methods=['POST'])
 def post():
