@@ -14,7 +14,26 @@ def main():
     i = any([True, False])
     print(i)
 
+
     # 0,None,"",[],(),{} ==>0,None,空值都为假
+
+
+
+
+
+
+
+
+
+    '''排序'''
+    li = [5, 4, 3, 2, 1, 54, 100, 67, 8]
+    # li.sort() # 排序,直接改变li的顺序
+    li2 = sorted(li)  # sorted不改变原来列表的值，会返回一个就的列表.
+    print(li)
+    print(li2)
+    # 字符串排序
+    ls = ['1', '39', '20', '你好','中国', '美国', 'A', 'Ord', 'e', 'x', 'y', 'd', 'z', 'n']
+    print(sorted(ls))
 
 
     class A:
@@ -74,6 +93,66 @@ def main():
     s = '213213k213@!#@!#$@DSFAREWREwrfewrewrdsfewrq#$#@432rfedsfew'
     i = hash(s)
     print('hash =',i)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

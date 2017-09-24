@@ -31,7 +31,9 @@ var vm = new Vue({
                 console.log(response.data)
                 vm.pm = {}
             },function(response){
+
             })
+            location.reload()
         }
     }
 
