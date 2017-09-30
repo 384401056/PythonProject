@@ -24,12 +24,18 @@ def f5():
     print(re.findall('alex+', 'alefdsafdsaalexfdsafalexfdsafdalexxxx'))
 
 def f6():
-    '''正则表达式：+ 代表实现0次或1次匹配（非贪婪匹配）'''
-    print(re.findall('alex?', 'alefdsafdsaalexfdsafalexfdsafdalexxxx'))
+    '''正则表达式：? 代表实现0次或1次匹配（非贪婪匹配）'''
+    print(re.findall('ale?', 'alefdsafdsaalfdsafalexfdsafdalexxxx'))
+
+
+def f7():
+    '''正则表达式：{} 代表字符的重复次数'''
+    print(re.findall('alex{3}', 'alexxxfdsafalexxxxx')) # 查找x有3个的
+    print(re.findall('alex{3,5}', 'alexxxfdsafalexxxxxx')) # 查找x有3-5个, 3和5之前不能有空格。
 
 def main():
 
-    f6()
+    f7()
 
 
 
