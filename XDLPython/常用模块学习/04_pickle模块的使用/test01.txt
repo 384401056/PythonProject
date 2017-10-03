@@ -1,0 +1,1 @@
+{1000: {'name': 'jim', 'age': 10, 'class': 1}, 2000: {'name': 'lily', 'age': 20, 'class': 2}, 3000: {'name': 'kimy', 'age': 30, 'class': 3}}

@@ -16,19 +16,14 @@ def f2():
     if choice == 'y' or choice == 'Y':
         sys.exit("Goodbye!") # 退出程序, 与exit()功能相同
 
-def f3():
-    '''以下代码要在python命令行下才有效果'''
-    for i in range(10):
-        sys.stdout.write("#") # 在系统屏幕输出
-        time.sleep(1)
 
-def f4():
+def f3():
     '''获取用户输入'''
     cmd = sys.stdin.readline()
     print(cmd)
 
 def main():
-    f4()
+    f3()
 
 
 
