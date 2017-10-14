@@ -2,6 +2,8 @@
 # -*- coding utf-8 -*-
 import sys
 import time
+'''跟解释器相关的都在sys模块中。'''
+
 
 def f1():
     print(sys.argv)  # 返回执行脚本时，输入的参数
