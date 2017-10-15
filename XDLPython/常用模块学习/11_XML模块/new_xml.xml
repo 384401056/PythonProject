@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<userlist>
+    <user enable="true">
+        <name>Jim</name>
+        <age>30</age>
+        <sex>男</sex>
+    </user>
+    <user enable="false">
+        <name>Lily</name>
+        <age>30</age>
+        <sex>女</sex>
+    </user>
+</userlist>
