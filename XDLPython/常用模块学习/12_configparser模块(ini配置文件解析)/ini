@@ -1,0 +1,14 @@
+[kaixin]
+age = 123
+gender = men
+number = 0.3234
+
+[yongcong]
+age = 133
+gender = women
+number = 0.9897
+
+[kkk]
+name = limit
+age = 130
+
