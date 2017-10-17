@@ -13,8 +13,17 @@ def f2():
     shutil.copyfile('src.txt', 'kkk.txt')
 
 
+
+def f3():
+    '''创建压缩包，并返回文件路径'''
+
+    # 将当前指定路径下的所有文件，压缩成路径为 my_python_project 格式为zip 的压缩包
+    shutil.make_archive('my_python_project', 'zip', 'E:\\PythonProject\\XDLPython\\基础')
+
+
+
 def main():
-    f2()
+    f3()
 
 
 if __name__ == '__main__':
