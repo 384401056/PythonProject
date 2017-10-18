@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding utf-8 -*-
 
-import logging
-
-
 def main():
-    logging.log
+    pass
 
 
 if __name__ == '__main__':
