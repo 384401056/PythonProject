@@ -12,6 +12,7 @@
 总结：反射就是通过字符串的形式去对象（模块）中，操作其成员。
 '''
 
+
 def f1():
     ''' 根据用户输入，来导入相应的模块'''
     imp = input("请输入模块：")
@@ -34,7 +35,7 @@ def f1():
             # 打印结果
             if ret is not None:
                 print(ret)
-        except Exception as ex: # 如果是属性则的印属性
+        except Exception as ex:  # 如果是属性则的印属性
             print(attr)
 
 
@@ -58,7 +59,7 @@ def f3():
     f = input("请输入要设置的属性名：")
     if not hasattr(com, f):
         # 通过名称设置属性， 并指定值。
-        setattr(com, f , 18)
+        setattr(com, f, 18)
         print('属性设置成功。')
     else:
         print('属性已经存在。')
@@ -80,7 +81,7 @@ def f4():
     f = input("请输入要设置的方法名：")
     if not hasattr(com, f):
         # 通过名称设置方法，my_func为自定义的函数.
-        setattr(com, f , my_func)
+        setattr(com, f, my_func)
         print('设置方法成功。')
     else:
         print('方法已经存在。')
@@ -98,7 +99,7 @@ def f4():
 
 def my_func(com):
     '''自定义的函数，用于加到模块中'''
-    return ("这是一个新增到 %s 模块中的方法" % com.__name__) # 输出模块的名称
+    return ("这是一个新增到 %s 模块中的方法" % com.__name__)  # 输出模块的名称
 
 
 def f5():

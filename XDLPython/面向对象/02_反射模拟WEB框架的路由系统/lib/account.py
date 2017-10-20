@@ -3,17 +3,17 @@
 
 
 def login():
-    return 'login'
+    return '用户登录'
 
 
 
 def logout():
-    return 'logout'
+    return '退出登录'
 
 
 
 def register():
-    return 'register'
+    return '用户注册'
 
 
 
