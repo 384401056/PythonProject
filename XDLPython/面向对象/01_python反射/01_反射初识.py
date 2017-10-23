@@ -35,7 +35,7 @@ def f1():
             # 打印结果
             if ret is not None:
                 print(ret)
-        except Exception as ex:  # 如果是属性则的印属性
+        except Exception as ex:  # 如果是属性则打印属性
             print(attr)
 
 
