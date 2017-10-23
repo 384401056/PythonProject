@@ -8,6 +8,7 @@ import os
 def main():
     os.getcwd()  # 获取当前工作目录，即当前python脚本工作的目录路径
     os.stat('path/filename')  # 获取文件/目录信息
+    os.stat('path/filename').st_size  # 获取文件大小
     os.sep  # 操作系统特定的路径分隔符，win下为"\\", Linux下为"/
     os.linesep  # 当前平台使用的行终止符，win下为"\t\n", Linux下为"\n"
     os.system("bash command")  # 运行shell命令，直接显示
