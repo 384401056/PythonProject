@@ -5,6 +5,7 @@ import socketserver
 
 
 class MyServer(socketserver.BaseRequestHandler):
+
     # 当有客户端连接到服务器时，就会执行此段代码.
     def handle(self):
         conn = self.request  # 服务器连接
