@@ -8,7 +8,7 @@ class MyServer(socketserver.BaseRequestHandler):
 
     # 当有客户端连接到服务器时，就会执行此段代码.
     def handle(self):
-        conn = self.request  # 服务器连接
+        conn = self.request  # 获取服务器连接
         client_address = self.client_address  # 客户端地址
         # server = self.server  # server实例
         try:
