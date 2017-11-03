@@ -5,14 +5,13 @@ import threading
 import queue
 import time
 
-
 class MyThreadPool():
     '''自定义线程池'''
 
     def __init__(self, max_num=20):
         self.queue = queue.Queue(max_num)
         for i in range(max_num):
-            self.queue.put(threading.Thread)  # 将线程类的类名放入队列中
+            self.queue.put(threading.Thread) # 将线程类的类名放入队列中
 
     def get_thread(self):
         '''获取线程'''
