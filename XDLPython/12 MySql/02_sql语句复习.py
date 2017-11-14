@@ -5,7 +5,7 @@ import pymysql
 
 
 def main():
-    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='123456', db='test')
+    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='123456', db='test', charset='utf8')
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
 
     # 执行SQL语句,返回受影响行数

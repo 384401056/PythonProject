@@ -3,11 +3,9 @@
 
 import threading
 import queue
-import time
 import contextlib
 
 StopEven = object()
-
 
 class MyThreadPool():
     '''自定义线程池'''
@@ -66,16 +64,16 @@ class MyThreadPool():
             try:
                 # 执行任务对象的func,并传入参数。如果是多个参数，则func函数的参数要加*,arguments传入的是元组。
                 # *arguments传的是一个一个的参数
-                result = func(arguments, current_thread.name)  # 将线程名也传给要执行的任务函数
+                result = func(arguments)
                 status = True
             except Exception as ex:
                 status = False
                 result = ex
             if callback is not None:
                 try:
-                    callback(current_thread.name, status, result)
+                    callback(status, result)
                 except Exception as ex:
-                    pass
+                    print(ex)
 
             # 如果终止执行的标识符为True，则此线程不再去拿任务执行。
             if self.terminal is False:
@@ -87,7 +85,7 @@ class MyThreadPool():
                 with self.work_state(self.freee_list, current_thread):
                     event = self.queue.get()  # 从队列获取任务对象, 会产生阻塞
             else:
-                print('stop even')
+                # print('stop even')
                 event = StopEven
         else:
             # 从线程队列中删除当前线程
@@ -109,29 +107,8 @@ class MyThreadPool():
             self.generate_thread()
 
 
-def work(*i):
-    try:
-        time.sleep(1)  # 模拟执行任务的时间
-        print('任务 ', i[0])
-        return True
-    except Exception as ex:
-        return False
-
-
-def down(threadname, status, result):
-    '''任务执行完毕的回调函数'''
-    # print('callbacke down ', threadname)
-    pass
-
-
 def main():
-    pool = MyThreadPool(3)  # 用100个线程
-    for i in range(10):  # 执行1000个任务。（每个任务耗时1秒）
-        pool.run(func=work, args=(i,), callback=down)
-
-    pool.close()
-    # pool.setTerminal() # 终止线程
-
+    pass
 
 if __name__ == '__main__':
     main()

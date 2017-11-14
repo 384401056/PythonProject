@@ -8,7 +8,7 @@ import time
 def f1(i):
     time.sleep(1)
     # print(i)
-    return i
+    return i # func的返回值就是callback的参数
 
 
 def f2(args):
