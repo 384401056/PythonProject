@@ -52,7 +52,7 @@ def main():
     # ~ 代表取反
     # ret = session.query(Student).filter(~Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
     # count() 计算数量
-    # ret = session.query(Student).filter(Student.name == "gaoyanbin1").count()
+    ret = session.query(Student).filter(Student.name == "gaoyanbin1").count()
     print(ret)
 
     # 关闭session
