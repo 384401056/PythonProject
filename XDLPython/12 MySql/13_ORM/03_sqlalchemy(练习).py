@@ -48,7 +48,7 @@ class Course(Base):
     teacher_id = Column(Integer, ForeignKey('tb_teacher.id'))
 
     def __repr__(self):
-        return "Course(cid = %d, name = %S, teacher_id = %s" % (self.tid, self.name, self.teacher_id)
+        return "course(cid = %d, name = %S, teacher_id = %s" % (self.tid, self.name, self.teacher_id)
 
 
 class Score(Base):
@@ -69,16 +69,54 @@ def create_table():
 
 
 def main():
+    # create_table()
+    '''
+
+    查询物理成绩比生物成绩好的学生
+
+    SELECT t1.student_id, sw_num, wl_num from
+
+    (SELECT
+        tb_score.student_id,
+        tb_score.number AS sw_num,
+      tb_course.`name`
+    FROM tb_score
+    LEFT JOIN tb_course ON tb_score.course_id = tb_course.id
+    WHERE
+        tb_course.`name` = '生物') as t1
+
+    LEFT JOIN
+
+    (SELECT
+        tb_score.student_id,
+        tb_score.number AS wl_num,
+      tb_course.`name`
+    FROM tb_score
+    LEFT JOIN tb_course ON tb_score.course_id = tb_course.id
+    WHERE
+        tb_course.`name` = '物理') as t2
+
+    ON t1.student_id = t2.student_id
+    WHERE  t2.wl_num > if(ISNULL(t1.sw_num),0,t1.sw_num)
+
+    '''
+
+
+
+
+
+
+
     # 创建DBSession类型:
-    MySession = sessionmaker(bind=engine)
-    session = MySession()
-
-    ret = session.query(Student).filter(Student.name == "gaoyanbin1").count()
-
-    print(ret)
-
-    # 关闭session
-    session.close()
+    # MySession = sessionmaker(bind=engine)
+    # session = MySession()
+    #
+    # ret = session.query(Student).filter(Student.name == "gaoyanbin1").count()
+    #
+    # print(ret)
+    #
+    # # 关闭session
+    # session.close()
 
 
 if __name__ == '__main__':
