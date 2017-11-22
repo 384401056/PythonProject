@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Gaoyanbin (gaoyanbin@agrithings.cn)
+ * @date    2017-11-21 16:53:25
+ * @version $Id$
+ */
+
+ div{
+		background-color: blue;
+		color: red;
+		width: 200px;
+		height: 300px;
+	}

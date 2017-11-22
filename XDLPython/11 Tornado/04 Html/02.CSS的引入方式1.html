@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!--第一种引入方式, 此方式CSS被先加载-->
+<link href="css3.css" rel="stylesheet" type="text/css">
+
+<!--第二种引入方式, 此方式CSS会被后加载-->
+<style type="text/css">
+	@import "css3.css"
+</style>
+
+
+</head>
+<body>
+    <div>
+    	aaa
+    	<div>
+    		bbbb
+    		<div>
+    			ccc
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

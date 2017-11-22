@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<!--enctype="multipart/form-data" 当表单中有文件时要使用-->
+    <form action="https://www.sogou.com/web" method="post" enctype="multipart/form-data">
+    	<p>用户：<input type="text" name="query"></p>
+    	<p><input type="file" name="file_name"></p>
+    	<p><input type="submit" name="提交 "></p>
+    	<p>
+    		<!--multiple="multiple" 设置为可以多选-->
+			<select name="language" multiple="multiple" size="20">
+				<optgroup label="111">
+					<option value="1">Java</option>
+					<option value="2">C#</option>
+					<option value="3">Python</option>
+					<option value="4">PHP</option>
+				</optgroup>
+				<optgroup label="222">
+					<option value="1">Java</option>
+					<option value="2">C#</option>
+					<option value="3">Python</option>
+					<option value="4">PHP</option>
+				</optgroup>
+			</select>
+    	</p>
+    	<p>
+			<label for="www">姓名：</label>
+			<input type="text" name="www">
+    	</p>
+    	<p>
+    		备注：
+    		<textarea name="qq">
+    			
+    		</textarea>
+    	</p>
+    	<p>
+			<fieldset>
+				<legend>登录吧</legend>
+				<label for="www">姓名：</label>
+				<input type="text" name="www">
+			</fieldset>
+    	</p>
+    </form>
+</body>
+</html>
