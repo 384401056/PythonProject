@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF</title>
+    <!--对静态进行缓存处理。-->
+    <link rel="stylesheet" href='/static/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form action="/csrf" method="post">
+            {% raw xsrf_form_html() %}  <!-- CSRF 为form增加了一个隐藏的input标签 -->
+            <div class="form-group">
+                <label for="Username">用户名</label>
+                <input type="text" class="form-control" id="Username" placeholder="用户名" name="name">
+            </div>
+            <div class="form-group">
+                <label for="Password">密码</label>
+                <input type="password" class="form-control" id="Password" placeholder="密码" name="pwd">
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <label for="Pic">验证码</label>
+                            <input type="text" class="form-control" id="Pic" placeholder="验证码" name="code">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="imgCode">点击获取新图片</label>
+                            <img src="/check_code" alt="" class="img-thumbnail" onclick="ChangeCode();" id="imgCode">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+    <div class="panel-body">
+        <button type="submit" class="btn btn-default" onclick="SubmitCsrf();">Ajax提交</button>
+    </div>
+</div>
+<script src='/static/jquery-3.2.1.min.js'></script>
+<script language="JavaScript">
+
+    function ChangeCode(){
+        var code = document.getElementById('imgCode')
+        //再刷新一次
+        code.src += '?'
+    }
+
+    function getCookie(name){
+        var r = document.cookie.match("\\b"+ name+"=([^;]*)\\b");
+        return r?r[1]:undefined;
+    }
+
+    function SubmitCsrf(){
+        var csrf_id = getCookie("_xsrf") //获取cookie的值。
+        $.post({
+            url:'/csrf',
+            data:{'k1':'v1','_xsrf':csrf_id}, //将_xsrf一起发送到服务器,否则post请求不能成功。
+            success:function(callback){
+                console.log(callback);
+            }
+        })
+    }
+
+    
+
+</script>
+</body>
+</html>

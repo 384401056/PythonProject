@@ -75,7 +75,6 @@ class Session:
             return None
         return user_info.get(key, None)
 
-
 class BaseHandle(tornado.web.RequestHandler):
     '''
     创建一个公共的父类，初始化时创建session.(RequestHandler原码中的initialize方法是在__init__方法最后执行的。)
@@ -142,11 +141,23 @@ class CheckCodeHandler(BaseHandle):
         self.write(msstream.getvalue())  # 返回IO流中的数据。
 
 
+class CsrfHandler(BaseHandle):
+    def get(self, *args, **kwargs):
+        self.render('csrf.html')
+
+    def post(self, *args, **kwargs):
+        self.write('csrf post')
+
+
+
 settings = {
     'template_path': 'static',
     'static_path': 'static',  # 静态资源的路径
     'static_url_prefix': '/static/',  # 静态资源的前缀
     'cookie_secret': 'gaoyanbin',  # 设置签名的key
+
+    # 当xsrf_cookies的值为true时，Tornado将拒绝请求参数中不包含正确的_xsrf值的POST、PUT和DELETE请求，即你必须在每次的post、put、delete请求中添加_xsrf参数
+    "xsrf_cookies": True,
 }
 
 application = tornado.web.Application([
@@ -154,6 +165,7 @@ application = tornado.web.Application([
     (r'/manager', ManagerHandler),
     (r'/login', LoginHandler),
     (r'/check_code', CheckCodeHandler),
+    (r'/csrf', CsrfHandler),
 ], **settings)
 
 if __name__ == '__main__':
