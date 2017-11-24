@@ -30,11 +30,16 @@ class IndexHandler(tornado.web.RequestHandler):
         document.cookie 查看浏览器的cookie
         document.cookie = 'kk=999' 设置cookie
         '''
+settings = {
+    'template_path': 'static',
+    'static_path': 'static',  # 静态资源的路径
+    'static_url_prefix': '/static/',  # 静态资源的前缀
+}
 
 
 application = tornado.web.Application([
     (r'/index', IndexHandler),
-])
+], **settings)
 
 if __name__ == '__main__':
     application.listen(8080)
