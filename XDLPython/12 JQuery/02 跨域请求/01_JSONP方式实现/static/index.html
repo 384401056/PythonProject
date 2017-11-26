@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+            <button class="btn btn-default" onclick="AjaxRequest();">发送Ajax跨域请求</button>
+            <button class="btn btn-default" onclick="JsonpRequest();" >发送JSONP跨域请求</button>
+            <button class="btn btn-default" onclick="AjaxJsonpRequest();" >发送AjaxJSONP跨域请求</button>
+    </div>
+
+    <div class="panel-body">
+            <button class="btn btn-default" onclick="AjaxRequestjx();">江西卫视节目列表</button>
+    </div>
+</div>
+
+<script type="text/javaScript" src='/static/jquery-3.2.1.min.js'></script>
+<script language="JavaScript">
+
+    // 直接通过Ajax发送跨域请求
+    function AjaxRequest(){
+        $.ajax({
+            url:'http://kkk.com:8082/index', //此时会产生跨域问题。
+            type: 'get',
+            data: {'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+    //使用JSONP方式，添加script标签。来发跨域请求.
+    function JsonpRequest(){
+        var tag = document.createElement('script');
+        tag.src='http://kkk.com:8082/index';
+        document.head.appendChild(tag); //添加script标签。来发跨域请求.
+        document.head.removeChild(tag); //删除script标签。
+    }
+
+
+    // 通过Ajax来使用JSONP发跨域请求
+    function AjaxJsonpRequest(){
+        $.ajax({
+            url:'http://kkk.com:8082/index', //此时会产生跨域问题。
+            dataType: 'jsonp',
+            jsonp: 'callback',    //这句与下一句合起来相当于于在get请求后加了一个参数 callback = func
+            jsonpCallback: 'func' //指定获取数据的函数。
+        })
+    }
+
+    // 获取数据的方法体
+    function func(arg){
+        console.log(arg)
+    }
+
+    //获取江西卫视节目列表。
+    function AjaxRequestjx(){
+        // var tag = document.createElement('script');
+        // tag.src='http://www.jxntv.cn/data/jmd-jxtv2.html?callback=list';
+        // document.head.appendChild(tag); //添加script标签。来发跨域请求.
+        // document.head.removeChild(tag); //删除script标签。
+
+        $.ajax({
+            url:'http://www.jxntv.cn/data/jmd-jxtv2.html?callback=list', //此时会产生跨域问题。
+            dataType: 'jsonp',
+            jsonpCallback: 'func' //指定获取数据的方法体
+        })
+
+    }
+
+    function list(arg){
+        console.log(arg)
+    }
+
+    
+
+</script>
+
+
+</body>
+</html>

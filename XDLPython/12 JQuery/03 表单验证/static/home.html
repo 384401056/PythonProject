@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <!--对静态进行缓存处理。-->
+    <link rel="stylesheet" href='/static/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form action="/home" method="post" name="UserForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="ip">IP</label>
+                <input type="text" class="form-control" name="ip" id="ip" placeholder="Ip">
+                {% if error_msg %}
+                <span style="color: red">{{error_msg['ip']}}</span>
+                {% end %}
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name='favor' value="1"> 蓝球
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name='favor' value="2"> 足球
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name='favor' value="3"> 橄榄球
+                    </label>
+                </div>
+                {% if error_msg %}
+                <span style="color: red">{{error_msg['favor']}}</span>
+                {% end %}
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputFile">上传文件1</label>
+                <input type="file" id="exampleInputFile" name="loadfile">
+                <label for="exampleInputFile">上传文件2</label>
+                <input type="file" id="exampleInputFile" name="loadfile">
+                {% if error_msg %}
+                <span style="color: red">{{error_msg['loadfile']}}</span>
+                {% end %}
+              </div>
+
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javaScript" src='/static/jquery-3.2.1.min.js'></script>
+<script language="JavaScript">
+</script>
+
+
+</body>
+</html>

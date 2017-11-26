@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <!--对静态进行缓存处理。-->
+    <link rel="stylesheet" href='/static/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+            <button class="btn btn-default" onclick="SendData();">发送Ajax请求(Get)</button>
+            <button class="btn btn-default" onclick="SendPost();">发送Ajax请求(Post)</button>
+    </div>
+</div>
+
+<script type="text/javaScript" src='/static/jquery-3.2.1.min.js'></script>
+<script language="JavaScript">
+    function SendData(){
+        $.ajax({
+            url:'/getdata',
+            type: 'get',
+            data: {'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+
+    function SendPost(){
+        $.ajax({
+            url:'/getdata',
+            type: 'Post',
+            data: {'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+</script>
+
+
+</body>
+</html>

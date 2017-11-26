@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body" style="margin-top: 15px">
+            <button class="btn btn-default" onclick="AjaxRequest();">发送Ajax跨域请求(简单)</button>
+    </div>
+
+    <div class="panel-body" style="margin-top: 15px">
+            <button class="btn btn-default" onclick="AjaxRequestComplex();">发送Ajax跨域请求(复杂)</button>
+    </div>
+
+    <div class="panel-body" style="margin-top: 15px">
+            <button class="btn btn-default" onclick="AjaxRequestComplexHeaders();">发送Ajax跨域请求(复杂/响应自定义请求头)</button>
+    </div>
+
+
+    <div class="panel-body" style="margin-top: 15px">
+        <button class="btn btn-default" onclick="AjaxRequestComplexHeadersCookies();">
+            发送Ajax跨域请求(复杂/响应自定义请求头/携带cookies)
+        </button>
+    </div>
+</div>
+
+<script type="text/javaScript" src='/static/jquery-3.2.1.min.js'></script>
+<script language="JavaScript">
+
+    // 简单请求
+    function AjaxRequest(){
+        $.ajax({
+            url:'http://kkk.com:8082/cors', //此时会产生跨域问题。
+            type: 'post',
+            data: {'status':'1', 'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+    // 复杂请求
+    function AjaxRequestComplex(){
+        $.ajax({
+            url:'http://kkk.com:8082/cors', 
+            type: 'put', //此为复杂请求
+            data: {'status':'1', 'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+    // 带自定义请求头的复杂请求
+    function AjaxRequestComplexHeaders(){
+        $.ajax({
+            url:'http://kkk.com:8082/cors', 
+            type: 'put', //此为复杂请求
+            headers: {'k1':'v1'}, //此为自定义请求头。
+            data: {'status':'1', 'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+
+
+    // 带自定义请求头的复杂请求，并且携带cookies
+    function AjaxRequestComplexHeadersCookies(){
+        $.ajax({
+            url:'http://kkk.com:8082/cookies', 
+            type: 'put', //此为复杂请求
+            headers: {'k1':'v1'}, //此为自定义请求头。
+            xhrFields:{withCredentials: true}, //此为携带cookies
+            data: {'status':'1', 'name':'gaoyanbin'},
+            dataType: 'text',
+            success: function(data, statusText){
+                console.log(data)
+            }
+        });
+    }
+
+</script>
+
+
+</body>
+</html>
