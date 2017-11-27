@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from pymysql import TIMESTAMP
+import pymysql
+from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, Index, UniqueConstraint
 
 # 创建ORM基类
 Base = declarative_base()
-
-ENGINE = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/chouti?charset=utf8", echo=True)  # echo为显示打印sql语句
-
 
 class userInfo(Base):
     __tablename__ = 'userinfo'
@@ -36,7 +33,7 @@ class news(Base):
     __tablename__ = 'news'
 
     nid = Column(Integer, primary_key=True, autoincrement=True)  # id
-    user_info_id = Column(Integer, ForeignKey('userInfo.nid'))  # 用户ID,外键 userinfo.nid
+    user_info_id = Column(Integer, ForeignKey('userinfo.nid'))  # 用户ID,外键 userinfo.nid
     news_type_id = Column(Integer, ForeignKey('newstype.nid'))  # 新闻类型id, 外键 newstype.nid
     ctime = Column(TIMESTAMP)  # 创建时间
     title = Column(String(32))
@@ -48,10 +45,11 @@ class favor(Base):
     __tablename__ = 'favor'
 
     nid = Column(Integer, primary_key=True, autoincrement=True)  # id
-    user_info_id = Column(Integer, ForeignKey('userInfo.nid'))  # 用户ID,外键 userinfo.nid
+    user_info_id = Column(Integer, ForeignKey('userinfo.nid'))  # 用户ID,外键 userinfo.nid
     news_id = Column(Integer, ForeignKey('news.nid'))
     ctime = Column(TIMESTAMP)  # 创建时间
 
+    # 联合唯一的约束
     __table_args__ = (
         UniqueConstraint('user_info_id', 'news_id', name='uix_uid_nid'),
     )
@@ -61,7 +59,7 @@ class comment(Base):
     __tablename__ = 'comment'
 
     nid = Column(Integer, primary_key=True, autoincrement=True)  # id
-    user_info_id = Column(Integer, ForeignKey('userInfo.nid'))  # 用户ID,外键 userinfo.nid
+    user_info_id = Column(Integer, ForeignKey('userinfo.nid'))  # 用户ID,外键 userinfo.nid
     news_id = Column(Integer, ForeignKey('news.nid'))
     reply_id = Column(Integer, ForeignKey('comment.nid'), nullable=True, default=None)
     up = Column(Integer)  # 顶
@@ -72,9 +70,9 @@ class comment(Base):
 
 
 def main():
+    ENGINE = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/chouti?charset=utf8")  # echo为显示打印sql语句
     # 创建所有表结构
     Base.metadata.create_all(ENGINE)
-
 
 if __name__ == '__main__':
     main()

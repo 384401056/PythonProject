@@ -46,8 +46,7 @@ class User(Base):
 
 def main():
     # 创建数据库engine
-    engine = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/test")
-
+    engine = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/chouti")
     # 创建所有表结构
     Base.metadata.create_all(engine)
 
