@@ -61,6 +61,7 @@ class Session:
         # 此处写入是为了以后更新失效时间。
         self.handler.set_cookie('user_identity', self.md5_str)
 
+
     def get_value(self, key):
         md5_str = self.handler.get_cookie('user_identity',None)
 

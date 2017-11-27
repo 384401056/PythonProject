@@ -241,6 +241,8 @@ class HomeForm(BaseForm):
         self.favor = CheckBoxField(required=True, error_msg_dict=None)
         self.loadfile = FileField(required=True, error_msg_dict=None)
 
+
+
 class HomeHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
         self.render('home.html', error_msg = None)
