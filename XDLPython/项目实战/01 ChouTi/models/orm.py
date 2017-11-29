@@ -4,6 +4,7 @@ import pymysql
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 
+
 # 创建ORM基类
 Base = declarative_base()
 
