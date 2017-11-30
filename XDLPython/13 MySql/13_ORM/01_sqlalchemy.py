@@ -34,23 +34,23 @@ def main():
     session = MySession()
 
     # 插入单条数据
-    # student = Student(name='gaoyanbin', age=20, address='云南昆明')
-    # session.add(student)
+    student = Student(name='gaoyanbin', age=20, address='云南昆明')
+    session.add(student)
 
     # 插入多条数据
-    # session.add_all([
-    # 	Student(name='gaoyanbin1', age=21, address='云南昆明1'),
-    # 	Student(name='gaoyanbin2', age=22, address='云南昆明2'),
-    # 	Student(name='gaoyanbin3', age=23, address='云南昆明3'),
-    # 	Student(name='gaoyanbin4', age=24, address='云南昆明4'),
-    # 	])
-    # session.commit()
+    session.add_all([
+    	Student(name='gaoyanbin1', age=21, address='云南昆明1'),
+    	Student(name='gaoyanbin2', age=22, address='云南昆明2'),
+    	Student(name='gaoyanbin3', age=23, address='云南昆明3'),
+    	Student(name='gaoyanbin4', age=24, address='云南昆明4'),
+    	])
+    session.commit()
 
-    # ret = session.query(Student).all()
-    # ret = session.query(Student).filter(Student.name == 'gaoyanbin').one()
-    # ret = session.query(Student).filter(Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
+    ret = session.query(Student).all()
+    ret = session.query(Student).filter(Student.name == 'gaoyanbin').one()
+    ret = session.query(Student).filter(Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
     # ~ 代表取反
-    # ret = session.query(Student).filter(~Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
+    ret = session.query(Student).filter(~Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
     # count() 计算数量
     ret = session.query(Student).filter(Student.name == "gaoyanbin1").count()
     print(ret)

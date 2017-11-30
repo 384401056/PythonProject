@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding utf-8 -*-
 import sys
+sys.path.append('E:\\PythonProject\\XDLPython\\02 常用模块学习\\00_调用自定义lib')
 from libs import account
+
 
 def main():
 
