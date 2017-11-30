@@ -5,7 +5,7 @@ from backend.core import request_handler
 
 class IndexHandler(request_handler.BaseRquestHandler):
     def get(self, *args, **kwargs):
-        self.render('index.html')
+        self.render('index.html', error_msg=None)
 
 
 def main():

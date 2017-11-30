@@ -21,6 +21,7 @@ application = tornado.web.Application([
     (r'/index', home.IndexHandler),
     (r'/send_code', account.SendCodeHandler),
     (r'/register', account.RegisterHandler),
+    (r'/login', account.LoginHandler),
 ], **settings)
 
 if __name__ == '__main__':

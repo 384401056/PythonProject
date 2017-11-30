@@ -109,8 +109,8 @@ def drop_db():
 
 def main():
     # drop_db()
-    # init_db()
-    pass
+    init_db()
+    # pass
 
 
 if __name__ == '__main__':
