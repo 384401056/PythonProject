@@ -5,7 +5,15 @@ from backend.core import request_handler
 
 class IndexHandler(request_handler.BaseRquestHandler):
     def get(self, *args, **kwargs):
-        self.render('index.html', error_msg=None)
+        userinfo = {}
+        if self.session['is_login']:
+            userinfo['is_login'] = self.session['is_login']
+            userinfo['reg_name'] = self.session['reg_name']
+            userinfo['email'] = self.session['email']
+            print(userinfo)
+            self.render('index.html', error_msg=None, userinfo=userinfo)
+        else:
+            self.render('index.html', error_msg = None, userinfo = None)
 
 
 def main():

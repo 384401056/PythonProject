@@ -97,7 +97,7 @@ class Comment(Base):
 def session():
     # 创建DBSession类型:
     session = sessionmaker(bind=ENGINE)
-    return session
+    return session()
 
 def init_db():
     # 创建所有表结构
