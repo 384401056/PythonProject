@@ -10,12 +10,11 @@ class IndexHandler(request_handler.BaseRquestHandler):
             userinfo['is_login'] = self.session['is_login']
             userinfo['reg_name'] = self.session['reg_name']
             userinfo['email'] = self.session['email']
-            print(userinfo)
+
             self.render('index.html', error_msg=None, userinfo=userinfo)
         else:
             self.render('index.html', error_msg = None, userinfo = None)
-
-
+            self.write()
 def main():
     pass
 
