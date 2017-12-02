@@ -11,6 +11,7 @@ import json
 from sqlalchemy import *
 
 class RegisterHandler(request_handler.BaseRquestHandler):
+    """注册用户"""
     def get(self, *args, **kwargs):
         pass
 
@@ -41,25 +42,22 @@ class RegisterHandler(request_handler.BaseRquestHandler):
                 user.status = 1
 
                 conn.add(user)
-                conn.commit()  # 提交
+                conn.commit()  # 提交, commit一旦执行，user对象中就没有数据了。
                 conn.close()
 
-                print(self.session)
                 # 将session信息写入cookies中
                 self.session['is_login'] = True
                 self.session['reg_name'] = self.get_argument('reg_name')
                 self.session['email'] = self.get_argument('email')
-
             else:
                 result['status'] = False
-                result['error'] = '邮箱验证码错误!'
-
+                result['error'] = "验证码不正确！"
             self.write(json.dumps(result))
-
         else:
             self.render('error.html', error_msg=error_msg)
 
 class LoginHandler(request_handler.BaseRquestHandler):
+    """用户登陆"""
     def get(self, *args, **kwargs):
         pass
 
@@ -67,6 +65,7 @@ class LoginHandler(request_handler.BaseRquestHandler):
         pass
 
 class SendCodeHandler(request_handler.BaseRquestHandler):
+    """发送验证码"""
     def get(self, *args, **kwargs):
         self.render('index.html')
 
@@ -84,7 +83,7 @@ class SendCodeHandler(request_handler.BaseRquestHandler):
 
             conn = orm.session()
             conn.add(sc) # 添加到数据库
-            conn.commit() # 提交
+            conn.commit() # 提交 commit一旦执行，sc对象中就没有数据了。
             print(sc.code)
             conn.close()
         else:

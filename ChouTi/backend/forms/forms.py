@@ -7,6 +7,7 @@ from backend.forms import fields
 
 class BaseForm:
     """当有多个表单的验证类时，可以将类的公共部分提取出，封装为Form表单验证的基类"""
+
     def check_valid(self, handler):
         """
         检查表单提交的内容，是否符合要求。

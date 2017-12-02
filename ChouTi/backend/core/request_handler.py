@@ -6,3 +6,4 @@ from backend.session import session
 class BaseRquestHandler(tornado.web.RequestHandler):
     def initialize(self):
         self.session = session.SessionFactory.get_session_obj(self)
+

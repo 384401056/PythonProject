@@ -16,12 +16,13 @@
         <li role="presentation"><a href="#">42区</a></li>
         <li role="presentation"><a href="#">段子</a></li>
         {% if userinfo %}
-        <li role="presentation"><a href="#" data-toggle="modal">{{ userinfo['reg_name'] }}</a></li>
+        <li role="presentation"><a href="#" data-toggle="modal">{{userinfo['reg_name'] }}</a></li>
         <li role="presentation"><a href="#">注销</a></li>
         {% else %}
         <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
         <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">注册</a></li>
         {% end %}
+        <li role="presentation"><a href="#">发布</a></li>
 
     </ul>
 </nav>
@@ -71,7 +72,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- 登陆注册Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -110,7 +111,7 @@
                         <form name="regForm" action="/register" method="post">
                             <div class="form-group">
                                 <label for="reg_name">用户名</label>
-                                <input class="reg-temp" type="text" class="form-control" id="reg_name" name="reg_name" placeholder="用户名">
+                                <input type="text" class="form-control" id="reg_name" name="reg_name" placeholder="用户名">
                                 {% if error_msg %}
                                     <span style="color: red">{{error_msg['reg_name']}}</span>
                                 {% end %}
@@ -119,7 +120,7 @@
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label for="email">邮箱</label>
-                                        <input class="reg-temp" type="email" class="form-control" id="email" name="email"
+                                        <input type="email" class="form-control" id="email" name="email"
                                                placeholder="邮箱">
                                         {% if error_msg %}
                                             <span style="color: red">{{error_msg['email']}}</span>
@@ -134,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="checkcode">验证码</label>
-                                <input class="reg-temp" type="text" class="form-control" id="checkcode" name="checkcode"
+                                <input type="text" class="form-control" id="checkcode" name="checkcode"
                                        placeholder="验证码">
                                 {% if error_msg %}
                                     <span style="color: red">{{error_msg['checkcode']}}</span>
@@ -143,7 +144,7 @@
 
                             <div class="form-group">
                                 <label for="reg_pwd">密码</label>
-                                <input class="reg-temp" type="password" class="form-control" id="reg_pwd" name="reg_pwd"
+                                <input type="password" class="form-control" id="reg_pwd" name="reg_pwd"
                                        placeholder="密码">
                                 {% if error_msg %}
                                     <span style="color: red">{{error_msg['reg_pwd']}}</span>
@@ -160,11 +161,25 @@
     </div>
 </div>
 
+<!--发布Modal-->
+<div class="modal fade" id="fbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span></span>
+            </div>
+            <div class="modal-body">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script language="JavaScript">
 
     function sendCode(ths) {
-        // 取前一个控件的值，也就是email输入框.
+        //取前一个控件的值，也就是email输入框.
         var email = $('#email').val();
         $.ajax({
             url: '/send_code',
@@ -182,16 +197,20 @@
 
     // 通过js获取用户输入后，再通过ajax发送到服务器
     function registerUser() {
-
         var post_dict = {};
         // 遍历class为reg-temp的所有控件
-        $('.reg-temp').each(function () {
-            var value = $(this).val();
-            var key = $(this).attr('name');
-            post_dict[key] = value
-        });
 
-        console.log(post_dict);
+        post_dict[$('#reg_name').attr('name')] = $('#reg_name').val();
+        post_dict[$('#email').attr('name')] = $('#email').val();
+        post_dict[$('#checkcode').attr('name')] = $('#checkcode').val();
+        post_dict[$('#reg_pwd').attr('name')] = $('#reg_pwd').val();
+
+//        $('.reg-temp').each(function () {
+//            var value = $(this).val();
+//            var key = $(this).attr('name');
+//            post_dict[key] = value
+//        });
+//        console.log(post_dict);
 
         $.ajax({
             url: '/register',
@@ -204,7 +223,9 @@
 //                    //注册成功
 //                    location.href = '/index';//跳转到index
 //                }
-                console.log(arg);
+//                else{
+//                    alert(obj)
+//                }
                 location.href = '/index';//跳转到index
             },
             error: function (arg) {

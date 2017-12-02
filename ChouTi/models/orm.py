@@ -62,6 +62,7 @@ class News(Base):
     title = Column(String(32))
     url = Column(String(128))
     content = Column(String(300))
+    favor_count = Column(Integer, default=0)  # 点赞数，默认为0
 
 
 class Favor(Base):

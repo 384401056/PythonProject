@@ -17,10 +17,14 @@ def main():
 
 
     # set 设置一个键值，如果不存在则创建，否则修改。
-    # mem_conn.set('foo', 'gaoyanbin', 5) # 其中5为超时时间.
+    # mem_conn.set('foo', 'kkk', 5) # 其中5为超时时间.
+
 
     # set_multi 设置多个值.
-    # mem_conn.set_multi({'foo':'aaa', 'foo1':'bbb', 'foo2':'ccc'})
+    mem_conn.set_multi({'foo':'aaa', 'foo1':'bbb', 'foo2':'ccc'})
+    print(mem_conn.get('foo'))
+    print(mem_conn.get('foo1'))
+    print(mem_conn.get('foo2'))
 
     # get_multi 批量获取
     # print(mem_conn.get_multi(['foo', 'foo1', 'foo2']))
@@ -50,11 +54,11 @@ def main():
 
 
     # append 修改key的值，在后追加内容。
-    mem_conn.append('foo', 'After')
+    # mem_conn.append('foo', 'After')
 
     # prepend 修改key的值，在前追加内容。
-    mem_conn.prepend('foo', 'Before')
-    print(mem_conn.get('foo'))
+    # mem_conn.prepend('foo', 'Before')
+    # print(mem_conn.get('foo'))
 
 
 
