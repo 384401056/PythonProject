@@ -17,7 +17,7 @@ class IndexHandler(request_handler.BaseRquestHandler):
         #     print(ex)
 
         userinfo = {}
-        # 鑾峰彇鏂伴椈鏁版嵁
+        # 获取新闻数据
         conn = orm.session()
 
         news_list = conn.query(orm.News, orm.UserInfo).filter(
