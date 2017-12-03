@@ -47,7 +47,9 @@ def main():
     session.commit()
 
     ret = session.query(Student).all()
+
     ret = session.query(Student).filter(Student.name == 'gaoyanbin').one()
+
     ret = session.query(Student).filter(Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()
     # ~ 代表取反
     ret = session.query(Student).filter(~Student.name.in_(['gaoyanbin', 'gaoyanbin1', 'gaoyanbin4'])).all()

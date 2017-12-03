@@ -17,10 +17,8 @@ class RegisterHandler(request_handler.BaseRquestHandler):
 
     def post(self, *args, **kwargs):
         result = {'status': True, 'data': '', 'error': ''}  # 返回值格式
-
         checkcode = self.get_argument('checkcode')
         email = self.get_argument('email')
-
         obj = forms.RegForm()
         is_valid, success_dict, error_msg = obj.check_valid(self)
 
@@ -62,7 +60,32 @@ class LoginHandler(request_handler.BaseRquestHandler):
         pass
 
     def post(self, *args, **kwargs):
-        pass
+        result = {'status': True, 'data': '', 'error': ''}  # 返回值格式
+        login_name = self.get_argument('login_name')
+        login_pwd = self.get_argument('login_pwd')
+
+        obj = forms.LoginForm()
+        is_valid, success_dict, error_msg = obj.check_valid(self)
+
+        if is_valid:
+            conn = orm.session()
+            # 查询出，code与email对应的数据
+            # session.query(User).filter(and_(User.name.like("user%"), User.fullname.like("first%"))).all()
+            ret = conn.query(orm.UserInfo).filter(
+                and_(orm.UserInfo.username == login_name, orm.UserInfo.password == login_pwd)
+            ).first()
+            # 如果用户存在
+            if ret:
+                # 将session信息写入cookies中
+                self.session['is_login'] = True
+                self.session['reg_name'] = ret.username
+                self.session['email'] = ret.email
+            else:
+                result['status'] = False
+                result['error'] = "用户不存在，或者密码有误！"
+            self.write(json.dumps(result))
+        else:
+            self.render('error.html', error_msg=error_msg)
 
 class SendCodeHandler(request_handler.BaseRquestHandler):
     """发送验证码"""

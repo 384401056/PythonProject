@@ -5,7 +5,7 @@ import memcache
 
 
 def main():
-    mem_conn = memcache.Client(['192.168.20.130:11211'], debug=True)
+    mem_conn = memcache.Client(['192.168.20.131:11211'], debug=True)
 
     # memcache分步式的设置方式。
     # mem_conn = memcache.Client([('192.168.20.130:11211',2),  # 设置某一台服务器的权重.

@@ -5,10 +5,11 @@ import time
 import config
 import memcache
 import json
+import config
 
 session_id = 'user_identity' # cookie中随机字符串的key
 container = dict()
-mem_conn = memcache.Client(['192.168.20.130:11211'], debug=True)
+mem_conn = memcache.Client(config.MEMCACHED_ADDRESS, debug=True, cache_cas=True)
 
 
 class SessionFactory:

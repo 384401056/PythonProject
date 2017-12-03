@@ -6,9 +6,7 @@ from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-
-
-ENGINE = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/chouti?charset=utf8")  # echo为显示打印sql语句
+ENGINE = create_engine("mysql+pymysql://root:123456@192.168.20.131:3306/chouti?charset=utf8")  # echo为显示打印sql语句
 
 # 创建ORM基类
 Base = declarative_base()

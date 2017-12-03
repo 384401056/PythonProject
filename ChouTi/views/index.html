@@ -13,7 +13,7 @@
 <nav class="navbar navbar-default">
     <ul class="nav nav-pills" style="text-align:center">
         <li role="presentation"><a href="#">全部</a></li>
-        <li role="presentation"><a href="#">42区</a></li>
+        <li role="presentation"><a href="#" onclick="changeToFT();">42区</a></li>
         <li role="presentation"><a href="#">段子</a></li>
         {% if userinfo %}
         <li role="presentation"><a href="#" data-toggle="modal">{{userinfo['reg_name'] }}</a></li>
@@ -22,53 +22,60 @@
         <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
         <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">注册</a></li>
         {% end %}
-        <li role="presentation"><a href="#">发布</a></li>
+        <li role="presentation"><a href="#" data-toggle="modal" data-target="#fbModal">发布</a></li>
 
     </ul>
 </nav>
 
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <ul class="nav navbar-nav" style="width: 100%">
-            <li style="width: 80%">
-                <div class="panel-body">
-                    “美国已经有2千多万人取消电视服务，并且年轻人收看电视的时间一直在下降。如果不开创自己的互联网平台，传统的电视频道会面临被淘汰的风险。美国影视公司权衡拥有平台的好处和目前行业大体环节的其他方面，都决定现在开自己的互联网平台”
-                    ​​​
-                </div>
-            </li>
-            <li style="width: 20%">
-                <div class="panel-body">
-                    <img src="/statics/imgs/01.jpg" style="width: 50px; height: 50px">
-                </div>
-            </li>
-        </ul>
+<div style="margin: 10px">
+    {% for item in news %}
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+            <ul class="nav navbar-nav" style="width: 100%">
+                <li style="width: 80%">
+                    <div class="panel-body">
+                    {{item[0].title }}
+                    </div>
+                </li>
+                <li style="width: 20%">
+                    <div class="panel-body">
+                        <img src="/statics/imgs/01.jpg" style="width: 50px; height: 50px">
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-thumbs-up"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-edit"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-heart"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-user" style="color:blue"></span>
+                        <span>{{item[1].username}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-time" style="color:#ffa775"></span>
+                        <span>{{item[0].ctime}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="panel-body">
-        <ul class="nav navbar-nav">
-            <li>
-                <div class="panel-body">
-                    <button class="glyphicon glyphicon-thumbs-up"></button>
-                </div>
-            </li>
-            <li>
-                <div class="panel-body">
-                    <button class="glyphicon glyphicon-edit"></button>
-                </div>
-            </li>
-            <li>
-                <div class="panel-body">
-                    <button class="glyphicon glyphicon-heart"></button>
-                </div>
-            </li>
-            <li>
-                <div class="panel-body">
-                    <span class="glyphicon glyphicon-user" style="color:blue"></span>
-                    <span>gaoyanbin</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+    {% end %}
 </div>
 
 
@@ -92,19 +99,21 @@
                         <form name="loginForm" action="/login" method="post">
                             <div class="form-group">
                                 <label for="login_name">用户名</label>
-                                <input type="text" class="form-control" id="login_name" name="login_name" placeholder="用户名">
+                                <input type="text" class="form-control" id="login_name" name="login_name"
+                                       placeholder="用户名">
                                 {% if error_msg %}
-                                    <span style="color: red">{{error_msg['login_name']}}</span>
+                                <span style="color: red">{{error_msg['login_name']}}</span>
                                 {% end %}
                             </div>
                             <div class="form-group">
                                 <label for="login_pwd">密码</label>
-                                <input type="password" class="form-control" id="login_pwd" name="login_pwd" placeholder="密码">
+                                <input type="password" class="form-control" id="login_pwd" name="login_pwd"
+                                       placeholder="密码">
                                 {% if error_msg %}
-                                    <span style="color: red">{{error_msg['login_pwd']}}</span>
+                                <span style="color: red">{{error_msg['login_pwd']}}</span>
                                 {% end %}
                             </div>
-                            <button type="submit" class="btn btn-info">登录</button>
+                            <button type="button" class="btn btn-info" onclick="login();">登录</button>
                         </form>
                     </div>
                     <div class="col-md-6">
@@ -113,7 +122,7 @@
                                 <label for="reg_name">用户名</label>
                                 <input type="text" class="form-control" id="reg_name" name="reg_name" placeholder="用户名">
                                 {% if error_msg %}
-                                    <span style="color: red">{{error_msg['reg_name']}}</span>
+                                <span style="color: red">{{error_msg['reg_name']}}</span>
                                 {% end %}
                             </div>
                             <div class="row">
@@ -123,7 +132,7 @@
                                         <input type="email" class="form-control" id="email" name="email"
                                                placeholder="邮箱">
                                         {% if error_msg %}
-                                            <span style="color: red">{{error_msg['email']}}</span>
+                                        <span style="color: red">{{error_msg['email']}}</span>
                                         {% end %}
                                     </div>
                                 </div>
@@ -138,7 +147,7 @@
                                 <input type="text" class="form-control" id="checkcode" name="checkcode"
                                        placeholder="验证码">
                                 {% if error_msg %}
-                                    <span style="color: red">{{error_msg['checkcode']}}</span>
+                                <span style="color: red">{{error_msg['checkcode']}}</span>
                                 {% end %}
                             </div>
 
@@ -147,7 +156,7 @@
                                 <input type="password" class="form-control" id="reg_pwd" name="reg_pwd"
                                        placeholder="密码">
                                 {% if error_msg %}
-                                    <span style="color: red">{{error_msg['reg_pwd']}}</span>
+                                <span style="color: red">{{error_msg['reg_pwd']}}</span>
                                 {% end %}
                             </div>
                             <!--<button type="submit" class="btn btn-info">注册</button>-->
@@ -166,10 +175,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <span></span>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-6">发布</div>
+                    <div class="col-md-1">
+                        <a href="#" class="glyphicon glyphicon-remove" data-dismiss="modal"
+                           style="text-decoration:none;"></a>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <span></span>
+            <div class="modal-body" style="height: 300px">
+                <form action="/pubmsg">
+                    <div class="form-group">
+                        <label for="content">内容</label>
+                        <textarea class="form-control" rows="3" id="content" placeholder="内容" style="height: 200px;resize:none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
             </div>
         </div>
     </div>
@@ -194,6 +216,26 @@
         });
     }
 
+    function login() {
+        var post_dict = {};
+        post_dict[$('#login_name').attr('name')] = $('#login_name').val();
+        post_dict[$('#login_pwd').attr('name')] = $('#login_pwd').val();
+
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            dataType: "json",
+            data: post_dict, //此时的post_dict相当于FormData
+            success: function (arg) {
+                console.log(arg)
+                location.href = '/index';//跳转到index
+            },
+            error: function (arg) {
+                console.log(arg)
+                alert(arg)
+            }
+        })
+    }
 
     // 通过js获取用户输入后，再通过ajax发送到服务器
     function registerUser() {
@@ -218,6 +260,7 @@
             dataType: "json",
             data: post_dict, //此时的post_dict相当于FormData
             success: function (arg) {
+                console.log(arg)
 //                var obj = JSON.parse(arg);
 //                if (obj.status){
 //                    //注册成功
@@ -229,12 +272,22 @@
                 location.href = '/index';//跳转到index
             },
             error: function (arg) {
+                console.log(arg)
                 alert(arg)
             }
         });
     }
 
-
+    function changeToFT() {
+        $.ajax({
+            url: '/index',
+            type: 'get',
+            dataType: "json",
+            data: {
+                'newstype': 1
+            }
+        })
+    }
 </script>
 
 
