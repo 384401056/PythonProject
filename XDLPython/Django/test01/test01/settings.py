@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'test01.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 
 
     # memcached的Django配置
@@ -99,14 +99,15 @@ DATABASES = {
     #     },
     # },
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'booktest',
-    #     'USER': 'root',
-    #     'PASSWORD': '123456',
-    #     'HOST': '192.168.20.131',
-    #     'PORT': '3306',
-    # }
+    # mysql的Django配置
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'booktest',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '192.168.20.131',
+        'PORT': '3306',
+    }
 }
 
 
