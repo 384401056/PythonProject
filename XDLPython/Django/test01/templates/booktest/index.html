@@ -2,26 +2,294 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href='/static/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+    <title>Index</title>
+    <!--对静态进行缓存处理。-->
+    <link rel="stylesheet" href='/statics/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+    <script type="text/javaScript" src='/statics/js/jquery-3.2.1.min.js'></script>
+    <script type="text/javaScript" src='/statics/bootstrap3/js/bootstrap.min.js'></script>
 </head>
 <body>
-<h1>Hello Django!</h1>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
-      <li role="presentation"><a href="#">Profile</a></li>
-      <li role="presentation"><a href="#">Messages</a></li>
+<nav class="navbar navbar-default">
+    <ul class="nav nav-pills" style="text-align:center">
+        <li role="presentation"><a href="#">全部</a></li>
+        <li role="presentation"><a href="#" onclick="changeToFT();">42区</a></li>
+        <li role="presentation"><a href="#">段子</a></li>
+        {% if userinfo %}
+        <li role="presentation"><a href="#" data-toggle="modal">{{userinfo['reg_name'] }}</a></li>
+        <li role="presentation"><a href="#">注销</a></li>
+        {% else %}
+        <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
+        <li role="presentation"><a href="#" data-toggle="modal" data-target="#myModal">注册</a></li>
+        {% end %}
+        <li role="presentation"><a href="#" data-toggle="modal" data-target="#fbModal">发布</a></li>
+
     </ul>
-  </div>
+</nav>
+
+
+<div style="margin: 10px">
+    {% for item in news %}
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+            <ul class="nav navbar-nav" style="width: 100%">
+                <li style="width: 80%">
+                    <div class="panel-body">
+                    {{item[0].title }}
+                    </div>
+                </li>
+                <li style="width: 20%">
+                    <div class="panel-body">
+                        <img src="/statics/imgs/01.jpg" style="width: 50px; height: 50px">
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-thumbs-up"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-edit"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <button class="glyphicon glyphicon-heart"></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-user" style="color:blue"></span>
+                        <span>{{item[1].username}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-time" style="color:#ffa775"></span>
+                        <span>{{item[0].ctime}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% end %}
 </div>
 
-<script type="text/javaScript" src='/static/jquery-3.2.1.min.js'></script>
-<script type="text/javaScript" src='/static/bootstrap3/js/bootstrap.js'></script>
+
+<!-- 登陆注册Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-5">登陆</div>
+                    <div class="col-md-6">注册</div>
+                    <div class="col-md-1">
+                        <a href="#" class="glyphicon glyphicon-remove" data-dismiss="modal"
+                           style="text-decoration:none;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <form name="loginForm" action="/login" method="post">
+                            <div class="form-group">
+                                <label for="login_name">用户名</label>
+                                <input type="text" class="form-control" id="login_name" name="login_name"
+                                       placeholder="用户名">
+                                {% if error_msg %}
+                                <span style="color: red">{{error_msg['login_name']}}</span>
+                                {% end %}
+                            </div>
+                            <div class="form-group">
+                                <label for="login_pwd">密码</label>
+                                <input type="password" class="form-control" id="login_pwd" name="login_pwd"
+                                       placeholder="密码">
+                                {% if error_msg %}
+                                <span style="color: red">{{error_msg['login_pwd']}}</span>
+                                {% end %}
+                            </div>
+                            <button type="button" class="btn btn-info" onclick="login();">登录</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form name="regForm" action="/register" method="post">
+                            <div class="form-group">
+                                <label for="reg_name">用户名</label>
+                                <input type="text" class="form-control" id="reg_name" name="reg_name" placeholder="用户名">
+                                {% if error_msg %}
+                                <span style="color: red">{{error_msg['reg_name']}}</span>
+                                {% end %}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="email">邮箱</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="邮箱">
+                                        {% if error_msg %}
+                                        <span style="color: red">{{error_msg['email']}}</span>
+                                        {% end %}
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button type="button" class="btn btn-warning" onclick="sendCode(this)"
+                                            style="margin-top:22px; auto;">获取验证码
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkcode">验证码</label>
+                                <input type="text" class="form-control" id="checkcode" name="checkcode"
+                                       placeholder="验证码">
+                                {% if error_msg %}
+                                <span style="color: red">{{error_msg['checkcode']}}</span>
+                                {% end %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg_pwd">密码</label>
+                                <input type="password" class="form-control" id="reg_pwd" name="reg_pwd"
+                                       placeholder="密码">
+                                {% if error_msg %}
+                                <span style="color: red">{{error_msg['reg_pwd']}}</span>
+                                {% end %}
+                            </div>
+                            <!--<button type="submit" class="btn btn-info">注册</button>-->
+                            <button type="button" onclick="registerUser();" class="btn btn-info">注册</button>
+                        </form>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--发布Modal-->
+<div class="modal fade" id="fbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-6">发布</div>
+                    <div class="col-md-1">
+                        <a href="#" class="glyphicon glyphicon-remove" data-dismiss="modal"
+                           style="text-decoration:none;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="height: 300px">
+                <form action="/pubmsg">
+                    <div class="form-group">
+                        <label for="content">内容</label>
+                        <textarea class="form-control" rows="3" id="content" placeholder="内容" style="height: 200px;resize:none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script language="JavaScript">
 
+    function sendCode(ths) {
+        //取前一个控件的值，也就是email输入框.
+        var email = $('#email').val();
+        $.ajax({
+            url: '/send_code',
+            type: 'post',
+            data: {'email': email},
+            success: function (arg) {
+                console.log(arg)
+            },
+            error: function (arg) {
+                console.log(arg)
+            }
+        });
+    }
+
+    function login() {
+        var post_dict = {};
+        post_dict[$('#login_name').attr('name')] = $('#login_name').val();
+        post_dict[$('#login_pwd').attr('name')] = $('#login_pwd').val();
+
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            dataType: "json",
+            data: post_dict, //此时的post_dict相当于FormData
+            success: function (arg) {
+                console.log(arg)
+                location.href = '/index';//跳转到index
+            },
+            error: function (arg) {
+                console.log(arg)
+                alert(arg)
+            }
+        })
+    }
+
+    // 通过js获取用户输入后，再通过ajax发送到服务器
+    function registerUser() {
+        var post_dict = {};
+        // 遍历class为reg-temp的所有控件
+
+        post_dict[$('#reg_name').attr('name')] = $('#reg_name').val();
+        post_dict[$('#email').attr('name')] = $('#email').val();
+        post_dict[$('#checkcode').attr('name')] = $('#checkcode').val();
+        post_dict[$('#reg_pwd').attr('name')] = $('#reg_pwd').val();
+
+//        $('.reg-temp').each(function () {
+//            var value = $(this).val();
+//            var key = $(this).attr('name');
+//            post_dict[key] = value
+//        });
+//        console.log(post_dict);
+
+        $.ajax({
+            url: '/register',
+            type: 'post',
+            dataType: "json",
+            data: post_dict, //此时的post_dict相当于FormData
+            success: function (arg) {
+                console.log(arg)
+//                var obj = JSON.parse(arg);
+//                if (obj.status){
+//                    //注册成功
+//                    location.href = '/index';//跳转到index
+//                }
+//                else{
+//                    alert(obj)
+//                }
+                location.href = '/index';//跳转到index
+            },
+            error: function (arg) {
+                console.log(arg)
+                alert(arg)
+            }
+        });
+    }
+
+    function changeToFT() {
+        $.ajax({
+            url: '/index',
+            type: 'get',
+            dataType: "json",
+            data: {
+                'newstype': 1
+            }
+        })
+    }
 </script>
+
+
 </body>
 </html>
