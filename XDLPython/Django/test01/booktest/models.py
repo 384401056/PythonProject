@@ -13,6 +13,7 @@ class BookInfo(models.Model):
 
 class HeroInfo(models.Model):
     name = models.CharField(max_length=10)
+    age = models.IntegerField()
     gender = models.BooleanField()  # bool类型
     content = models.CharField(max_length=1000)
     book = models.ForeignKey(BookInfo)  # 外键BookInfo的id

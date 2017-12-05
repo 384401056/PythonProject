@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import *
 from django.template import RequestContext, loader
 from . import models
+from django.db.models import F,Q,Count
 import json
 
 
@@ -156,32 +157,100 @@ def index(request):
     # models.Group.objects.create(groupname='行政部')
     # models.Group.objects.create(groupname='市场部')
 
-
+    # -------------------------------正向操作-------------------------------
     # group_obj = models.Group.objects.get(gid=1)
     # host01 = models.Host.objects.filter(hid__gt=3) # 查找出hid大于3的host对象队列
 
     # 将hid大于3的host对象,分配给group gid=1 的部门
     # group_obj.h2g.add(*host01)
 
+    # 直接通过已知的hid来添加
+    # group01 = models.Group.objects.get(gid=8)
+    # group01.h2g.add(*[1, 2, 3, 4])
 
+    # 这里的set只是增加没有的，保留已有的。group01 gid 相同的关系，会被删除。
+    # 增加了group01与所有hid>=1的host之间的关系。, 原来的gid相同的，会被删除.
+    # 相当于重建group01的与其它host的关系
+    # group01.h2g.set(models.Host.objects.filter(hid=1))
+
+    #-------------------------------反向操作-------------------------------
     # 将host对象hid为5的设备分配给，gid为3,4的group对象
 
-    host02 = models.Host.objects.get(hid=5)
+    # host02 = models.Host.objects.get(hid=1)
+    # print(host02)
 
     # 将host02分配给gid大于等于2的Group.此时的 表名_set 指的是关联关系表
-    # host02.group_set.add(*models.Group.objects.filter(gid__gte=2))
+    # host02.group_set.add(*models.Group.objects.filter(gid__gte=4))
+
+    # 直接通过已知的gid来添加
+    # host02.group_set.add(1)
+    # host02.group_set.add(*[2,3,4])
+
+
 
     # 删除关联表中，gid大于等于1的数据。
     # host02.group_set.remove(*models.Group.objects.filter(gid__gte=1))
     # host02.group_set.remove(*models.Group.objects.filter(gid__get=1))
 
     # 自动创建的关联关系表只支持添加、删除，不支持修改。
-    # 这里的set只是增加没有的，保留已有的。增加了host02与所有gid>=1的group之间的关系。
-    host02.group_set.set(models.Group.objects.filter(gid__gte=1))
 
-    
+    # 这里的set只是增加没有的，保留已有的。如果有host02 hid 相同的关系，会被删除。
+    # 增加了host02与所有gid>=1的group之间的关系。, 原来的hid相同的，会被删除.
+    # 相当于重建host02的与其它group的关系
+    # host02.group_set.set(models.Group.objects.filter(gid=3))
+
+    # clear=True 全清除，但是原来的和新加的会一起添加到表中。可以在表中看到,自增id发生了变化。
+    # host02.group_set.set(models.Group.objects.filter(gid__gte=1), clear=True)
+
+    # host02 = models.Host.objects.get(hid=4)
+    # get_or_create .在group表中添加一个groupname, 并将它与host02建立关系.
+    # 如果此groupname与host02已经在关系表中存在，则无变化。
+    # r = host02.group_set.get_or_create(groupname ='运维部')
+    # print(r)
 
 
+
+
+    #===========================条件查询之 F,Q==========================
+
+    # book01 = models.BookInfo.objects.get(id=1)
+    # models.HeroInfo.objects.create(name='edb', age=22, gender=0, content='abcdsfdsaf', book = book01)
+    # models.HeroInfo.objects.create(name='aaac', age=20, gender=1, content='abcdsfdsaf', book = book01)
+    # models.HeroInfo.objects.create(name='ccc', age=27, gender=0, content='abcdsfdsaf', book = book01)
+    # models.HeroInfo.objects.create(name='abbbbc', age=50, gender=1, content='abcdsfdsaf', book = book01)
+
+    # # 在原来age的基础上对age加100，F用来取原来age的值。
+    # models.HeroInfo.objects.filter(id=1).update(age=F('age')+100)
+    #
+    # Q构建搜索条件
+    # conn = Q()
+    #
+    # q1 = Q()
+    # q1.connector = 'AND' # q1的搜索关系.
+    #
+    # q1.children.append(('age',40))
+    # q1.children.append(('content','ddddd'))
+    #
+    # q2 = Q()
+    # q2.connector = 'OR'
+    # q2.children.append(('name','abc'))
+    # q2.children.append(('gender','0'))
+    #
+    #
+    # conn.add(q1,'AND')
+    # conn.add(q2,'AND')
+    #
+    # ret = models.HeroInfo.objects.filter(conn)
+    # for item in ret:
+    #     print(item.id, item.name,item.age,item.content,item.gender)
+
+
+
+    #==================group by=====================
+
+    # 根据age列来分组，计算数量(id列）,此片的values不再是映射的功能。因为他在annotate前出现
+    ret = models.HeroInfo.objects.all().values('age').annotate(Count('id'))
+    print(ret)
 
     return HttpResponse('OK')
 
