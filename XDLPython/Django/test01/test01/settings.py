@@ -105,7 +105,7 @@ DATABASES = {
         'NAME': 'booktest',
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': '192.168.20.131',
+        'HOST': '192.168.21.131',
         'PORT': '3306',
     }
 }
