@@ -179,7 +179,7 @@ def index(request):
     # 这里的set只是增加没有的，保留已有的。增加了host02与所有gid>=1的group之间的关系。
     host02.group_set.set(models.Group.objects.filter(gid__gte=1))
 
-    
+
 
 
 
