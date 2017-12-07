@@ -78,18 +78,18 @@ WSGI_APPLICATION = 'django_Q.wsgi.application'
 
 DATABASES = {
 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'booktest',
+    #     'USER': 'root',
+    #     'PASSWORD': '123456',
+    #     'HOST': '192.168.21.131',
+    #     'PORT': '3306',
+    #     }
+
     'default': {
-<<<<<<< HEAD
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'booktest',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '192.168.21.131',
-        'PORT': '3306',
-=======
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
->>>>>>> 90df9d6278e19b7296ed2940a51bfb32bf568e22
     }
 
     # mysql的Django配置

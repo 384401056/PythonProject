@@ -105,7 +105,7 @@ def index(request):
     # for item in ret: # 此时, querySet是列表。item是元组
     #     print(item)
 
-    # ---------------------------反向查询,通被外键的表查询关联表的数据：1.在values中表名__字段名  2.python代码中表名_set,得到外键表的队列 ----------------------------------------------
+    # ---------------------------反向查询,通被外键的表查询关联表的数据：1.在values中表名__字段名  2.python代码中表名_set,得到外键表的列表 ----------------------------------------------
 
     # ret = models.UserType.objects.filter(caption='管理员').values('caption', 'userinfo__username', 'userinfo__email') # 加了vlues数据就变成了元组了，不再是对象了。
     # ret = models.UserType.objects.filter(caption='管理员').first() # 返回的是单个对象
@@ -115,12 +115,12 @@ def index(request):
     # ret = models.UserType.objects.all().values('caption', 'userinfo__username', 'userinfo__email')
 
 
-    # 返回的是一个队列(元组队列,因为加了values)
+    # 返回的是一个列表(元组列表,因为加了values)
     # ret_list = ret.userinfo_set.all().values('user_type__caption', 'user_type__nid', 'username', 'email', 'pwd')
     # for item in ret_list:
     #     print(item)
 
-    # 返回的UserInfo表的队列(对象队列)
+    # 返回的UserInfo表的列表(对象列表)
     # ret_list = ret.userinfo_set.all()
     # for item in ret_list:
     #     # 对象通过外键字段，就可以取出另一个表中的数据
@@ -159,7 +159,7 @@ def index(request):
 
     # -------------------------------正向操作-------------------------------
     # group_obj = models.Group.objects.get(gid=1)
-    # host01 = models.Host.objects.filter(hid__gt=3) # 查找出hid大于3的host对象队列
+    # host01 = models.Host.objects.filter(hid__gt=3) # 查找出hid大于3的host对象列表
 
     # 将hid大于3的host对象,分配给group gid=1 的部门
     # group_obj.h2g.add(*host01)
