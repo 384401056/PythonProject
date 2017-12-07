@@ -7,6 +7,6 @@ from .import views
 
 urlpatterns = [
     url(r'^$', views.index),  # 指定路由.
-    url(r'^login/', views.login),
+    url(r'^login/', views.login02),
     url(r'^init_db/', views.init_db),
 ]

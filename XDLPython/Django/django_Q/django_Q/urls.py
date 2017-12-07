@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^', include('app01.urls')), # 间接指定URL到app01下的urls文件中
-    url(r'^', include('app02.urls')), # 间接指定URL到app02下的urls文件中
+    # url(r'^', include('FormValidation.urls')), # 间接指定URL到FormValidation下的urls文件中
+    url(r'^', include('CookiesOpt.urls')) # 间接指定URL到CookiesOpt下的urls文件中
 ]

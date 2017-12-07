@@ -7,13 +7,57 @@
 <body>
 <h1>AAA</h1>
 
-<p>{{ error }}</p>
-<p>{{ error.username.0 }}</p>
-<p>{{ error.pwd.0 }}</p>
+<!--只要返回的error是dict对象，就可以用.来取值-->
+{#<p>{{ error }}</p>#}
+{#<p>{{ error.username.0 }}</p>#}
+{#<p>{{ error.pwd.0 }}</p>#}
 
 {#<p>{{ return_json }}</p>#}
 {#<p>{{ return_json.status }}</p>#}
 {#<p>{{ return_json.msg }}</p>#}
 {#<p>{{ return_json.data }}</p>#}
+
+
+{% if error %}
+<p>{{ form.username }}</p>
+<p>{{ error.username.0 }}</p>
+{% else %}
+<p>{{ form.username }}</p>
+{% endif %}
+
+{% if error %}
+<p>{{ form.pwd }}</p>
+<p>{{ error.pwd.0 }}</p>
+{% else %}
+<p>{{ form.pwd }}</p>
+{% endif %}
+
+{% if error %}
+<p>{{ form.memo }}</p>
+<p>{{ error.memo.0 }}</p>
+{% else %}
+<p>{{ form.memo }}</p>
+{% endif %}
+
+
+{% if error %}
+<p>{{ form.phone }}</p>
+<p>{{ error.phone.0 }}</p>
+{% else %}
+<p>{{ form.phone }}</p>
+{% endif %}
+
+
+{% if error %}
+<p>{{ form.booktype }}</p>
+<p>{{ error.booktype.0 }}</p>
+{% else %}
+<p>{{ form.booktype }}</p>
+{% endif %}
+
+</form>
+
+
+
 </body>
 </html>
