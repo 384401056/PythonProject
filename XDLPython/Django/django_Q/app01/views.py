@@ -18,11 +18,11 @@ def  index(request):
 
 
 def index_post(request):
-    # postæ•°æ®æ ¼å¼ {"post_data":{"name":["è‘µèŠ±å®å…¸", "Springå®æˆ˜"], "price":["3209.5"]}}
-    # å­—å…¸å…ƒç´ post_dataå†…æ˜¯ANDçš„å…³ç³»ï¼Œå­—å…¸çš„å­—å…¸å†…éƒ¨æ˜¯ORçš„å…³ç³»
+    # postÊı¾İ¸ñÊ½ {"post_data":{"name":["¿û»¨±¦µä", "SpringÊµÕ½"], "price":["3209.5"]}}
+    # ×ÖµäÔªËØpost_dataÄÚÊÇANDµÄ¹ØÏµ£¬×ÖµäµÄ×ÖµäÄÚ²¿ÊÇORµÄ¹ØÏµ
     post_data = request.POST.get('post_data', None)
     if post_data is not None:
-        post_data_dict = json.loads(post_data) # å°†å‚æ•°ä¼ æ¥çš„å­—ç¬¦è½¬ä¸ºå¯¹è±¡
+        post_data_dict = json.loads(post_data) # ½«²ÎÊı´«À´µÄ×Ö·û×ªÎª¶ÔÏó
         print(post_data_dict)
         con = Q()
         for k, v  in post_data_dict.items():
@@ -32,19 +32,19 @@ def index_post(request):
             for item in v:
                 q1.children.append((k,item))
 
-            # å¾ªç¯æ·»åŠ æŸ¥è¯¢æ¡ä»¶
+            # Ñ­»·Ìí¼Ó²éÑ¯Ìõ¼ş
             con.add(q1, 'AND')
 
-        # Djangoè¾“å…¥å‡ºjsonçš„å› å®šæ­é…
+        # DjangoÊäÈë³öjsonµÄÒò¶¨´îÅä
         # ret = models.Book.objects.filter(con)
         # json_ret = serializers.serialize('json', ret)
         # print(type(json_ret), json_ret)
 
         ret = models.Book.objects.filter(con).values('name','page','book_type__caption')
-        li = list(ret) # å¦‚æœretæ˜¯åˆ—è¡¨ç»“æ„çš„æ•°æ®,å¯ä»¥ç”¨è¿™ç§ç®€å•çš„æ–¹å¼æ¥è½¬ä¸ºpythonçš„åˆ—è¡¨ç±»å‹ã€‚
+        li = list(ret) # Èç¹ûretÊÇÁĞ±í½á¹¹µÄÊı¾İ,¿ÉÒÔÓÃÕâÖÖ¼òµ¥µÄ·½Ê½À´×ªÎªpythonµÄÁĞ±íÀàĞÍ¡£
         print(type(li), li)
-        # pythonçš„åˆ—è¡¨ç±»å‹å°±å¯ä»¥ç”¨json.dumps()æ¥è¿›è¡Œè½¬æ¢äº†ã€‚
-        # ä½†æ˜¯Djangoä¸­Decimalå’ŒDateç±»å‹çš„å­—æ®µåœ¨ä½¿ç”¨json.dumps()æ—¶,éœ€è¦è¿›è¡Œä¸€äº›ç‰¹æ®Šçš„æ“ä½œã€‚
+        # pythonµÄÁĞ±íÀàĞÍ¾Í¿ÉÒÔÓÃjson.dumps()À´½øĞĞ×ª»»ÁË¡£
+        # µ«ÊÇDjangoÖĞDecimalºÍDateÀàĞÍµÄ×Ö¶ÎÔÚÊ¹ÓÃjson.dumps()Ê±,ĞèÒª½øĞĞÒ»Ğ©ÌØÊâµÄ²Ù×÷¡£
         result = json.dumps(li)
 
     return HttpResponse(result)

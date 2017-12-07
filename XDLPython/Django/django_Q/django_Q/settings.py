@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app01',
+    'app02',
 ]
 
 MIDDLEWARE = [
@@ -76,15 +77,30 @@ WSGI_APPLICATION = 'django_Q.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # mysql的Django配置
+
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'booktest',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '192.168.21.131',
         'PORT': '3306',
+=======
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+>>>>>>> 90df9d6278e19b7296ed2940a51bfb32bf568e22
     }
+
+    # mysql的Django配置
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'booktest',
+    #     'USER': 'root',
+    #     'PASSWORD': '123456',
+    #     'HOST': '192.168.20.131',
+    #     'PORT': '3306',
+    # }
 }
 
 

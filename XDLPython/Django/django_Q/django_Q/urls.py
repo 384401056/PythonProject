@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('app01.urls')), # 间接指定URL到app01下的urls文件中
+    # url(r'^', include('app01.urls')), # 间接指定URL到app01下的urls文件中
+    url(r'^', include('app02.urls')), # 间接指定URL到app01下的urls文件中
 ]
