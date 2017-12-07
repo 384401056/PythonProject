@@ -194,8 +194,6 @@ def index(request):
 
     # 自动创建的关联关系表只支持添加、删除，不支持修改。
 
-<<<<<<< HEAD
-=======
     # 这里的set只是增加没有的，保留已有的。如果有host02 hid 相同的关系，会被删除。
     # 增加了host02与所有gid>=1的group之间的关系。, 原来的hid相同的，会被删除.
     # 相当于重建host02的与其它group的关系
@@ -238,15 +236,13 @@ def index(request):
     # q2.children.append(('name','abc'))
     # q2.children.append(('gender','0'))
     #
-    #
+    #	
     # conn.add(q1,'AND')
     # conn.add(q2,'AND')
     #
     # ret = models.HeroInfo.objects.filter(conn)
     # for item in ret:
     #     print(item.id, item.name,item.age,item.content,item.gender)
-
->>>>>>> 6862e04a29a4464a8fb401a1d2f4ad04f7447805
 
 
     #==================group by=====================

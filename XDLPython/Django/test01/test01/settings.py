@@ -153,5 +153,5 @@ STATIC_URL = '/static/'
 
 # 指定静态文件的路径
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'booktest/static'),
 )
