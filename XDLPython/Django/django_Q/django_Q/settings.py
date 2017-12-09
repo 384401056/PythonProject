@@ -37,11 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app01',
-    'FormValidation',
+    # 'app01',
+    # 'FormValidation',
+    # 'CookiesOpt',
+    # 'Session',
+    # 'Middleware',
+    # 'Cache',
+    'Signals'
 ]
 
+
 MIDDLEWARE = [
+    # 中间件位于所有url请求的最前端。按列表中的顺序从上到下执行。
+    # 当数据返回客户端时，数据按列表中的顺序由下往上返回。
+    # 'Middleware.my_middleware.TestMiddleware1', # 自定义中间件
+    # 'Middleware.my_middleware.TestMiddleware2', # 自定义中间件
+    # 'Middleware.my_middleware.TestMiddleware3', # 自定义中间件
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,3 +157,64 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+#===============================缓存配置=============================
+
+# 此缓存将内容保存至内存的变量中
+# 配置：
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION': 'unique-snowflake',
+#     }
+# }
+
+# 此缓存将内容保存至文件
+# 配置：
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': os.path.join(BASE_DIR, 'Cache/cachefiles'), # 缓存文件的路径。
+#     }
+# }
+
+
+# 此缓存将内容保存至数据库中，系统目前使用的数据库。
+# 配置：
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table', # 数据库表名,需要使用 python manage.py createcachetable 命令来创建此表。
+    }
+}
+
+
+# 此缓存使用python-memcached模块连接memcache
+
+# 第一种方式：无memcached集群
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '192.168.21.131:11211',
+#     }
+# }
+
+# # 第二种方式：本地socket文件.
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': 'unix:/tmp/memcached.sock',
+#     }
+# }
+#
+# # 第三种方式：memcached集群
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': [
+#             '172.19.26.240:11211',
+#             '172.19.26.242:11211',
+#         ]
+#     }
+# }

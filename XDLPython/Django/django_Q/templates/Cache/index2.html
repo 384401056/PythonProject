@@ -1,0 +1,16 @@
+{% load cache %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1>模版局部缓存</H1>
+<h2 style="color: #2aabd2">{{ time1 }}</h2>
+<hr/>
+{% cache 10 nnnnnnn %} <!--模版局部缓存 10是时间 nnnn是key的名称-->
+<h2 style="color: #f3b10f">{{ time2 }}</h2>
+{% endcache %}
+</body>
+</html>
