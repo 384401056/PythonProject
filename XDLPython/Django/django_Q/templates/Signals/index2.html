@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href='/static/bootstrap3/css/bootstrap.min.css' type="text/css"/>
+    <script type="text/javaScript" src='/static/js/jquery-3.2.1.min.js'></script>
+    <script type="text/javaScript" src='/static/bootstrap3/js/bootstrap.min.js'></script>
+</head>
+<body>
+
+<H3>Djanggo信号</H3>
+<hr/>
+
+<h4>自定义信号</h4>
+<p style="color: #e84d42">信号触发时的执行方法及信号注册的代码要写在,项目的__init__()方法中，或者应用的__init__()中</p>
+
+
+{##}
+{#<hr/>#}
+{#<h4 class="media-heading">Model signals</h4>#}
+{#<p>pre_init # django的modal执行其构造方法前，自动触发</p>#}
+{#<p>post_init # django的modal执行其构造方法后，自动触发</p>#}
+{#<p>pre_save # django的modal对象保存前，自动触发</p>#}
+{#<p>post_save # django的modal对象保存后，自动触发</p>#}
+{#<p>pre_delete # django的modal对象删除前，自动触发</p>#}
+{#<p>post_delete # django的modal对象删除后，自动触发</p>#}
+{#<p>m2m_changed # django的modal中使用m2m字段操作第三张表（add,remove,clear）前后，自动触发</p>#}
+{#<p>class_prepared # 程序启动时，检测已注册的app中modal类，对于每一个类，自动触发</p>#}
+{##}
+{#<h4 class="media-heading">Management signals</h4>#}
+{#<p>pre_migrate # 执行migrate命令前，自动触发</p>#}
+{#<p>post_migrate # 执行migrate命令后，自动触发</p>#}
+{##}
+{#<h4 class="media-heading">Request/response signals</h4>#}
+{#<p>request_started # 请求到来前，自动触发</p>#}
+{#<p>request_finished # 请求结束后，自动触发</p>#}
+{#<p>got_request_exception # 请求异常后，自动触发</p>#}
+{##}
+{#<h4 class="media-heading">Test signals</h4>#}
+{#<p>setting_changed # 使用test测试修改配置文件时，自动触发</p>#}
+{#<p>template_rendered # 使用test测试渲染模板时，自动触发</p>#}
+{#<h4 class="media-heading">Database Wrappers</h4>#}
+{#<p>connection_created # 创建数据库连接时，自动触发</p>#}
+{##}
+{#<hr/>#}
+{##}
+{#<h4>导入要使用的Django信号</h4>#}
+{#<p>from django.core.signals import request_finished</p>#}
+{#<p>from django.core.signals import request_started</p>#}
+{#<p>from django.core.signals import got_request_exception</p>#}
+{#<p>from django.db.models.signals import class_prepared</p>#}
+{#<p>from django.db.models.signals import pre_init, post_init</p>#}
+{#<p>from django.db.models.signals import pre_save, post_save</p>#}
+{#<p>from django.db.models.signals import pre_delete, post_delete</p>#}
+{#<p>from django.db.models.signals import m2m_changed</p>#}
+{#<p>from django.db.models.signals import pre_migrate, post_migrate</p>#}
+{#<p>from django.test.signals import setting_changed</p>#}
+{#<p>from django.test.signals import template_rendered</p>#}
+{#<p>from django.db.backends.signals import connection_created</p>#}
+
+
+</body>
+</html>
