@@ -1,6 +1,5 @@
 import time
 from coapthon import defines
-
 from coapthon.resources.resource import Resource
 
 __author__ = 'Giacomo Tanganelli'
