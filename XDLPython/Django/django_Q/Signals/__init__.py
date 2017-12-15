@@ -20,7 +20,7 @@ def pre_save_callback(sender, **kwargs):
     print('pre_save callback, 信号触发执行的方法...')
     print(sender, kwargs)
 
-# 注册信号。
+# 注册信号。pre_save代表django的modal对象保存前，自动触发
 pre_save.connect(pre_save_callback)
 
 

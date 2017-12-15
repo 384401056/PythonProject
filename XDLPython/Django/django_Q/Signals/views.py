@@ -13,6 +13,6 @@ def index(request):
 def index2(request):
     from Signals import my_signal
 
-    # 触发信号.
+    # 触发自定义信号.
     my_signal.send(sender='index2', arg1= 'kkkk', arg2='123')
     return render(request, 'Signals/index2.html')

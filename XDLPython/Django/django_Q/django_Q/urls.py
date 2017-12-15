@@ -20,14 +20,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^', include('app01.urls')), # 间接指定URL到app01下的urls文件中
     # url(r'^', include('FormValidation.urls')), # 间接指定URL到FormValidation下的urls文件中
-<<<<<<< HEAD
-    url(r'^', include('CookiesAndSession.urls')) # 间接指定URL到CookiesOpt下的urls文件中
-=======
+    # url(r'^', include('CookiesAndSession.urls')) # 间接指定URL到CookiesOpt下的urls文件中
     # url(r'^', include('CookiesOpt.urls')) # 间接指定URL到CookiesOpt下的urls文件中
     # url(r'^', include('Session.urls')) # 间接指定URL到CookiesOpt下的urls文件中
     # url(r'^', include('Middleware.urls')) # 间接指定URL到CookiesOpt下的urls文件中
     # url(r'^', include('Cache.urls')) # 间接指定URL到CookiesOpt下的urls文件中
-    # url(r'^', include('Signals.urls')) # 间接指定URL到CookiesOpt下的urls文件中
-    url(r'^', include('FileUpload.urls')) # 间接指定URL到CookiesOpt下的urls文件中
->>>>>>> f84ab62c585cc6e6a1d18f70d7b8b21f439940f0
+    url(r'^', include('Signals.urls')) # 间接指定URL到CookiesOpt下的urls文件中
+    # url(r'^', include('FileUpload.urls')) # 间接指定URL到CookiesOpt下的urls文件中
+
 ]
