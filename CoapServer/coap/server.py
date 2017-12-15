@@ -15,8 +15,8 @@ import json
 logging.config.fileConfig("logging.conf")  # 采用配置文件
 log = logging.getLogger('coap')
 
-class MyResource(BasicResource):
 
+class MyResource(BasicResource):
 
     def render_POST(self, request):
         log.info('post:%s' % request.payload)
@@ -24,7 +24,6 @@ class MyResource(BasicResource):
         # log.info(ret.text
         self.payload = "BasicResource post"
         return super(MyResource, self).render_POST(request)
-
 
     def render_GET(self, request):
         # log.info('get', request.uri_path
@@ -55,16 +54,15 @@ class CoAPServer(CoAP):
         # self.add_resource('child/', Child())
         # self.add_resource('advanced/', AdvancedResource())
         # self.add_resource('advancedSeparate/', AdvancedResourceSeparate())
-        log.info("CoAP Server start on %s:%s" % (host ,str(port)))
+        log.info("CoAP Server start on %s:%s" % (host, str(port)))
         # log.info(self.root.dump()
-
-
 
     def receive_request(self, transaction):
         log.info('-------------------------------start receive----------------------------------')
         log.info('request: %s' % transaction.request)
         # log.info('request type:', transaction.request.type
-        log.info('request type: %s' % list(defines.Types.keys())[list(defines.Types.values()).index(transaction.request.type)])
+        log.info('request type: %s' % list(defines.Types.keys())[
+            list(defines.Types.values()).index(transaction.request.type)])
         """
             'CON': 0,
             'NON': 1,
@@ -72,13 +70,12 @@ class CoAPServer(CoAP):
             'RST': 3,
             'None': None
         """
-        log.info('request mid: %s' %transaction.request.mid)
+        log.info('request mid: %s' % transaction.request.mid)
         log.info('request token: %s' % transaction.request.token)
         log.info('request destination: %s' % json.dumps(transaction.request.destination))
         log.info('request source: %s' % json.dumps(transaction.request.source))
         log.info('request uri_path: %s' % transaction.request.uri_path)
         log.info('request payload: %s' % transaction.request.payload)
-
 
         # 将请求发往Tornado服务器
         # ret = requests.get('http://127.0.0.1:8080/coap',params=transaction.request.payload)
@@ -87,7 +84,6 @@ class CoAPServer(CoAP):
         super(CoAPServer, self).receive_request(transaction)
 
     def send_datagram(self, message):
-
         log.info('message:%s' % message)
         # log.info('request type:', message.type
         log.info('message type: %s' % list(defines.Types.keys())[list(defines.Types.values()).index(message.type)])
@@ -106,7 +102,7 @@ class CoAPServer(CoAP):
         log.info('----------------------------------send over---------------------------------------')
 
         if not message.payload:
-            message.payload="Hello Coap!"
+            message.payload = "Hello Coap!"
         super(CoAPServer, self).send_datagram(message)
 
 
@@ -114,7 +110,7 @@ def init_log():
     """初始化日志"""
     fmt = '%(asctime)s - %(levelname)s : %(message)s'
 
-    handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=1024 * 1024 * 100, backupCount=5)
+    handler = logging.handlers.RotatingFileHandler('coaplog.log', maxBytes=1024 * 1024 * 100, backupCount=5)
     formatter = logging.Formatter(fmt)
     handler.setFormatter(formatter)
     handler.setLevel(logging.INFO)
@@ -138,7 +134,6 @@ def main():
         log.info("Server Shutdown")
         server.close()
         log.info("Exiting...")
-
 
 
 if __name__ == '__main__':

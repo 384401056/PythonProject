@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from coapthon.client.helperclient import HelperClient
 from coapthon.messages.message import Message
@@ -7,8 +7,7 @@ from coapthon.messages.message import Message
 host = "118.190.43.87"
 # host = "10.88.20.21"
 port = 5683
-path =""
-
+path = ""
 
 
 # def client_callback_observe(response):  # pragma: no cover
@@ -23,7 +22,7 @@ path =""
 
 
 def client_callback_observe(response):
-    print 'version:',response.version
+    print 'version:', response.version
     print 'type:', response.type
     print 'mid:', response.mid
     print 'token:', response.token
@@ -33,8 +32,11 @@ def client_callback_observe(response):
     print 'payload:', response.payload
     client.close()
 
+
 client = HelperClient(server=(host, port))
 response = client.put(path=path, payload='222222', callback=client_callback_observe)
+
+
 # response = client.observe(path,callback=client_callback_observe)
 
 # response = client.get(path=path+'?22222')
@@ -44,7 +46,7 @@ response = client.put(path=path, payload='222222', callback=client_callback_obse
 
 def get_request():
     response = client.get(path=path)
-    print 'version:',response.version
+    print 'version:', response.version
     print 'type:', response.type
     print 'mid:', response.mid
     print 'token:', response.token
