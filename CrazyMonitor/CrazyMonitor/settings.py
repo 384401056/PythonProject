@@ -25,7 +25,11 @@ SECRET_KEY = '9#vq635@(3&eh=%tiy!ojm$tfh^zl--+617v^lm#opsds0m924'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.20.1',
+    '192.168.20.131',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -137,3 +141,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+# 自定义redis配置
+REDIS_CONN = {
+    'HOST': '127.0.0.1',
+    'PORT': 6379,
+    'PASSWD': ''
+}
+
+
+STATUS_DATA_OPTIMIZATION = {
+    'latest':[0,600], #实时数据 600只存的点数。1分钟的数据存600次。多的被删除。
+    '10mins':[600,600], # 10mins的数据存4天
+    '30mins':[1800,600], # 30mins的数据存14天
+    '60mins':[3600,600],  # 60mins的数据存25天
+}

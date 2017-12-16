@@ -1,8 +1,6 @@
 from django.db import models
 
-
 # Create your models here.
-
 
 class Host(models.Model):
     """主机"""
@@ -29,7 +27,6 @@ class Host(models.Model):
     def __str__(self):
         return '%s:%s' % (self.name, self.ip_addr)
 
-
 class HostGroup(models.Model):
     """主机组"""
     name = models.CharField(max_length=64, unique=True)  # 名称唯一
@@ -38,7 +35,6 @@ class HostGroup(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Service(models.Model):
     """监控服务"""
@@ -50,7 +46,6 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class ServiceIndex(models.Model):
     """监控插件中的指标"""
@@ -67,7 +62,6 @@ class ServiceIndex(models.Model):
     def __str__(self):
         return "%s" % (self.name)
 
-
 class Template(models.Model):
     """监控模板"""
     name = models.CharField(max_length=64, unique=True)  # 名称唯一
@@ -77,7 +71,6 @@ class Template(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class TriggerExpression(models.Model):
     """
@@ -126,7 +119,6 @@ class TriggerExpression(models.Model):
     def __str__(self):
         return '%s %s (%s(%s))' % (self.service_index, self.data_clac_func, self.operator_type, self.threshold)
 
-
 class Trigger(models.Model):
     """触发器"""
     name = models.CharField(max_length=64, unique=True)  # 名称唯一
@@ -143,7 +135,6 @@ class Trigger(models.Model):
 
     def __str__(self):
         return '<Trigger:%s, Serverity:%s' % (self.name, self.get_serverity_display()) # get_*_display 显示枚举类型的字段
-
 
 class Action(models.Model):
     """报警"""
@@ -178,7 +169,6 @@ class ActionOperation(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Maintenance(models.Model):
     """保养计划"""

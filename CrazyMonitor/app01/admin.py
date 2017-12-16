@@ -1,5 +1,7 @@
 from django.contrib import admin
 from app01 import models
+
+
 # Register your models here.
 
 
@@ -7,9 +9,9 @@ class HostAdmin(admin.ModelAdmin):
     # 设置列表视图
     list_display = ('id', 'name', 'ip_addr', 'status')
 
+
 class TemplateAdmin(admin.ModelAdmin):
     filter_horizontal = ('services', 'trigger')
-    list_display = ('id', 'services', 'trigger')
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -32,6 +34,7 @@ class TriggerExpressionAdmin(admin.ModelAdmin):
         'operator_type',
         'logic_type'
     )
+
 
 admin.site.register(models.Action)
 admin.site.register(models.ActionOperation)
