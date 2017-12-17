@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -30,7 +29,6 @@ ALLOWED_HOSTS = [
     '192.168.20.131',
     '127.0.0.1',
 ]
-
 
 # Application definition
 
@@ -75,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CrazyMonitor.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -96,7 +93,6 @@ DATABASES = {
     # }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -115,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -131,7 +126,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -142,18 +136,17 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
 # 自定义redis配置
 REDIS_CONN = {
     'HOST': '127.0.0.1',
     'PORT': 6379,
-    'PASSWD': ''
+    'PASSWD': '',
+    'DB': 1,
 }
 
-
 STATUS_DATA_OPTIMIZATION = {
-    'latest':[0,600], #实时数据 600只存的点数。1分钟的数据存600次。多的被删除。
-    '10mins':[600,600], # 10mins的数据存4天
-    '30mins':[1800,600], # 30mins的数据存14天
-    '60mins':[3600,600],  # 60mins的数据存25天
+    'latest': [0, 600],  # 实时数据 600是只存的数据个数。1分钟的数据存600次。多的被删除。
+    '10mins': [60, 600],  # 10mins的数据存4天
+    '30mins': [180, 600],  # 30mins的数据存14天
+    '60mins': [360, 600],  # 60mins的数据存25天
 }

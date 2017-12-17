@@ -27,17 +27,15 @@ class ClientHandler(object):
         exit_flag = False  # 循环停止位.
         config_last_update_time = 0  # 最后一次更新配置的时间.
         while not exit_flag:
-            # 如果当前时间-最后一次更新的时间>30秒.就去服务器端获取数据。
+            # 如果当前时间-最后一次更新的时间(ConfigUpdateInterval).就去服务器端获取配置数据。
             if time.time() - config_last_update_time > settings.configs['ConfigUpdateInterval']:
                 self.load_last_configs()
                 config_last_update_time = time.time()
 
-            print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
             # 解析主机的配置信息
             for serv_name, val in self.monitor_services['services'].items():
-
-                print('serv_name:', serv_name)
-                print('val:', val)
+                # print('serv_name:', serv_name)
+                # print('val:', val)
 
                 if len(val) == 2:
                     # 对json字符串本身进行修改，在服务名对应的值中，加入一个0，用于记录上次采集数据的时间
@@ -54,13 +52,12 @@ class ClientHandler(object):
                     t.start()
                     print('Going to monitor [%s]' % serv_name)
                 else:
-                    invoke_time = monitor_interval-(time.time() - last_invoke_time) # 采集时间倒计时.
+                    invoke_time = round(monitor_interval - (time.time() - last_invoke_time))  # 采集时间倒计时.round四舍五入
                     print('Going to monitor [%s] in [%s]' % (serv_name, invoke_time,))
 
             # print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
             time.sleep(1)  # 1秒循环一次。
             # print(time.time())
-
 
     def invoke_plugin(self, serv_name, val):
         """运行插件"""
@@ -95,10 +92,9 @@ class ClientHandler(object):
         url = '%s/%s' % (settings.configs['urls']['get_configs'][0], settings.configs['HostID'])
         # 从服务器端获取配置，转为json格式。再更新monitor_services字典。
         ret = self.url_request(request_type, url)
-
         latest_configs = json.loads(ret)
         self.monitor_services.update(latest_configs)
-
+        print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
 
     def url_request(self, method, url, **extra_data):
         """
@@ -114,7 +110,7 @@ class ClientHandler(object):
             url,
         )
 
-        print('abs_url', abs_url)
+        # print('abs_url', abs_url)
 
         if method.upper() == 'GET':
             try:
@@ -127,11 +123,13 @@ class ClientHandler(object):
                 print(ex)
                 exit()
         elif method.upper() == 'POST':
-            response = requests.post(abs_url, data=extra_data['data'], timeout=settings.configs['RequestTimeout'])
-            response_data = response.text
-            return response_data
-        return ''
-
+            try:
+                response = requests.post(abs_url, data=extra_data['data'], timeout=settings.configs['RequestTimeout'])
+                response_data = response.text
+                return response_data
+            except Exception as ex:
+                print(ex)
+                exit()
 
 def main():
     pass

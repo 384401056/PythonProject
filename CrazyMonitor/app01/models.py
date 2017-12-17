@@ -86,7 +86,7 @@ class TriggerExpression(models.Model):
 
     # 大部分服务是对应一个唯一的设备，如：CPU,MEM
     # 而有的服务是对应多个设备的。如：nic网卡，它有多个的时候，就要在此字段中指定，需要监控的是哪一个了。
-    specified_index_key = models.CharField(max_length=32, verbose_name='只监控专门指定的')
+    specified_index_key = models.CharField(max_length=32, verbose_name='只监控专门指定的指标key')
 
     data_clac_type_choices=(
         ('avg','Average'),
@@ -95,8 +95,8 @@ class TriggerExpression(models.Model):
         ('avg','Average'),
         ('last','Last'),
     )
-    data_clac_func = models.CharField(choices=data_clac_type_choices, max_length=32) # 函数处理方式.
-    data_clac_args = models.CharField(max_length=64, help_text='若是多个参数，用,号分开。') # 函数处理方式.
+    data_clac_func = models.CharField(choices=data_clac_type_choices, max_length=32, verbose_name='数据处理方式') # 函数处理方式.
+    data_clac_args = models.CharField(max_length=64, help_text='若是多个参数，用,号分开。', verbose_name='函数传入参数') # 函数处理方式.
     threshold = models.IntegerField(verbose_name='阀值')
 
     operator_type_choices = (
