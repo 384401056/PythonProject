@@ -9,9 +9,9 @@ def monitor(first_invoke=1):
     """
     输出项说明：
     kbmemfree：这个值和free命令中的free值基本一致,所以它不包括buffer和cache的空间.
+    kbbuffers和kbcached：这两个值就是free命令中的buffer和cache.
     kbmemused：这个值和free命令中的used值基本一致,所以它包括buffer和cache的空间.
     %memused：这个值是kbmemused和内存总量(不包括swap)的一个百分比.
-    kbbuffers和kbcached：这两个值就是free命令中的buffer和cache.
     kbcommit：保证当前系统所需要的内存,即为了确保不溢出而需要的内存(RAM+swap).
     %commit：这个值是kbcommit与内存总量(包括swap)的一个百分比.
     :param first_invoke:

@@ -25,40 +25,34 @@ def monitor(first_invoke=1):
     """
     value_dic = {'status': -1}
     """执行 sar 命令，获取linux系统的返回结果，放入字典并返回"""
-    shell_command = 'sar -r 1 3|grep "^平均时间"'  # Linux系统命令
+    shell_command = 'sar -n DEV 1 3|grep "^平均时间"'  # Linux系统命令
     shell_command = shell_command.encode(locale.getdefaultlocale()[1])  # 本地化中文字符
     cmd_ret = subprocess.Popen(shell_command, shell=True, stdout=subprocess.PIPE).stdout.read()
     result = str(cmd_ret, encoding='utf-8')
 
     if result != '':
-        result = result.split('平均时间:')[1:]
-
-        for i in len(result):
-            pass
-
-        # value_dic = {
-        #     'data':{
-        #         'lo':{
-        #             'rxpck/s':'',
-        #             'txpck/s':'',
-        #             'rxkB/s':'',
-        #             'txkB/s':'',
-        #             'rxcmp/s':'',
-        #             'txcmp/s':'',
-        #             'rxmcst/s':'',
-        #             '%ifutil':'',
-        #         },
-        #         'eth0':{
-        #             'rxpck/s': '',
-        #             'txpck/s': '',
-        #             'rxkB/s': '',
-        #             'txkB/s': '',
-        #             'rxcmp/s': '',
-        #             'txcmp/s': '',
-        #             'rxmcst/s': '',
-        #             '%ifutil': '',
-        #         },
-        #     },
-        # }
-
+        value_dic = {
+            'status': 0,
+            'data': resolve_data_type(result),
+        }
     return value_dic
+
+
+def resolve_data_type(result):
+    """将多个结果集的字符串解析为data{}"""
+    tup = result.split("平均时间:")[2:]
+    ret_dict = {}
+    for s in tup:
+        temp = s.split()
+        ret_dict[temp[0]] = {
+            'rxpck/s': temp[1],
+            'txpck/s': temp[2],
+            'rxkB/s/s': temp[3],
+            'txkB/s': temp[4],
+            'rxcmp/s': temp[5],
+            'txcmp/s': temp[6],
+            'rxmcst/s': temp[7],
+            ' %ifutil': temp[8],
+        }
+    return ret_dict
+

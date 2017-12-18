@@ -67,7 +67,7 @@ class ClientHandler(object):
         if hasattr(plugin_api, plugin_name):
             func = getattr(plugin_api, plugin_name)
             plugin_ret = func()
-
+            print('plugin_ret', plugin_ret)
             report_data = {
                 'client_id': settings.configs['HostID'],
                 'server_name': serv_name,
