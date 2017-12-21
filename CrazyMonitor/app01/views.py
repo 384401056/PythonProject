@@ -10,6 +10,7 @@ from app01.backend import data_optimization
 from app01.backend.redis_conn import redis_conn
 from app01.serializer import ClientHandler
 from app01 import models
+from app01.backend import data_processing
 
 # Create your views here.
 
@@ -45,17 +46,21 @@ def server_data_report(request):
             }
             print(post_data)
 
-            data_saving_obj = data_optimization.DataStore(client_id,server_name,json.loads(data), REDIS_OBJ)
+            data_saving_obj = data_optimization.DataStore(client_id, server_name, json.loads(data), REDIS_OBJ)
 
             # 触发监控
             """
                 ....
             """
-            host_obj = models.Host.objects.get(id= client_id)
+            host_obj = models.Host.objects.get(id=client_id)
 
             server_triggers = ClientHandler.get_host_trgger(host_obj)
 
+            trigger_handler = data_processing.DataHandler(settings, redis=False)
+            for trigger in server_triggers:
+                trigger_handler.load_service_data_and_calulating(host_obj, trigger, REDIS_OBJ)
 
+            print('server_triggers:', server_triggers)
 
         except IndexError as e:
             print('--->err:', e)
@@ -64,17 +69,31 @@ def server_data_report(request):
 
 
 def test(request):
-    # host_obj = models.Host.objects.get(id = 1)
-    # triggers=[]
-    # for tem in host_obj.templates.select_related():
-    #     triggers.append(tem.trigger.select_related())
+    host_obj = models.Host.objects.get(id=1)
+    triggers = []
+    for tem in host_obj.templates.select_related():
+        triggers.extend(tem.trigger.select_related())
+
+    groups_obj = host_obj.host_group.select_related()
+    for group in groups_obj:
+        for tem in group.templates.select_related():
+            triggers.extend(tem.trigger.select_related())
+
+    print('Triggers:', triggers)
+
+
+    for trigger in triggers:
+        for expression in trigger.triggerexpression_set.all():
+            print('Expression:',expression)
+
+
+    # obj = models.Trigger.objects.get(id=2)
     #
-    # groups_obj = host_obj.host_group.select_related()
-    # for group in groups_obj:
-    #     for tem in group.templates.select_related():
-    #         triggers.append(tem.trigger.select_related())
-    #
-    # print(triggers)
-    # print(set(triggers))
+    # print(type(obj))
+
+
+
+    # te_list = list(models.TriggerExpression.objects.all().values('trigger','service','threshold'))
+    # print(te_list)
 
     return HttpResponse('test')

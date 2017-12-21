@@ -3,7 +3,6 @@
 import copy
 import json
 import time
-
 from CrazyMonitor import settings
 
 
