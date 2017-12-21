@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.db import models
 
 # Create your models here.
@@ -86,7 +89,7 @@ class TriggerExpression(models.Model):
 
     # 大部分服务是对应一个唯一的设备，如：CPU,MEM
     # 而有的服务是对应多个设备的。如：nic网卡，它有多个的时候，就要在此字段中指定，需要监控的是哪一个了。
-    specified_index_key = models.CharField(max_length=32, verbose_name='只监控专门指定的指标key')
+    specified_index_key = models.CharField(max_length=32, verbose_name='只监控专门指定的指标key', blank=True)
 
     data_clac_type_choices=(
         ('avg','Average'),

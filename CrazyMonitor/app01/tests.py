@@ -5,12 +5,14 @@ import json
 import redis
 import time
 import random
+from app01 import models
 
-def main():
+
+def fun01():
     redis_pool = redis.ConnectionPool(host='127.0.0.1', port=6379, db=1)
     r = redis.Redis(connection_pool=redis_pool)
 
-    last_point_data, last_point_save_time  = json.loads(r.lrange('StatusData_1_LinuxCPU_latest', -1,-1)[0])
+    last_point_data, last_point_save_time = json.loads(r.lrange('StatusData_1_LinuxCPU_latest', -1, -1)[0])
     # print(last_point_data, last_point_data)
     # for item in data_list:
     #     data= json.loads(item)
@@ -24,7 +26,7 @@ def main():
     for key, val in last_point_data.items():
         key_list.append(key)
 
-    print(key_list[int(len(key_list)/2)])
+    print(key_list[int(len(key_list) / 2)])
 
     # 将一个列表存入redis,或在已经存在的列表最左边加入元素
     # r.lpush('cars', 'Ford', 'Honda', 'Benz', 'BMW')
@@ -109,6 +111,13 @@ def main():
     #     print(service_key, v_dict)
     #     for service_sub_key, v_list in v_dict.items():
     #         print(service_sub_key, v_list)
+
+
+def main():
+
+    host_obj = models.Host.objects.all()
+    print(json.dumps(host_obj))
+
 
 if __name__ == '__main__':
     main()

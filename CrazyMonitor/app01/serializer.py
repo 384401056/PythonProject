@@ -37,6 +37,17 @@ class ClientHandler(object):
 
         return self.client_configs
 
+    def get_host_trgger(self, host_obj):
+        """获取主机的触发器"""
+        triggers = []
+        for tem in host_obj.templates.select_related():
+            triggers.append(tem.trigger.select_related())
+
+        for group in host_obj.host_group.select_related():
+            for tem in group.templates.select_related():
+                triggers.append(tem.trigger.select_related())
+
+        return set(triggers)
 
 def main():
     pass

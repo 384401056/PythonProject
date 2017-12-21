@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'index/', views.index),
     url(r'client/config/(\d+)/$', views.client_configs),
     url(r'service/report/$', views.server_data_report),
+    url(r'test/', views.test),
 ]

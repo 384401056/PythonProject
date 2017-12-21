@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import json
 
 from django.http import HttpResponse
@@ -6,6 +9,7 @@ from CrazyMonitor import settings
 from app01.backend import data_optimization
 from app01.backend.redis_conn import redis_conn
 from app01.serializer import ClientHandler
+from app01 import models
 
 # Create your views here.
 
@@ -47,8 +51,30 @@ def server_data_report(request):
             """
                 ....
             """
+            host_obj = models.Host.objects.get(id= client_id)
+
+            server_triggers = ClientHandler.get_host_trgger(host_obj)
+
+
 
         except IndexError as e:
             print('--->err:', e)
 
     return HttpResponse(json.dumps({'status': 'ok'}))
+
+
+def test(request):
+    # host_obj = models.Host.objects.get(id = 1)
+    # triggers=[]
+    # for tem in host_obj.templates.select_related():
+    #     triggers.append(tem.trigger.select_related())
+    #
+    # groups_obj = host_obj.host_group.select_related()
+    # for group in groups_obj:
+    #     for tem in group.templates.select_related():
+    #         triggers.append(tem.trigger.select_related())
+    #
+    # print(triggers)
+    # print(set(triggers))
+
+    return HttpResponse('test')
