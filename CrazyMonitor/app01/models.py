@@ -117,7 +117,7 @@ class TriggerExpression(models.Model):
     )
     # 表达式中的关系运算符。也就是本条记录与下一条记录的关系运算符。
     # 当进行表达式判断时。查出此表中某一个触发器对应的所有条件，顺序组合就可以执行了条件判断了。
-    logic_type = models.CharField(choices=logic_type_choices, max_length=64)
+    logic_type = models.CharField(choices=logic_type_choices, max_length=64, blank=True)
 
     def __str__(self):
         return '%s %s (%s(%s))' % (self.service_index, self.data_clac_func, self.operator_type, self.threshold)

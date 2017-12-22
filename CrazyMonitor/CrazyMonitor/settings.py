@@ -152,3 +152,6 @@ STATUS_DATA_OPTIMIZATION = {
     '30mins': [180, 600],  # 30mins的数据存14天
     '60mins': [360, 600],  # 60mins的数据存25天
 }
+
+# redis 的发布频道
+TRIGGER_CHAN = 'trigger_event_channal'

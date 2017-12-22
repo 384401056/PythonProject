@@ -57,6 +57,7 @@ def server_data_report(request):
             server_triggers = ClientHandler.get_host_trgger(host_obj)
 
             trigger_handler = data_processing.DataHandler(settings, redis=False)
+
             for trigger in server_triggers:
                 trigger_handler.load_service_data_and_calulating(host_obj, trigger, REDIS_OBJ)
 
@@ -69,22 +70,44 @@ def server_data_report(request):
 
 
 def test(request):
-    host_obj = models.Host.objects.get(id=1)
-    triggers = []
-    for tem in host_obj.templates.select_related():
-        triggers.extend(tem.trigger.select_related())
+    # 从redis中取出的原始数据，从最后一个（-1)开始，往前取 approximate_data_points 个
+    data_range_raw = REDIS_OBJ.lrange('StatusData_1_LinuxNIC_latest', -10, -1)
 
-    groups_obj = host_obj.host_group.select_related()
-    for group in groups_obj:
-        for tem in group.templates.select_related():
-            triggers.extend(tem.trigger.select_related())
+    # 获得大概的数据列表。
+    approximate_data_range = [json.loads(item) for item in data_range_raw]  # 列表推导式,返回的数据要进行返序列化处理。
 
-    print('Triggers:', triggers)
+    data_range = []  # 用于保存精确数据
+
+    for data, time in approximate_data_range:
+        print(json.dumps(data), time)
 
 
-    for trigger in triggers:
-        for expression in trigger.triggerexpression_set.all():
-            print('Expression:',expression)
+
+
+
+
+
+
+
+
+
+
+    # host_obj = models.Host.objects.get(id=1)
+    # triggers = []
+    # for tem in host_obj.templates.select_related():
+    #     triggers.extend(tem.trigger.select_related())
+    #
+    # groups_obj = host_obj.host_group.select_related()
+    # for group in groups_obj:
+    #     for tem in group.templates.select_related():
+    #         triggers.extend(tem.trigger.select_related())
+    #
+    # print('Triggers:', triggers)
+    #
+    #
+    # for trigger in triggers:
+    #     for expression in trigger.triggerexpression_set.select_related().order_by('id'):
+    #         print('Expression:',expression)
 
 
     # obj = models.Trigger.objects.get(id=2)
@@ -96,4 +119,4 @@ def test(request):
     # te_list = list(models.TriggerExpression.objects.all().values('trigger','service','threshold'))
     # print(te_list)
 
-    return HttpResponse('test')
+    return HttpResponse('Test View!')
