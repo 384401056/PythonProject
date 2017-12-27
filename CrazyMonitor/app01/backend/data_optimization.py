@@ -186,7 +186,7 @@ class DataStore(object):
         return optimized_dict
 
     def save_optimized_data(self, data_series_key_in_redis, optimizaed_data):
-        # 将数据存入redis.只加上了时间，没有了status。
+        # 将数据存入redis.只加上了时间
         self.redis_conn.rpush(data_series_key_in_redis, json.dumps([optimizaed_data, time.time()]))
 
     def get_average(self, data_set):

@@ -16,7 +16,7 @@ class HeroInfo(models.Model):
     age = models.IntegerField()
     gender = models.BooleanField()  # bool类型
     content = models.CharField(max_length=1000)
-    book = models.ForeignKey(BookInfo)  # 外键BookInfo的id
+    book = models.ForeignKey('BookInfo')  # 外键BookInfo的id
 
     # 输入对象时的显示文本
     def __str__(self):

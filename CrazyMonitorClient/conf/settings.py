@@ -4,7 +4,7 @@
 
 configs = {
     'HostID': 1,  # 本机在数据库中的id
-    'Server': '192.168.20.1',
+    'Server': '192.168.1.100',
     'ServerPort': 8000,
     'urls': {
         'get_configs': ['api/client/config', 'get'],  # 获取配置信息的接口.

@@ -8,7 +8,7 @@ from django.shortcuts import render
 from CrazyMonitor import settings
 from app01.backend import data_optimization
 from app01.backend.redis_conn import redis_conn
-from app01.serializer import ClientHandler
+from app01.serializer import ClientHandler, get_host_trgger
 from app01 import models
 from app01.backend import data_processing
 
@@ -48,16 +48,16 @@ def server_data_report(request):
 
             data_saving_obj = data_optimization.DataStore(client_id, server_name, json.loads(data), REDIS_OBJ)
 
-            # 触发监控
             """
-                ....
+            触发监控
             """
-            host_obj = models.Host.objects.get(id=client_id)
+            host_obj = models.Host.objects.get(id=int(client_id))
 
-            server_triggers = ClientHandler.get_host_trgger(host_obj)
+            server_triggers = get_host_trgger(host_obj)
 
             trigger_handler = data_processing.DataHandler(settings, redis=False)
 
+            # 循环多种Service类的trigger，同类的trigger可以一起处理。
             for trigger in server_triggers:
                 trigger_handler.load_service_data_and_calulating(host_obj, trigger, REDIS_OBJ)
 
@@ -70,44 +70,34 @@ def server_data_report(request):
 
 
 def test(request):
-    # 从redis中取出的原始数据，从最后一个（-1)开始，往前取 approximate_data_points 个
-    data_range_raw = REDIS_OBJ.lrange('StatusData_1_LinuxNIC_latest', -10, -1)
-
-    # 获得大概的数据列表。
-    approximate_data_range = [json.loads(item) for item in data_range_raw]  # 列表推导式,返回的数据要进行返序列化处理。
-
-    data_range = []  # 用于保存精确数据
-
-    for data, time in approximate_data_range:
-        print(json.dumps(data), time)
-
-
-
-
-
-
-
-
-
-
-
-
-    # host_obj = models.Host.objects.get(id=1)
-    # triggers = []
-    # for tem in host_obj.templates.select_related():
-    #     triggers.extend(tem.trigger.select_related())
+    # # 从redis中取出的原始数据，从最后一个（-1)开始，往前取 approximate_data_points 个
+    # data_range_raw = REDIS_OBJ.lrange('StatusData_1_LinuxNIC_latest', -10, -1)
     #
-    # groups_obj = host_obj.host_group.select_related()
-    # for group in groups_obj:
-    #     for tem in group.templates.select_related():
-    #         triggers.extend(tem.trigger.select_related())
+    # # 获得大概的数据列表。
+    # approximate_data_range = [json.loads(item) for item in data_range_raw]  # 列表推导式,返回的数据要进行返序列化处理。
     #
-    # print('Triggers:', triggers)
+    # data_range = []  # 用于保存精确数据
     #
-    #
-    # for trigger in triggers:
-    #     for expression in trigger.triggerexpression_set.select_related().order_by('id'):
-    #         print('Expression:',expression)
+    # for data, time in approximate_data_range:
+    #     print(json.dumps(data), time)
+
+
+    host_obj = models.Host.objects.get(id=1)
+    triggers = []
+    for tem in host_obj.templates.select_related():
+        triggers.extend(tem.trigger.select_related())
+
+    groups_obj = host_obj.host_group.select_related()
+    for group in groups_obj:
+        for tem in group.templates.select_related():
+            triggers.extend(tem.trigger.select_related())
+
+    print('Triggers:', triggers)
+
+
+    for trigger in set(triggers):
+        for expression in trigger.triggerexpression_set.select_related().order_by('id'):
+            print('Expression:',expression)
 
 
     # obj = models.Trigger.objects.get(id=2)

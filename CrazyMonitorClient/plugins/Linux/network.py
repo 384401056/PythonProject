@@ -45,14 +45,14 @@ def resolve_data_type(result):
     for s in tup:
         temp = s.split()
         ret_dict[temp[0]] = {
-            'rxpck/s': temp[1],
-            'txpck/s': temp[2],
-            'rxkB/s/s': temp[3],
-            'txkB/s': temp[4],
-            'rxcmp/s': temp[5],
-            'txcmp/s': temp[6],
-            'rxmcst/s': temp[7],
-            ' %ifutil': temp[8],
+            'rxpck': temp[1],
+            'txpck': temp[2],
+            'rxbyt': temp[3],
+            'txbyt': temp[4],
+            'rxcmp': temp[5],
+            'txcmp': temp[6],
+            'rxmcst': temp[7],
+            'ifutil': temp[8],
         }
     return ret_dict
 

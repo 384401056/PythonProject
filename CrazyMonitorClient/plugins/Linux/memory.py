@@ -29,11 +29,11 @@ def monitor(first_invoke=1):
         value_dic = {
             'kbmemfree': tup_ret[0],
             'kbmemused': tup_ret[1],
-            '%memused': tup_ret[2],
+            'memused': tup_ret[2],
             'kbbuffers': tup_ret[3],
             'kbcached': tup_ret[4],
             'kbcommit': tup_ret[5],
-            '%commit': tup_ret[6],
+            'commit': tup_ret[6],
             'kbactive': tup_ret[7],
             'kbinact': tup_ret[8],
             'kbdirty': tup_ret[9],

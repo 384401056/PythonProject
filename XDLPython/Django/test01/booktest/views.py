@@ -8,6 +8,7 @@ import json
 
 # Create your views here.
 
+
 def index(request):
     # =========================增===============================
     # # 创建model对象的几种方法.
@@ -248,10 +249,10 @@ def index(request):
     #==================group by=====================
 
     # 根据age列来分组，计算数量(id列）,此片的values不再是映射的功能。因为他在annotate前出现
-    ret = models.HeroInfo.objects.all().values('age').annotate(Count('id'))
-    print(ret)
+    # ret = models.HeroInfo.objects.all().values('age').annotate(Count('id'))
+    # print(ret)
 
-    return HttpResponse('OK')
+    return HttpResponse('Django OK')
 
 
 
