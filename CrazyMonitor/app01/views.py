@@ -82,22 +82,22 @@ def test(request):
     #     print(json.dumps(data), time)
 
 
-    host_obj = models.Host.objects.get(id=1)
-    triggers = []
-    for tem in host_obj.templates.select_related():
-        triggers.extend(tem.trigger.select_related())
-
-    groups_obj = host_obj.host_group.select_related()
-    for group in groups_obj:
-        for tem in group.templates.select_related():
-            triggers.extend(tem.trigger.select_related())
-
-    print('Triggers:', triggers)
-
-
-    for trigger in set(triggers):
-        for expression in trigger.triggerexpression_set.select_related().order_by('id'):
-            print('Expression:',expression)
+    # host_obj = models.Host.objects.get(id=1)
+    # triggers = []
+    # for tem in host_obj.templates.select_related():
+    #     triggers.extend(tem.trigger.select_related())
+    #
+    # groups_obj = host_obj.host_group.select_related()
+    # for group in groups_obj:
+    #     for tem in group.templates.select_related():
+    #         triggers.extend(tem.trigger.select_related())
+    #
+    # print('Triggers:', triggers)
+    #
+    #
+    # for trigger in set(triggers):
+    #     for expression in trigger.triggerexpression_set.select_related().order_by('id'):
+    #         print('Expression:',expression)
 
 
     # obj = models.Trigger.objects.get(id=2)
@@ -108,5 +108,11 @@ def test(request):
 
     # te_list = list(models.TriggerExpression.objects.all().values('trigger','service','threshold'))
     # print(te_list)
+
+
+    host_list = models.Host.objects.filter(status=1)
+
+    for host in host_list:
+        print(host)
 
     return HttpResponse('Test View!')

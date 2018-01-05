@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import redis
 import json
+import app01.models
 
 def func01():
     redis_pool = redis.ConnectionPool(host='127.0.0.1', port=6379, db=1)
@@ -106,12 +107,13 @@ def func01():
 def main():
     # print(eval('True and False'))
     # func01()
-    dict_ret = {'idle': '100.00', 'system': '0.00', 'iowait': '0.00', 'steal': '0.00', 'status': 0, 'nice': '0.00', 'user': '0.00'}
-
-    if '100.00' not in dict_ret.values():
-        print('not in')
-    else:
-        print('in')
+    # dict_ret = {'idle': '100.00', 'system': '0.00', 'iowait': '0.00', 'steal': '0.00', 'status': 0, 'nice': '0.00', 'user': '0.00'}
+    #
+    # if '100.00' not in dict_ret.values():
+    #     print('not in')
+    # else:
+    #     print('in')
+    pass
 
 
 if __name__ == '__main__':

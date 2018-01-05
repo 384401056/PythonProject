@@ -32,6 +32,7 @@ class ManagementUtility(object):
     def start(self):
         reator = data_processing.DataHandler(settings)
         reator.looping()
+        # pass
 
     def stop(self):
         pass

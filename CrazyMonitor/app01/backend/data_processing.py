@@ -113,17 +113,33 @@ class DataHandler(object):
         while not self.exit_flag:
             print('looping %s'.center(50, '-') % count)
 
+
+
     def update_or_load_config(self):
         """
         从数据库获取所有主机的监控配置
         :return:
         """
-        all_enable_hosts = models.Host.objects.filter(status = 1)
+        all_enable_hosts = models.Host.objects.filter(status = 1) # 取出所有启用的主机信息
         for host in all_enable_hosts:
             if host not in self.global_monitor_dic.keys():
                 # 以主机名为key,建立新字典。
                 self.global_monitor_dic[host] = {'services':{}, 'triggers':{}}
+            for group in host.host_group.select_related(): # 取出主机信息只关联的主机组，并循环每个组
+                service_list = []
+                trigger_list = []
 
+                for template in group.templates.select_related(): # 组出主机组信息中关联的模板，并循环.
+                    service_list.extend(template.services.select_related()) # 取出单个模板中的服务加入service_list
+                    trigger_list.extend(template.trigger.select_related()) # 取出单个模板中的触发器加入trigger_list
+
+                for service in service_list:
+                    # 如果global_monitor_dic中没有些services的数据，就将些service加入数据字典中
+                    if service.id not in self.global_monitor_dic[host]['services'].keys():
+                        self.global_monitor_dic[host]['services'][service.id] = [service, 0]
+                    else:
+                        # 如果存在就更新数据。
+                        self.global_monitor_dic[host]['services'][service.id][0] = service
 
         pass
 

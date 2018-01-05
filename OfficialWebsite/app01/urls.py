@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from django.conf.urls import url, include
-from app01 import views
+import app01
 
 urlpatterns = [
-    url(r'index/', views.index),
-    url(r'test/', views.test),
-
+    url(r'^', include('app01.urls')),
 ]
