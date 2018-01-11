@@ -148,6 +148,7 @@ class Action(models.Model):
     conditions = models.TextField() # 告警条件
     interval = models.IntegerField(default=300) # 报警间隔
     operations = models.ManyToManyField('ActionOperation')
+    trigger = models.ManyToManyField('Trigger') # 对应要报警的触发器。
 
     recover_notics = models.BooleanField(default=True) # 故障恢复，是否要进行通知。
     recover_subject = models.CharField(max_length=128, blank=True, null=True) # 通知的标题
@@ -161,14 +162,14 @@ class Action(models.Model):
 class ActionOperation(models.Model):
     """报警操作"""
     name = models.CharField(max_length=64)  # 名称唯一
-    step = models.SmallIntegerField(default=1) # 报警次数
+    step = models.SmallIntegerField(default=1, verbose_name='报警次数') # 报警次数
     action_type_choices=(
         ('email', 'Email'),
         ('sms', 'SMS'),
         ('script', 'RunScript'),
     )
     # 报警方式，默认为发送邮件。
-    action_type = models.CharField(choices=action_type_choices, default='email', max_length=32)
+    action_type = models.CharField(choices=action_type_choices, default='email', max_length=32, verbose_name='报警方式')
 
     def __str__(self):
         return self.name
