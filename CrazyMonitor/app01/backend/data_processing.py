@@ -115,6 +115,7 @@ class DataHandler(object):
         """
         self.update_or_load_config()
         count = 0
+
         while not self.exit_flag:
             print('looping %s'.center(50, '-') % count)
             count += 1
@@ -130,35 +131,58 @@ class DataHandler(object):
                 for host, config_dict in self.global_monitor_dic.items():
 
                     for service_id ,val in config_dict['services'].items(): # 循环所有要监控的服务。
+
                         service_obj, last_monitor_time = val
 
                         # 如果当前时间减最后监控的时间大于等于服务本身的监控间隔，
                         # 也就是说，如果服务器的监控间隔为60秒的话，在这60秒的时间内就没必要再判断了。就直接让
-                        # last_moniter_time = ti
+                        # last_moniter_time等于当前时间。
                         if time.time() - last_monitor_time >= service_obj.interval:
                             self.global_monitor_dic[host]['services'][service_id][1] = time.time()
 
                             self.data_point_validation(host, service_obj) # 检测此服务汇报的数据。
+
+                        # 否则，只是打印提示.
                         else:
                             next_monitor_time = time.time()-last_monitor_time-service_obj.interval
+                            print('server [%s] next monitor time is %s' %  (service_obj.name, next_monitor_time))
 
-
-
-                pass
+            # 线程休眠一定的时间
+            time.sleep(self.poll_interval)
 
     def data_point_validation(self,host, service_obj):
+        """
+        从redis中取最新的会改
+        :param host: 主机对象
+        :param service_obj: 服务对象
+        :return:
+        """
+        service_redis_key = 'StatusData_%s_%s_latest' % (host.id, service_obj.name)
+        last_data_piont = self.redis.lrange(service_redis_key,-1,-1) # 取最后一个
+        if last_data_piont:
+            last_data_piont = json.loads(last_data_piont[0])
+            print('last_data_point: %s' % last_data_piont)
+            # 得到最后的数据，和最后上报的时间。
+            last_server_data, last_report_time = last_data_piont
+            # 监控间隔 = 服务间隔 + 自定义容忍间隔时间
+            monitor_interval = service_obj.interval + self.setting.REPORT_LATE_TOLERANCE_TIME
 
+            # 如果超过容忍间隔，数据还没有汇报上来，就报警。说明客户端的服务上报出了问题
+            if time.time() - last_report_time > monitor_interval:
+                no_data_secs = time.time() - last_report_time # 记录，多长时间没有数据了。
+                msg = "something wrong with client [%s] , haven't receive data of service [%s] for [%s]s" % (
+                    host.name, service_obj.name, no_data_secs
+                )
+                # 触发报警
+                self.trigger_notifier(host_obj=host, trigger_id=None, positive_expressions=None, msg=msg)
+                print(msg)
+        # 如果redis中直接没有取到数据
+        else:
+            msg = "The host [%s] no data of service [%s] at all...." % (host.name, service_obj.name)
+            print(msg)
+            # 触发报警
+            self.trigger_notifier(host_obj=host, trigger_id=None, positive_expressions=None, msg=msg)
 
-
-
-
-
-
-
-
-
-
-        pass
 
     def update_or_load_config(self):
         """

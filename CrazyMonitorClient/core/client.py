@@ -98,7 +98,7 @@ class ClientHandler(object):
 
     def url_request(self, method, url, **extra_data):
         """
-        通过url接口，向服务器端请求数据或者发送数据。
+        通过url接口，向服务器端请求数据或者发送数据。通过methond请求方式的不同来区分，是下载配置还是上传数据。
         :param request_type:
         :param url:
         :param kwargs:

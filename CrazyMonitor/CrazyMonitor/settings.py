@@ -150,3 +150,6 @@ STATUS_DATA_OPTIMIZATION = {
 
 # redis 的发布频道
 TRIGGER_CHAN = 'trigger_event_channal'
+
+# 服务上报数据的容忍间隔。
+REPORT_LATE_TOLERANCE_TIME = 10

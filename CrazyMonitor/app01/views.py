@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import json
-
 from django.http import HttpResponse
 from django.shortcuts import render
 from CrazyMonitor import settings
@@ -46,15 +45,14 @@ def server_data_report(request):
             }
             print(post_data)
 
+            # 处理并保存数据
             data_saving_obj = data_optimization.DataStore(client_id, server_name, json.loads(data), REDIS_OBJ)
 
             """
             触发监控
             """
             host_obj = models.Host.objects.get(id=int(client_id))
-
             server_triggers = get_host_trgger(host_obj)
-
             trigger_handler = data_processing.DataHandler(settings, redis=False)
 
             # 循环多种Service类的trigger，同类的trigger可以一起处理。
