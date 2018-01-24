@@ -20,51 +20,24 @@ class MyResource(BasicResource):
 
     def render_POST(self, request):
         log.info('post:%s' % request.payload)
-        # ret = requests.post('http://127.0.0.1:8080/coap', data={'payload': request.payload})
-        # log.info(ret.text
-        self.payload = "BasicResource post"
-        return super(MyResource, self).render_POST(request)
+        self.payload = request.payload
+        return self
 
     def render_GET(self, request):
-        # log.info('get', request.uri_path
-        # ret = requests.get('http://127.0.0.1:8080/coap')
-        # log.info(ret.text
-        self.payload = "BasicResource get"
-        return super(MyResource, self).render_GET(request)
+        return self
 
     def render_PUT(self, request):
-        # log.info('put', request.payload
-        self.payload = "BasicResource put"
-        return super(MyResource, self).render_PUT(request)
+        self.payload = request.payload
+        return self
 
-
-class MyResource2(BasicResource):
-
-    def render_POST(self, request):
-        log.info('post:%s' % request.payload)
-        # ret = requests.post('http://127.0.0.1:8080/coap', data={'payload': request.payload})
-        # log.info(ret.text
-        self.payload = "BasicResource post"
-        return super(MyResource2, self).render_POST(request)
-
-    def render_GET(self, request):
-        # log.info('get', request.uri_path
-        # ret = requests.get('http://127.0.0.1:8080/coap')
-        # log.info(ret.text
-        self.payload = "BasicResource get"
-        return super(MyResource2, self).render_GET(request)
-
-    def render_PUT(self, request):
-        # log.info('put', request.payload
-        self.payload = "BasicResource put"
-        return super(MyResource2, self).render_PUT(request)
 
 
 class CoAPServer(CoAP):
     def __init__(self, host, port):
         CoAP.__init__(self, (host, port))
-        self.add_resource('basic/', MyResource())
-        self.add_resource('t/d', MyResource2())
+        # self.add_resource('basic/', MyResource())
+        self.add_resource('t/d', MyResource())
+        self.add_resource('t/r', MyResource())
         # self.add_resource('basic/', MyResource())
         # self.add_resource('storage/', Storage())
         # self.add_resource('separate/', Separate())
@@ -81,7 +54,7 @@ class CoAPServer(CoAP):
         # log.info(self.root.dump()
 
     def receive_request(self, transaction):
-        log.info('-------------------------------start receive----------------------------------')
+        log.info('-------------------------------start receive_request----------------------------------')
         log.info('request: %s' % transaction.request)
         # log.info('request type:', transaction.request.type
         log.info('request type: %s' % list(defines.Types.keys())[
@@ -107,6 +80,7 @@ class CoAPServer(CoAP):
         super(CoAPServer, self).receive_request(transaction)
 
     def send_datagram(self, message):
+        log.info('-------------------------------start send_datagram----------------------------------')
         log.info('message:%s' % message)
         # log.info('request type:', message.type
         log.info('message type: %s' % list(defines.Types.keys())[list(defines.Types.values()).index(message.type)])
@@ -122,10 +96,10 @@ class CoAPServer(CoAP):
         log.info('message destination: %r' % json.dumps(message.destination))
         log.info('message source: %s' % json.dumps(message.source))
         log.info('message payload: %s' % message.payload)
-        log.info('----------------------------------send over---------------------------------------')
+        log.info('----------------------------------over---------------------------------------')
 
-        if not message.payload:
-            message.payload = "Hello Coap!"
+        # if not message.payload:
+        #     message.payload = "Hello Coap!"
         super(CoAPServer, self).send_datagram(message)
 
 

@@ -4,8 +4,8 @@ import socket
 
 
 def main():
-    ''' 建立连接 '''
-    sk = socket.socket()
+    ''' 建立连接 参数可省略'''
+    sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF_INET 代表ipv4协议簇，SOCK_STREAM 代表TCP.
     sk.bind(('127.0.0.1', 8899))
     sk.listen(10)
 
