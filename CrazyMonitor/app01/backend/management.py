@@ -7,6 +7,7 @@ from app01.backend import data_processing
 from CrazyMonitor import settings
 
 class ManagementUtility(object):
+    """报警中心类"""
 
     def __init__(self, argv):
         self.argv = argv or sys.argv[:]
@@ -30,8 +31,13 @@ class ManagementUtility(object):
 
 
     def start(self):
+        """
+        监控主机是否存活
+        :return:
+        """
         reator = data_processing.DataHandler(settings)
         reator.looping()
+        # pass
 
     def stop(self):
         pass

@@ -3,7 +3,7 @@
 import socket
 
 def main():
-    client = socket.socket()
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect(('127.0.0.1', 8899))  # 连接服务器
     client.close()  # 关闭连接
 

@@ -38,10 +38,33 @@ class MyResource(BasicResource):
         return super(MyResource, self).render_PUT(request)
 
 
+class MyResource2(BasicResource):
+
+    def render_POST(self, request):
+        log.info('post:%s' % request.payload)
+        # ret = requests.post('http://127.0.0.1:8080/coap', data={'payload': request.payload})
+        # log.info(ret.text
+        self.payload = "BasicResource post"
+        return super(MyResource2, self).render_POST(request)
+
+    def render_GET(self, request):
+        # log.info('get', request.uri_path
+        # ret = requests.get('http://127.0.0.1:8080/coap')
+        # log.info(ret.text
+        self.payload = "BasicResource get"
+        return super(MyResource2, self).render_GET(request)
+
+    def render_PUT(self, request):
+        # log.info('put', request.payload
+        self.payload = "BasicResource put"
+        return super(MyResource2, self).render_PUT(request)
+
+
 class CoAPServer(CoAP):
     def __init__(self, host, port):
         CoAP.__init__(self, (host, port))
         self.add_resource('basic/', MyResource())
+        self.add_resource('t/d', MyResource2())
         # self.add_resource('basic/', MyResource())
         # self.add_resource('storage/', Storage())
         # self.add_resource('separate/', Separate())

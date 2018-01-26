@@ -1,4 +1,4 @@
-"""Fortress URL Configuration
+"""OfficialWebsite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import app01
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('app.urls')),
-
+    url(r'^', include('app01.urls')),
 ]

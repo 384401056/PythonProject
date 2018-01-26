@@ -24,12 +24,7 @@ SECRET_KEY = '9#vq635@(3&eh=%tiy!ojm$tfh^zl--+617v^lm#opsds0m924'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '192.168.21.1',
-    '192.168.1.101',
-    '192.168.1.100',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -155,3 +150,6 @@ STATUS_DATA_OPTIMIZATION = {
 
 # redis 的发布频道
 TRIGGER_CHAN = 'trigger_event_channal'
+
+# 服务上报数据的容忍间隔。
+REPORT_LATE_TOLERANCE_TIME = 10
