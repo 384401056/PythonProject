@@ -52,3 +52,604 @@
 2017-12-14 16:00:23,546 - INFO : message source: null
 2017-12-14 16:00:23,546 - INFO : message payload: None
 2017-12-14 16:00:23,546 - INFO : ----------------------------------send over---------------------------------------
+2018-01-25 17:29:55,592 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:37:14,811 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:37:58,015 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:38:19,535 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:38:19,535 - INFO : request: From ('127.0.0.1', 52739), To None, CON-53369, POST-HC, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:38:19,536 - INFO : request type: CON
+2018-01-25 17:38:19,536 - INFO : request mid: 53369
+2018-01-25 17:38:19,536 - INFO : request token: HC
+2018-01-25 17:38:19,536 - INFO : request destination: null
+2018-01-25 17:38:19,536 - INFO : request source: ["127.0.0.1", 52739]
+2018-01-25 17:38:19,536 - INFO : request uri_path: t/r
+2018-01-25 17:38:19,536 - INFO : request payload: Hello Coap Server!
+2018-01-25 17:38:19,536 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:38:19,536 - INFO : message:From None, To ('127.0.0.1', 52739), ACK-53369, METHOD_NOT_ALLOWED-HC, [] No payload
+2018-01-25 17:38:19,538 - INFO : message type: ACK
+2018-01-25 17:38:19,538 - INFO : message mid: 53369
+2018-01-25 17:38:19,538 - INFO : message token: HC
+2018-01-25 17:38:19,538 - INFO : message destination: '["127.0.0.1", 52739]'
+2018-01-25 17:38:22,500 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:38:22,500 - INFO : message:From None, To ('127.0.0.1', 52739), ACK-53369, METHOD_NOT_ALLOWED-HC, [] No payload
+2018-01-25 17:38:22,502 - INFO : message type: ACK
+2018-01-25 17:38:22,502 - INFO : message mid: 53369
+2018-01-25 17:38:22,502 - INFO : message token: HC
+2018-01-25 17:38:22,502 - INFO : message destination: '["127.0.0.1", 52739]'
+2018-01-25 17:38:38,645 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:39:20,388 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:39:50,881 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:39:53,448 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:39:53,448 - INFO : request: From ('127.0.0.1', 62273), To None, CON-30629, POST-PB, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:39:53,450 - INFO : request type: CON
+2018-01-25 17:39:53,450 - INFO : request mid: 30629
+2018-01-25 17:39:53,450 - INFO : request token: PB
+2018-01-25 17:39:53,450 - INFO : request destination: null
+2018-01-25 17:39:53,450 - INFO : request source: ["127.0.0.1", 62273]
+2018-01-25 17:39:53,450 - INFO : request uri_path: t/r
+2018-01-25 17:39:53,450 - INFO : request payload: Hello Coap Server!
+2018-01-25 17:39:53,450 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:39:53,450 - INFO : message:From None, To ('127.0.0.1', 62273), ACK-30629, METHOD_NOT_ALLOWED-PB, [] No payload
+2018-01-25 17:39:53,450 - INFO : message type: ACK
+2018-01-25 17:39:53,450 - INFO : message mid: 30629
+2018-01-25 17:39:53,450 - INFO : message token: PB
+2018-01-25 17:39:53,450 - INFO : message destination: '["127.0.0.1", 62273]'
+2018-01-25 17:39:53,451 - INFO : message source: null
+2018-01-25 17:39:53,451 - INFO : message payload: None
+2018-01-25 17:39:53,451 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:40:07,471 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:40:09,552 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:40:09,553 - INFO : request: From ('127.0.0.1', 62285), To None, CON-3390, POST-MI, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:40:09,553 - INFO : request type: CON
+2018-01-25 17:40:09,553 - INFO : request mid: 3390
+2018-01-25 17:40:09,553 - INFO : request token: MI
+2018-01-25 17:40:09,553 - INFO : request destination: null
+2018-01-25 17:40:09,553 - INFO : request source: ["127.0.0.1", 62285]
+2018-01-25 17:40:09,553 - INFO : request uri_path: t/r
+2018-01-25 17:40:09,553 - INFO : request payload: Hello Coap Server!
+2018-01-25 17:40:09,555 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:40:09,555 - INFO : message:From None, To ('127.0.0.1', 62285), ACK-3390, METHOD_NOT_ALLOWED-MI, [] No payload
+2018-01-25 17:40:09,555 - INFO : message type: ACK
+2018-01-25 17:40:09,555 - INFO : message mid: 3390
+2018-01-25 17:40:09,555 - INFO : message token: MI
+2018-01-25 17:40:09,555 - INFO : message destination: '["127.0.0.1", 62285]'
+2018-01-25 17:40:12,253 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:40:12,253 - INFO : message:From None, To ('127.0.0.1', 62285), ACK-3390, METHOD_NOT_ALLOWED-MI, [] No payload
+2018-01-25 17:40:12,253 - INFO : message type: ACK
+2018-01-25 17:40:12,253 - INFO : message mid: 3390
+2018-01-25 17:40:12,255 - INFO : message token: MI
+2018-01-25 17:40:12,255 - INFO : message destination: '["127.0.0.1", 62285]'
+2018-01-25 17:40:29,624 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:40:32,165 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:40:32,165 - INFO : request: From ('127.0.0.1', 62303), To None, CON-14331, POST-XT, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:40:32,165 - INFO : request type: CON
+2018-01-25 17:40:32,167 - INFO : request mid: 14331
+2018-01-25 17:40:32,167 - INFO : request token: XT
+2018-01-25 17:40:32,167 - INFO : request destination: null
+2018-01-25 17:40:32,167 - INFO : request source: ["127.0.0.1", 62303]
+2018-01-25 17:40:32,167 - INFO : request uri_path: t/r
+2018-01-25 17:40:32,167 - INFO : request payload: Hello Coap Server!
+2018-01-25 17:40:32,167 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:40:32,167 - INFO : message:From None, To ('127.0.0.1', 62303), ACK-14331, METHOD_NOT_ALLOWED-XT, [] No payload
+2018-01-25 17:40:32,167 - INFO : message type: ACK
+2018-01-25 17:40:32,167 - INFO : message mid: 14331
+2018-01-25 17:40:32,167 - INFO : message token: XT
+2018-01-25 17:40:32,167 - INFO : message destination: '["127.0.0.1", 62303]'
+2018-01-25 17:40:34,934 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:40:34,934 - INFO : message:From None, To ('127.0.0.1', 62303), ACK-14331, METHOD_NOT_ALLOWED-XT, [] No payload
+2018-01-25 17:40:34,934 - INFO : message type: ACK
+2018-01-25 17:40:34,934 - INFO : message mid: 14331
+2018-01-25 17:40:34,934 - INFO : message token: XT
+2018-01-25 17:40:34,934 - INFO : message destination: '["127.0.0.1", 62303]'
+2018-01-25 17:45:07,263 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:45:14,744 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:45:14,746 - INFO : request: From ('127.0.0.1', 62523), To None, CON-59949, POST-Jr, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:45:14,746 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:45:14,746 - INFO : message:From None, To ('127.0.0.1', 62523), ACK-59949, METHOD_NOT_ALLOWED-Jr, [] No payload
+2018-01-25 17:45:14,746 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:46:07,339 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:46:21,108 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:46:21,108 - INFO : request: From ('127.0.0.1', 63182), To None, CON-65345, POST-cF, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:46:21,109 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:46:21,109 - INFO : message:From None, To ('127.0.0.1', 63182), ACK-65345, METHOD_NOT_ALLOWED-cF, [] No payload
+2018-01-25 17:46:21,111 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:48:25,592 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:48:51,328 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:48:52,920 - INFO : message:From None, To ('127.0.0.1', 54195), ACK-53428, EMPTY-None, [] No payload
+2018-01-25 17:48:53,381 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:48:55,339 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:48:55,342 - INFO : request: From ('127.0.0.1', 54195), To None, CON-53428, POST-KD, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:48:56,716 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:48:56,716 - INFO : message:From None, To ('127.0.0.1', 54195), CON-155, METHOD_NOT_ALLOWED-KD, [] No payload
+2018-01-25 17:48:56,717 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:49:37,299 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:49:51,980 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:49:51,980 - INFO : request: From ('127.0.0.1', 54252), To None, CON-55366, POST-hb, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:49:51,980 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:49:51,983 - INFO : message:From None, To ('127.0.0.1', 54252), ACK-55366, EMPTY-None, [] No payload
+2018-01-25 17:49:51,983 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:49:58,546 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:49:58,546 - INFO : message:From None, To ('127.0.0.1', 54252), CON-92, METHOD_NOT_ALLOWED-hb, [] No payload
+2018-01-25 17:49:58,546 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:50:11,519 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:50:14,680 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:50:14,681 - INFO : request: From ('127.0.0.1', 54276), To None, CON-28614, POST-HK, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:50:14,681 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:50:14,681 - INFO : message:From None, To ('127.0.0.1', 54276), ACK-28614, METHOD_NOT_ALLOWED-HK, [] No payload
+2018-01-25 17:50:14,681 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:50:20,112 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:50:20,112 - INFO : request: From ('127.0.0.1', 54282), To None, CON-2693, POST-XJ, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:50:20,112 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:50:20,114 - INFO : message:From None, To ('127.0.0.1', 54282), ACK-2693, METHOD_NOT_ALLOWED-XJ, [] No payload
+2018-01-25 17:50:20,114 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:55:54,517 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:55:57,901 - INFO : -------------------------------start receive_request----------------------------------
+2018-01-25 17:55:57,901 - INFO : request: From ('127.0.0.1', 58809), To None, CON-65414, POST-id, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:55:57,903 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:55:57,903 - INFO : message:From None, To ('127.0.0.1', 58809), ACK-65414, METHOD_NOT_ALLOWED-id, [] No payload
+2018-01-25 17:55:57,903 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:58:15,558 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:58:38,154 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:58:39,782 - INFO : ###############################start receive_request################################
+2018-01-25 17:58:39,782 - INFO : request: From ('127.0.0.1', 55320), To None, CON-6797, POST-GB, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:58:55,184 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:58:57,263 - INFO : ###############################start receive_request################################
+2018-01-25 17:58:57,263 - INFO : request: From ('127.0.0.1', 55336), To None, CON-53524, POST-UA, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:59:30,382 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:59:32,444 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:59:32,444 - INFO : message:From None, To ('127.0.0.1', 55363), ACK-2944, METHOD_NOT_ALLOWED-XN, [] 111111111111111111...18 bytes
+2018-01-25 17:59:32,444 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:59:32,444 - INFO : ###############################start receive_request################################
+2018-01-25 17:59:32,446 - INFO : request: From ('127.0.0.1', 55363), To None, CON-2944, POST-XN, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:59:48,970 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 17:59:50,474 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:59:50,474 - INFO : message:From None, To ('127.0.0.1', 55377), ACK-43843, METHOD_NOT_ALLOWED-pP, [] No payload
+2018-01-25 17:59:50,474 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:59:50,474 - INFO : ###############################start receive_request################################
+2018-01-25 17:59:50,476 - INFO : request: From ('127.0.0.1', 55377), To None, CON-43843, POST-pP, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 17:59:58,457 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 17:59:58,457 - INFO : message:From None, To ('127.0.0.1', 55382), ACK-38424, METHOD_NOT_ALLOWED-Bk, [] No payload
+2018-01-25 17:59:58,457 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 17:59:58,457 - INFO : ###############################start receive_request################################
+2018-01-25 17:59:58,457 - INFO : request: From ('127.0.0.1', 55382), To None, CON-38424, POST-Bk, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:00:09,782 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:00:11,584 - INFO : ###############################start receive_request################################
+2018-01-25 18:00:11,584 - INFO : request: From ('127.0.0.1', 55395), To None, CON-36659, POST-Xq, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:00:11,585 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:00:11,585 - INFO : message:From None, To ('127.0.0.1', 55395), ACK-36659, METHOD_NOT_ALLOWED-Xq, [] No payload
+2018-01-25 18:00:11,585 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:03:55,316 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:03:57,714 - INFO : ###############################start receive_request################################
+2018-01-25 18:03:57,714 - INFO : request: From ('127.0.0.1', 64280), To None, CON-16135, POST-tM, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:03:57,714 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:03:57,716 - INFO : message:From None, To ('127.0.0.1', 64280), ACK-16135, METHOD_NOT_ALLOWED-tM, [] No payload
+2018-01-25 18:03:57,716 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:06:22,091 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:06:26,686 - INFO : ###############################start receive_request################################
+2018-01-25 18:06:26,686 - INFO : request: From ('127.0.0.1', 58433), To None, CON-40592, POST-Ej, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:06:26,687 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:06:26,687 - INFO : message:From None, To ('127.0.0.1', 58433), ACK-40592, METHOD_NOT_ALLOWED-Ej, [] No payload
+2018-01-25 18:06:26,687 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:07:20,779 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:07:23,019 - INFO : ###############################start receive_request################################
+2018-01-25 18:07:23,019 - INFO : request: From ('127.0.0.1', 58482), To None, CON-19865, POST-se, [Uri-Path: t, ] Hello Coap Server!...18 bytes
+2018-01-25 18:07:23,019 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:07:23,020 - INFO : message:From None, To ('127.0.0.1', 58482), ACK-19865, CREATED-se, [Location-Path: t, ] No payload
+2018-01-25 18:07:23,020 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:09:49,058 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:09:51,923 - INFO : ###############################start receive_request################################
+2018-01-25 18:09:51,923 - INFO : request: From ('127.0.0.1', 49256), To None, CON-4433, POST-Yt, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:09:51,923 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:09:51,924 - INFO : message:From None, To ('127.0.0.1', 49256), ACK-4433, METHOD_NOT_ALLOWED-Yt, [] No payload
+2018-01-25 18:09:51,924 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:11:14,227 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:11:16,220 - INFO : ###############################start receive_request################################
+2018-01-25 18:11:16,220 - INFO : request: From ('127.0.0.1', 49325), To None, CON-64979, POST-Ml, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:11:16,220 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:11:16,220 - INFO : message:From None, To ('127.0.0.1', 49325), ACK-64979, METHOD_NOT_ALLOWED-Ml, [] No payload
+2018-01-25 18:11:16,220 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:12:12,316 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:12:14,194 - INFO : ###############################start receive_request################################
+2018-01-25 18:12:14,194 - INFO : request: From ('127.0.0.1', 63883), To None, CON-51411, POST-dB, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:12:14,194 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:12:14,194 - INFO : message:From None, To ('127.0.0.1', 63883), ACK-51411, METHOD_NOT_ALLOWED-dB, [] No payload
+2018-01-25 18:12:14,194 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:13:03,190 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:13:04,733 - INFO : ###############################start receive_request################################
+2018-01-25 18:13:04,734 - INFO : request: From ('127.0.0.1', 63925), To None, CON-15494, POST-jD, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:13:04,734 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:13:04,734 - INFO : message:From None, To ('127.0.0.1', 63925), ACK-15494, METHOD_NOT_ALLOWED-jD, [] No payload
+2018-01-25 18:13:04,734 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:14:32,670 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:14:34,969 - INFO : ###############################start receive_request################################
+2018-01-25 18:14:34,969 - INFO : request: From ('127.0.0.1', 52874), To None, CON-44902, POST-BP, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-25 18:14:34,970 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:14:34,970 - INFO : message:From None, To ('127.0.0.1', 52874), ACK-44902, METHOD_NOT_ALLOWED-BP, [] No payload
+2018-01-25 18:14:34,970 - INFO : ----------------------------------over---------------------------------------
+2018-01-25 18:19:28,440 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-25 18:19:30,476 - INFO : ###############################start receive_request################################
+2018-01-25 18:19:30,476 - INFO : request: From ('127.0.0.1', 51777), To None, CON-6445, POST-Al, [Uri-Path: basic, ] Hello Coap Server!...18 bytes
+2018-01-25 18:19:30,476 - INFO : -------------------------------start send_datagram----------------------------------
+2018-01-25 18:19:30,477 - INFO : message:From None, To ('127.0.0.1', 51777), ACK-6445, CREATED-Al, [Location-Path: basic, ] No payload
+2018-01-25 18:19:30,477 - INFO : ----------------------------------over---------------------------------------
+2018-01-26 09:16:30,512 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:17:59,890 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:18:01,719 - INFO : <coapthon.transaction.Transaction object at 0x000000000297FC50>
+2018-01-26 09:18:01,720 - INFO : From None, To ('127.0.0.1', 49537), ACK-28554, METHOD_NOT_ALLOWED-uX, [] No payload
+2018-01-26 09:18:44,296 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:18:46,101 - INFO : From ('127.0.0.1', 54287), To None, CON-50384, POST-ru, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 09:18:46,101 - INFO : From None, To ('127.0.0.1', 54287), ACK-50384, METHOD_NOT_ALLOWED-ru, [] No payload
+2018-01-26 09:23:59,612 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:24:09,367 - INFO : From None, To ('127.0.0.1', 59938), ACK-41472, EMPTY-None, [] No payload
+2018-01-26 09:24:22,948 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:24:28,960 - INFO : From None, To ('127.0.0.1', 59953), ACK-55362, EMPTY-None, [] No payload
+2018-01-26 09:24:42,783 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:24:44,723 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 09:24:44,723 - INFO : request: From ('127.0.0.1', 59966), To None, CON-31234, POST-IF, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 09:24:44,723 - INFO : request token: IF
+2018-01-26 09:24:44,723 - INFO : request uri_path: t/r
+2018-01-26 09:24:44,723 - INFO : request payload: Hello Coap Server!
+2018-01-26 09:24:44,724 - INFO : From None, To ('127.0.0.1', 59966), ACK-31234, METHOD_NOT_ALLOWED-IF, [] No payload
+2018-01-26 09:35:32,924 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 09:35:34,734 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 09:35:34,734 - INFO : request: From ('127.0.0.1', 62741), To None, CON-32955, POST-YK, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 09:35:34,734 - INFO : request token: YK
+2018-01-26 09:35:34,734 - INFO : request uri_path: t/r
+2018-01-26 09:35:34,734 - INFO : request payload: Hello Coap Server!
+2018-01-26 09:35:37,457 - INFO : From None, To ('127.0.0.1', 62741), ACK-32955, EMPTY-None, [] No payload
+2018-01-26 10:08:08,150 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:08:11,622 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:08:11,622 - INFO : request: From ('127.0.0.1', 49509), To None, CON-19215, POST-cE, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:08:11,624 - INFO : request token: cE
+2018-01-26 10:08:11,624 - INFO : request uri_path: t/r
+2018-01-26 10:08:11,624 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:08:11,624 - INFO : response: None
+2018-01-26 10:08:11,625 - INFO : From None, To ('127.0.0.1', 49509), ACK-19215, METHOD_NOT_ALLOWED-cE, [] No payload
+2018-01-26 10:13:28,595 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:21:23,344 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:21:25,298 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:21:25,298 - INFO : request: From ('127.0.0.1', 54497), To None, CON-1787, POST-jx, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:21:25,298 - INFO : request token: jx
+2018-01-26 10:21:25,299 - INFO : request uri_path: t/r
+2018-01-26 10:21:25,299 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:21:25,299 - INFO : response: None
+2018-01-26 10:21:25,299 - INFO : From None, To ('127.0.0.1', 54497), ACK-1787, METHOD_NOT_ALLOWED-jx, [] No payload
+2018-01-26 10:22:04,246 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:22:06,115 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:22:06,115 - INFO : request: From ('127.0.0.1', 56467), To None, CON-37159, POST-Ry, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:22:06,115 - INFO : request token: Ry
+2018-01-26 10:22:06,115 - INFO : request uri_path: t/r
+2018-01-26 10:22:06,115 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:22:08,980 - INFO : From None, To ('127.0.0.1', 56467), ACK-37159, EMPTY-None, [] No payload
+2018-01-26 10:24:53,635 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:24:53,637 - INFO : request: From ('127.0.0.1', 61346), To None, CON-24705, POST-xN, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:24:53,637 - INFO : request token: xN
+2018-01-26 10:24:53,637 - INFO : request uri_path: t/r
+2018-01-26 10:24:53,637 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:24:56,026 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:24:57,664 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:24:57,664 - INFO : request: From ('127.0.0.1', 61347), To None, CON-27920, POST-VM, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:24:57,664 - INFO : request token: VM
+2018-01-26 10:24:57,664 - INFO : request uri_path: t/r
+2018-01-26 10:24:57,664 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:24:57,665 - INFO : From None, To ('127.0.0.1', 61347), ACK-27920, METHOD_NOT_ALLOWED-VM, [] No payload
+2018-01-26 10:31:16,868 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:31:20,677 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:31:20,677 - INFO : request: From ('127.0.0.1', 57403), To None, CON-64027, POST-jh, [Uri-Path: t, Uri-Path: r, ] Hello Coap Server!...18 bytes
+2018-01-26 10:31:20,678 - INFO : request token: jh
+2018-01-26 10:31:20,678 - INFO : request uri_path: t/r
+2018-01-26 10:31:20,678 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:31:20,678 - INFO : From None, To ('127.0.0.1', 57403), ACK-64027, METHOD_NOT_ALLOWED-jh, [] No payload
+2018-01-26 10:32:08,937 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:32:10,345 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:32:10,345 - INFO : request: From ('127.0.0.1', 55944), To None, CON-48153, POST-qF, [Uri-Path: basic, ] Hello Coap Server!...18 bytes
+2018-01-26 10:32:10,345 - INFO : request token: qF
+2018-01-26 10:32:10,345 - INFO : request uri_path: basic
+2018-01-26 10:32:10,346 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:32:10,346 - INFO : post:Hello Coap Server!
+2018-01-26 10:32:10,348 - INFO : From None, To ('127.0.0.1', 55944), ACK-48153, CHANGED-qF, [Location-Path: basic, ] No payload
+2018-01-26 10:32:54,351 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:32:56,460 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:32:56,460 - INFO : request: From ('127.0.0.1', 55945), To None, CON-23468, POST-Ki, [Uri-Path: basic, ] Hello Coap Server!...18 bytes
+2018-01-26 10:32:56,461 - INFO : request token: Ki
+2018-01-26 10:32:56,461 - INFO : request uri_path: basic
+2018-01-26 10:32:56,461 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:32:56,461 - INFO : post:Hello Coap Server!
+2018-01-26 10:32:56,463 - INFO : From None, To ('127.0.0.1', 55945), ACK-23468, CHANGED-Ki, [Location-Path: basic, ] No payload
+2018-01-26 10:33:40,164 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:33:41,953 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:33:41,953 - INFO : request: From ('127.0.0.1', 55949), To None, CON-63886, POST-KE, [Uri-Path: basic, ] Hello Coap Server!...18 bytes
+2018-01-26 10:33:41,953 - INFO : request token: KE
+2018-01-26 10:33:41,953 - INFO : request uri_path: basic
+2018-01-26 10:33:41,953 - INFO : request payload: Hello Coap Server!
+2018-01-26 10:33:41,953 - INFO : render_POST:Hello Coap Server!
+2018-01-26 10:33:41,954 - INFO : From None, To ('127.0.0.1', 55949), ACK-63886, CHANGED-KE, [Location-Path: basic, ] No payload
+2018-01-26 10:34:50,586 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:34:52,250 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:34:52,250 - INFO : request: From ('127.0.0.1', 55951), To None, CON-49514, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:34:52,250 - INFO : request token: None
+2018-01-26 10:34:52,250 - INFO : request uri_path: basic
+2018-01-26 10:34:52,250 - INFO : request payload: None
+2018-01-26 10:34:52,250 - INFO : render_POST:None
+2018-01-26 10:34:52,250 - INFO : From None, To ('127.0.0.1', 55951), ACK-49514, CONTENT-None, [] render_GET...10 bytes
+2018-01-26 10:37:00,464 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:37:02,640 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:37:02,640 - INFO : request: From ('127.0.0.1', 55955), To None, CON-13649, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:37:02,641 - INFO : request token: None
+2018-01-26 10:37:02,641 - INFO : request uri_path: basic
+2018-01-26 10:37:02,641 - INFO : request payload: None
+2018-01-26 10:37:02,641 - INFO : render_POST:None
+2018-01-26 10:37:04,641 - INFO : From None, To ('127.0.0.1', 55955), ACK-13649, EMPTY-None, [] No payload
+2018-01-26 10:37:51,279 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:37:53,351 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:37:53,351 - INFO : request: From ('127.0.0.1', 55959), To None, CON-49066, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:37:53,351 - INFO : request token: None
+2018-01-26 10:37:53,351 - INFO : request uri_path: basic
+2018-01-26 10:37:53,351 - INFO : request payload: None
+2018-01-26 10:37:53,351 - INFO : render_POST:None
+2018-01-26 10:37:55,351 - INFO : From None, To ('127.0.0.1', 55959), ACK-49066, EMPTY-None, [] No payload
+2018-01-26 10:38:42,618 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:38:45,354 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:38:45,354 - INFO : request: From ('127.0.0.1', 61808), To None, CON-9209, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:38:45,355 - INFO : request token: None
+2018-01-26 10:38:45,355 - INFO : request uri_path: basic
+2018-01-26 10:38:45,355 - INFO : request payload: None
+2018-01-26 10:38:45,355 - INFO : render_POST:None
+2018-01-26 10:38:45,355 - INFO : From None, To ('127.0.0.1', 61808), ACK-9209, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:40:00,569 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:40:02,602 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:40:02,602 - INFO : request: From ('127.0.0.1', 55397), To None, CON-59443, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:40:02,602 - INFO : request token: None
+2018-01-26 10:40:02,602 - INFO : request uri_path: basic
+2018-01-26 10:40:02,602 - INFO : request payload: None
+2018-01-26 10:40:02,604 - INFO : From None, To ('127.0.0.1', 55397), ACK-59443, NOT_FOUND-None, [] No payload
+2018-01-26 10:42:12,200 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:42:13,801 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:42:13,801 - INFO : request: From ('127.0.0.1', 61904), To None, CON-63120, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:42:13,801 - INFO : request token: None
+2018-01-26 10:42:13,801 - INFO : request uri_path: basic
+2018-01-26 10:42:13,801 - INFO : request payload: None
+2018-01-26 10:42:13,802 - INFO : From None, To ('127.0.0.1', 61904), ACK-63120, NOT_FOUND-None, [] No payload
+2018-01-26 10:42:27,230 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:42:41,905 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:42:41,907 - INFO : request: From ('127.0.0.1', 50363), To None, CON-6023, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:42:41,907 - INFO : request token: None
+2018-01-26 10:42:41,907 - INFO : request uri_path: basic
+2018-01-26 10:42:41,907 - INFO : request payload: None
+2018-01-26 10:42:41,907 - INFO : From None, To ('127.0.0.1', 50363), ACK-6023, NOT_FOUND-None, [] No payload
+2018-01-26 10:42:53,697 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:42:55,187 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:42:55,187 - INFO : request: From ('127.0.0.1', 50364), To None, CON-47884, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:42:55,187 - INFO : request token: None
+2018-01-26 10:42:55,187 - INFO : request uri_path: t/r
+2018-01-26 10:42:55,187 - INFO : request payload: None
+2018-01-26 10:42:55,188 - INFO : From None, To ('127.0.0.1', 50364), ACK-47884, NOT_FOUND-None, [] No payload
+2018-01-26 10:43:41,678 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:43:43,461 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:43:43,461 - INFO : request: From ('127.0.0.1', 62821), To None, CON-11870, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:43:43,463 - INFO : request token: None
+2018-01-26 10:43:43,463 - INFO : request uri_path: t/r
+2018-01-26 10:43:43,463 - INFO : request payload: None
+2018-01-26 10:43:43,463 - INFO : From None, To ('127.0.0.1', 62821), ACK-11870, NOT_FOUND-None, [] No payload
+2018-01-26 10:43:57,654 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:43:59,755 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:43:59,755 - INFO : request: From ('127.0.0.1', 55694), To None, CON-8848, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:43:59,756 - INFO : request token: None
+2018-01-26 10:43:59,756 - INFO : request uri_path: t/r
+2018-01-26 10:43:59,756 - INFO : request payload: None
+2018-01-26 10:43:59,756 - INFO : From None, To ('127.0.0.1', 55694), ACK-8848, NOT_FOUND-None, [] No payload
+2018-01-26 10:44:27,242 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:44:29,581 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:44:29,581 - INFO : request: From ('127.0.0.1', 55695), To None, CON-27709, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:44:29,581 - INFO : request token: None
+2018-01-26 10:44:29,581 - INFO : request uri_path: basic
+2018-01-26 10:44:29,581 - INFO : request payload: None
+2018-01-26 10:44:29,582 - INFO : render_POST:None
+2018-01-26 10:44:31,582 - INFO : From None, To ('127.0.0.1', 55695), ACK-27709, EMPTY-None, [] No payload
+2018-01-26 10:44:59,467 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:45:02,339 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:45:02,339 - INFO : request: From ('127.0.0.1', 55696), To None, CON-20979, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:45:02,339 - INFO : request token: None
+2018-01-26 10:45:02,339 - INFO : request uri_path: basic
+2018-01-26 10:45:02,339 - INFO : request payload: None
+2018-01-26 10:45:02,341 - INFO : render_POST:None
+2018-01-26 10:45:04,341 - INFO : From None, To ('127.0.0.1', 55696), ACK-20979, EMPTY-None, [] No payload
+2018-01-26 10:45:18,592 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:45:22,032 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:45:22,032 - INFO : request: From ('127.0.0.1', 55700), To None, CON-42767, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:45:22,032 - INFO : request token: None
+2018-01-26 10:45:22,032 - INFO : request uri_path: basic
+2018-01-26 10:45:22,032 - INFO : request payload: None
+2018-01-26 10:45:22,033 - INFO : render_POST:None
+2018-01-26 10:45:22,033 - INFO : From None, To ('127.0.0.1', 55700), ACK-42767, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:45:46,759 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:45:48,375 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:45:48,375 - INFO : request: From ('127.0.0.1', 59607), To None, CON-63399, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:45:48,375 - INFO : request token: None
+2018-01-26 10:45:48,375 - INFO : request uri_path: t/r
+2018-01-26 10:45:48,375 - INFO : request payload: None
+2018-01-26 10:45:48,377 - INFO : From None, To ('127.0.0.1', 59607), ACK-63399, NOT_FOUND-None, [] No payload
+2018-01-26 10:46:10,497 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:46:12,634 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:46:12,634 - INFO : request: From ('127.0.0.1', 60746), To None, CON-49481, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:46:12,634 - INFO : request token: None
+2018-01-26 10:46:12,634 - INFO : request uri_path: basic
+2018-01-26 10:46:12,634 - INFO : request payload: None
+2018-01-26 10:46:12,635 - INFO : render_POST:None
+2018-01-26 10:46:12,635 - INFO : From None, To ('127.0.0.1', 60746), ACK-49481, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:46:25,548 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:46:28,125 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:46:28,125 - INFO : request: From ('127.0.0.1', 60747), To None, CON-25642, GET-None, [Uri-Path: basic, ] No payload
+2018-01-26 10:46:28,125 - INFO : request token: None
+2018-01-26 10:46:28,125 - INFO : request uri_path: basic
+2018-01-26 10:46:28,125 - INFO : request payload: None
+2018-01-26 10:46:28,125 - INFO : From None, To ('127.0.0.1', 60747), ACK-25642, NOT_FOUND-None, [] No payload
+2018-01-26 10:47:17,905 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:47:19,680 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:47:19,680 - INFO : request: From ('127.0.0.1', 60751), To None, CON-48131, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:47:19,680 - INFO : request token: None
+2018-01-26 10:47:19,680 - INFO : request uri_path: t/r
+2018-01-26 10:47:19,680 - INFO : request payload: None
+2018-01-26 10:47:19,680 - INFO : From None, To ('127.0.0.1', 60751), ACK-48131, NOT_FOUND-None, [] No payload
+2018-01-26 10:47:43,568 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:47:45,977 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:47:45,979 - INFO : request: From ('127.0.0.1', 60752), To None, CON-10056, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:47:45,979 - INFO : request token: None
+2018-01-26 10:47:45,979 - INFO : request uri_path: t/r
+2018-01-26 10:47:45,979 - INFO : request payload: None
+2018-01-26 10:47:45,980 - INFO : From None, To ('127.0.0.1', 60752), ACK-10056, NOT_FOUND-None, [] No payload
+2018-01-26 10:47:54,661 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:47:56,015 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:47:56,015 - INFO : request: From ('127.0.0.1', 60753), To None, CON-60015, GET-None, [Uri-Path: t, Uri-Path: r, ] No payload
+2018-01-26 10:47:56,015 - INFO : request token: None
+2018-01-26 10:47:56,015 - INFO : request uri_path: t/r
+2018-01-26 10:47:56,015 - INFO : request payload: None
+2018-01-26 10:47:56,016 - INFO : From None, To ('127.0.0.1', 60753), ACK-60015, NOT_FOUND-None, [] No payload
+2018-01-26 10:52:42,750 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:52:44,663 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:52:44,664 - INFO : request: From ('127.0.0.1', 54491), To None, CON-34641, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 10:52:44,664 - INFO : request token: None
+2018-01-26 10:52:44,664 - INFO : request uri_path: t
+2018-01-26 10:52:44,664 - INFO : request payload: None
+2018-01-26 10:52:44,664 - INFO : MyResource.render_POST:None
+2018-01-26 10:52:44,664 - INFO : From None, To ('127.0.0.1', 54491), ACK-34641, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:53:24,456 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:53:26,480 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:53:26,480 - INFO : request: From ('127.0.0.1', 54497), To None, CON-42460, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 10:53:26,480 - INFO : request token: None
+2018-01-26 10:53:26,480 - INFO : request uri_path: t
+2018-01-26 10:53:26,480 - INFO : request payload: None
+2018-01-26 10:53:26,480 - INFO : MyResource.render_POST:None
+2018-01-26 10:53:26,480 - INFO : From None, To ('127.0.0.1', 54497), ACK-42460, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:53:57,480 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:53:57,480 - INFO : request: From ('127.0.0.1', 52475), To None, CON-26353, GET-Q!ÿ•, [] No payload
+2018-01-26 10:53:57,480 - INFO : request token: Q!ÿ•
+2018-01-26 10:53:57,480 - INFO : request uri_path: 
+2018-01-26 10:53:57,480 - INFO : request payload: None
+2018-01-26 10:53:57,480 - INFO : From None, To ('127.0.0.1', 52475), ACK-26353, NOT_FOUND-Q!ÿ•, [] No payload
+2018-01-26 10:55:14,361 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:55:14,361 - INFO : request: From ('127.0.0.1', 49772), To None, CON-8453, GET-,Ï, [] No payload
+2018-01-26 10:55:14,361 - INFO : request token: ,Ï
+2018-01-26 10:55:14,361 - INFO : request uri_path: 
+2018-01-26 10:55:14,361 - INFO : request payload: None
+2018-01-26 10:55:14,361 - INFO : From None, To ('127.0.0.1', 49772), ACK-8453, NOT_FOUND-,Ï, [] No payload
+2018-01-26 10:55:36,782 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:55:36,782 - INFO : request: From ('127.0.0.1', 54017), To None, CON-3699, GET-Ìûƒ, [] No payload
+2018-01-26 10:55:36,782 - INFO : request token: Ìûƒ
+2018-01-26 10:55:36,782 - INFO : request uri_path: 
+2018-01-26 10:55:36,783 - INFO : request payload: None
+2018-01-26 10:55:36,783 - INFO : From None, To ('127.0.0.1', 54017), ACK-3699, NOT_FOUND-Ìûƒ, [] No payload
+2018-01-26 10:56:25,589 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:56:27,568 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:56:27,568 - INFO : request: From ('127.0.0.1', 54023), To None, CON-45199, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 10:56:27,568 - INFO : request token: None
+2018-01-26 10:56:27,568 - INFO : request uri_path: t
+2018-01-26 10:56:27,568 - INFO : request payload: None
+2018-01-26 10:56:27,569 - INFO : From None, To ('127.0.0.1', 54023), ACK-45199, NOT_FOUND-None, [] No payload
+2018-01-26 10:56:58,289 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:57:01,572 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:57:01,572 - INFO : request: From ('127.0.0.1', 54028), To None, CON-32136, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 10:57:01,572 - INFO : request token: None
+2018-01-26 10:57:01,573 - INFO : request uri_path: t
+2018-01-26 10:57:01,573 - INFO : request payload: None
+2018-01-26 10:57:01,573 - INFO : From None, To ('127.0.0.1', 54028), ACK-32136, NOT_FOUND-None, [] No payload
+2018-01-26 10:57:08,224 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:57:09,612 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:57:09,612 - INFO : request: From ('127.0.0.1', 54030), To None, CON-1718, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 10:57:09,614 - INFO : request token: None
+2018-01-26 10:57:09,614 - INFO : request uri_path: t
+2018-01-26 10:57:09,614 - INFO : request payload: None
+2018-01-26 10:57:09,614 - INFO : MyResource.render_POST:None
+2018-01-26 10:57:09,615 - INFO : From None, To ('127.0.0.1', 54030), ACK-1718, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:58:23,750 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:58:23,750 - INFO : request: From ('127.0.0.1', 57960), To None, CON-10426, GET-Ûí€ì, [Uri-Path: t, ] No payload
+2018-01-26 10:58:23,750 - INFO : request token: Ûí€ì
+2018-01-26 10:58:23,750 - INFO : request uri_path: t
+2018-01-26 10:58:23,750 - INFO : request payload: None
+2018-01-26 10:58:23,752 - INFO : MyResource.render_POST:None
+2018-01-26 10:58:23,752 - INFO : From None, To ('127.0.0.1', 57960), ACK-10426, CONTENT-Ûí€ì, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:58:30,684 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 10:58:46,733 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:58:46,733 - INFO : request: From ('127.0.0.1', 57963), To None, CON-44352, GET--ÿjæ, [Uri-Path: t, ] No payload
+2018-01-26 10:58:46,733 - INFO : request token: -ÿjæ
+2018-01-26 10:58:46,734 - INFO : request uri_path: t
+2018-01-26 10:58:46,734 - INFO : request payload: None
+2018-01-26 10:58:46,734 - INFO : MyResource.render_POST:None
+2018-01-26 10:58:46,736 - INFO : From None, To ('127.0.0.1', 57963), ACK-44352, CONTENT--ÿjæ, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 10:59:01,858 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 10:59:01,858 - INFO : request: From ('127.0.0.1', 57967), To None, CON-57668, GET-öþ`, [] No payload
+2018-01-26 10:59:01,858 - INFO : request token: öþ`
+2018-01-26 10:59:01,858 - INFO : request uri_path: 
+2018-01-26 10:59:01,858 - INFO : request payload: None
+2018-01-26 10:59:01,859 - INFO : From None, To ('127.0.0.1', 57967), ACK-57668, NOT_FOUND-öþ`, [] No payload
+2018-01-26 11:03:45,122 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 11:03:46,802 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:03:46,803 - INFO : request: From ('127.0.0.1', 51606), To None, CON-18004, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 11:03:46,803 - INFO : request token: None
+2018-01-26 11:03:46,803 - INFO : request uri_path: t
+2018-01-26 11:03:46,803 - INFO : request payload: None
+2018-01-26 11:03:46,805 - INFO : MyResource.render_POST:None
+2018-01-26 11:03:46,805 - INFO : send_datagram: From None, To ('127.0.0.1', 51606), ACK-18004, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 11:03:46,805 - INFO : -------------------------------end----------------------------------
+2018-01-26 11:40:41,005 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 11:40:50,164 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:40:50,164 - INFO : request: From ('127.0.0.1', 57884), To None, CON-40388, POST-et, [Uri-Path: t, ] Im a client...11 bytes
+2018-01-26 11:40:50,164 - INFO : request token: et
+2018-01-26 11:40:50,164 - INFO : request uri_path: t
+2018-01-26 11:40:50,164 - INFO : request payload: Im a client
+2018-01-26 11:40:50,165 - INFO : MyResource.render_POST:Im a client
+2018-01-26 11:40:50,165 - INFO : send_datagram: From None, To ('127.0.0.1', 57884), ACK-40388, CHANGED-et, [Location-Path: t, ] No payload
+2018-01-26 11:40:50,165 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:41:36,694 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:41:36,694 - INFO : request: From ('127.0.0.1', 62299), To None, CON-38659, POST-Kg, [Uri-Path: t, ] 1234567890...10 bytes
+2018-01-26 11:41:36,694 - INFO : request token: Kg
+2018-01-26 11:41:36,694 - INFO : request uri_path: t
+2018-01-26 11:41:36,696 - INFO : request payload: 1234567890
+2018-01-26 11:41:36,696 - INFO : MyResource.render_POST:1234567890
+2018-01-26 11:41:36,696 - INFO : send_datagram: From None, To ('127.0.0.1', 62299), ACK-38659, CHANGED-Kg, [Location-Path: t, ] No payload
+2018-01-26 11:41:36,696 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:43:00,730 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 11:43:02,506 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:43:02,506 - INFO : request: From ('127.0.0.1', 53591), To None, CON-23221, POST-Rx, [Uri-Path: t, ] 1234567890...10 bytes
+2018-01-26 11:43:02,506 - INFO : request token: Rx
+2018-01-26 11:43:02,506 - INFO : request uri_path: t
+2018-01-26 11:43:02,506 - INFO : request payload: 1234567890
+2018-01-26 11:43:02,506 - INFO : MyResource.render_POST:1234567890
+2018-01-26 11:43:02,506 - INFO : send_datagram: From None, To ('127.0.0.1', 53591), ACK-23221, CHANGED-Rx, [Location-Path: t, ] No payload
+2018-01-26 11:43:02,507 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:43:23,272 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:43:23,272 - INFO : request: From ('127.0.0.1', 50677), To None, CON-46993, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 11:43:23,272 - INFO : request token: None
+2018-01-26 11:43:23,273 - INFO : request uri_path: t
+2018-01-26 11:43:23,273 - INFO : request payload: None
+2018-01-26 11:43:23,273 - INFO : MyResource.render_POST:None
+2018-01-26 11:43:23,273 - INFO : send_datagram: From None, To ('127.0.0.1', 50677), ACK-46993, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 11:43:23,273 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:43:56,256 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 11:43:58,201 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:43:58,201 - INFO : request: From ('127.0.0.1', 64896), To None, CON-64126, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 11:43:58,201 - INFO : request token: None
+2018-01-26 11:43:58,201 - INFO : request uri_path: t
+2018-01-26 11:43:58,201 - INFO : request payload: None
+2018-01-26 11:43:58,203 - INFO : MyResource.render_GET:None
+2018-01-26 11:43:58,203 - INFO : send_datagram: From None, To ('127.0.0.1', 64896), ACK-64126, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 11:43:58,203 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:44:40,601 - INFO : CoAP Server start on 127.0.0.1:5683
+2018-01-26 11:44:42,351 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:44:42,351 - INFO : request: From ('127.0.0.1', 59211), To None, CON-42399, GET-None, [Uri-Path: t, ] No payload
+2018-01-26 11:44:42,351 - INFO : request token: None
+2018-01-26 11:44:42,351 - INFO : request uri_path: t
+2018-01-26 11:44:42,351 - INFO : request payload: None
+2018-01-26 11:44:42,351 - INFO : MyResource.render_GET:None
+2018-01-26 11:44:42,351 - INFO : send_datagram: From None, To ('127.0.0.1', 59211), ACK-42399, CONTENT-None, [Content-Type: 1, ] GET...3 bytes
+2018-01-26 11:44:42,351 - INFO : send_payload: GET
+2018-01-26 11:44:42,351 - INFO : --------------------------------------end---------------------------------------
+2018-01-26 11:45:19,023 - INFO : -------------------------------receive_request----------------------------------
+2018-01-26 11:45:19,023 - INFO : request: From ('127.0.0.1', 50209), To None, CON-16665, PUT-None, [Uri-Path: t, ] gaoyanbin...9 bytes
+2018-01-26 11:45:19,023 - INFO : request token: None
+2018-01-26 11:45:19,023 - INFO : request uri_path: t
+2018-01-26 11:45:19,025 - INFO : request payload: gaoyanbin
+2018-01-26 11:45:19,025 - INFO : MyResource.render_PUT:gaoyanbin
+2018-01-26 11:45:19,025 - INFO : send_datagram: From None, To ('127.0.0.1', 50209), ACK-16665, CHANGED-None, [] No payload
+2018-01-26 11:45:19,025 - INFO : send_payload: None
+2018-01-26 11:45:19,026 - INFO : --------------------------------------end---------------------------------------

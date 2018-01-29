@@ -35,7 +35,8 @@ class MyResource(BasicResource):
 class CoAPServer(CoAP):
     def __init__(self, host, port):
         CoAP.__init__(self, (host, port))
-        # self.add_resource('basic/', MyResource())
+        self.add_resource('', MyResource())
+        self.add_resource('basic/', MyResource())
         self.add_resource('t/d', MyResource())
         self.add_resource('t/r', MyResource())
         # self.add_resource('basic/', MyResource())
@@ -76,13 +77,11 @@ class CoAPServer(CoAP):
         # 将请求发往Tornado服务器
         # ret = requests.get('http://127.0.0.1:8080/coap',params=transaction.request.payload)
         # ret = requests.post('http://127.0.0.1:8080/coap', data={'payload': transaction.request.payload})
-
         super(CoAPServer, self).receive_request(transaction)
 
     def send_datagram(self, message):
         log.info('-------------------------------start send_datagram----------------------------------')
         log.info('message:%s' % message)
-        # log.info('request type:', message.type
         log.info('message type: %s' % list(defines.Types.keys())[list(defines.Types.values()).index(message.type)])
         """
             'CON': 0,
@@ -124,7 +123,7 @@ def init_log():
 
 def main():
     # init_log()
-    server = CoAPServer("0.0.0.0", 5683)
+    server = CoAPServer("127.0.0.1", 5683)
     try:
         server.listen(10)
     except KeyboardInterrupt:
