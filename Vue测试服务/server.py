@@ -1,30 +1,32 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import tornado.ioloop
 import tornado.web
 import os
+import json
 
 
 class MainHandler(tornado.web.RequestHandler):
 
-
-
     def set_default_headers(self):
-        print("setting headers!!!")
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
 
     def get(self, *args, **kwargs):
-        # self.write("Hello 11 Tornado!") # 返回数据
-        self.render(os.path.join('html', 'user.html'))  # 返回网页模板
+        # 获取参数
+        print('arguments: ', self.request.arguments)
+        # print('argument:', self.get_argument(name='a1', default=None))
+        # print('argument:', self.get_argument(name='a2', default=None))
+        self.write((json.dumps("Get Hello Tornado!")))
 
     def post(self, *args, **kwargs):
-        print(self.get_body_argument(name='a2'))  # 获取参数
-        print(self.get_argument(name='a1'))
-        print(self.redirect())
-        self.write("hello tornado!")
+        print('arguments: ', self.request.arguments)
+        # print('argument:', self.get_argument('name', ''))
+        # print('argument:', self.get_argument('age', 0))
+        # print('argument:', self.get_argument('sex', ''))
+        self.write((json.dumps("Post Hello Tornado!")))
 
 
 application = tornado.web.Application([
