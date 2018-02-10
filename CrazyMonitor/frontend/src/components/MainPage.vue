@@ -1,36 +1,61 @@
 <template>
 	<div id="mainPage">
 		<el-container>
-		  <el-header>Header</el-header>
-		  <el-container>
-		    <el-aside width="200px">Aside</el-aside>
-		    <el-main>Main</el-main>
+		  <el-header height="80px">
+      </el-header>
+      <el-container>
+        <el-aside width="200px">
+          <NavManu></NavManu>
+        </el-aside>
+		    <el-main>
+           <router-view/>
+        </el-main>
 		  </el-container>
 		</el-container>
 	</div>
 </template>
 
+<script>
+  import NavManu from '../components/mainpage/NavMenu'
+  import Content from '../components/mainpage/Content'
+
+  export default{
+
+    name:'mainPahe',
+    data(){
+      return {
+
+      }
+    },
+
+    components:{
+        'NavManu':NavManu,
+        'Content':Content
+    },
+
+
+  }  
+
+</script>
+
 
 <style scoped>
   .el-header, .el-footer {
-    background-color: #B3C0D1;
+    background-color: #FFA340;
     color: #333;
     text-align: center;
-    line-height: 60px;
   }
   
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: transparent;
     color: #333;
     text-align: center;
-    line-height: 200px;
   }
   
   .el-main {
-    background-color: #E9EEF3;
+    background-color: transparent;
     color: #333;
     text-align: center;
-    line-height: 160px;
   }
   
   body > .el-container {
