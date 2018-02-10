@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from CrazyMonitor import settings
 from app01.backend import data_optimization
@@ -11,13 +11,26 @@ from app01.serializer import ClientHandler, get_host_trgger
 from app01 import models
 from app01.backend import data_processing
 
+
 # Create your views here.
 
 REDIS_OBJ = redis_conn(settings)  # 创建redis连接池.
 
 
-def index(request):
-    return render(request, 'app01/index.html')
+# def index(request):
+#     return render(request, 'app01/index.html')
+
+
+def get_user(request):
+    ret = {}
+    ret['name'] = 'Jims'
+    ret['pwd'] = '123456'
+    return JsonResponse(ret)
+
+
+
+
+
 
 
 def client_configs(request, client_id):
@@ -33,6 +46,11 @@ def client_configs(request, client_id):
 
 
 def server_data_report(request):
+    """
+    保存上报名数据
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         try:
             client_id = request.POST.get('client_id', None)
