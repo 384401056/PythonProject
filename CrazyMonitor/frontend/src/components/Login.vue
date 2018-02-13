@@ -33,7 +33,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   export default{
     name:'loginForm',
     data(){
@@ -73,7 +73,7 @@
     text-align: center;
     line-height: 60px;
   }
-  
+
   .el-main {
     background-color: #FFFFFF;
     color: #333;
@@ -83,7 +83,7 @@
     vertical-align: middle;
     margin-top: 100px;
   }
-  
+
   body > .el-container {
     margin-bottom: 10px;
   }
@@ -91,12 +91,12 @@
   .el-form{
       margin-top: 40px;
   }
-  
+
   .el-container:nth-child(5) .el-aside,
   .el-container:nth-child(6) .el-aside {
     line-height: 100%;
   }
-  
+
   .el-container:nth-child(7) .el-aside {
     line-height: 100%;
   }

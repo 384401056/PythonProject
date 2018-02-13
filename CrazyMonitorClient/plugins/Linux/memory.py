@@ -3,7 +3,10 @@
 
 import subprocess
 import locale
+from conf import settings
+import logging
 
+log = logging.getLogger('crazyclient')
 
 def monitor(first_invoke=1):
     """
@@ -17,27 +20,34 @@ def monitor(first_invoke=1):
     :param first_invoke:
     :return:
     """
-    value_dic = {'status': -1}
-    """执行 sar 命令，获取linux系统的返回结果，放入字典并返回"""
-    shell_command = 'sar -r 1 3|grep "^平均时间"'  # Linux系统命令
-    shell_command = shell_command.encode(locale.getdefaultlocale()[1])  # 本地化中文字符
-    cmd_ret = subprocess.Popen(shell_command, shell=True, stdout=subprocess.PIPE).stdout.read()
-    result = str(cmd_ret, encoding='utf-8')
+    try:
+        value_dic = {'status': -1}
 
-    if result != '':
-        tup_ret = result.split()[1:]
-        value_dic = {
-            'kbmemfree': tup_ret[0],
-            'kbmemused': tup_ret[1],
-            'memused': tup_ret[2],
-            'kbbuffers': tup_ret[3],
-            'kbcached': tup_ret[4],
-            'kbcommit': tup_ret[5],
-            'commit': tup_ret[6],
-            'kbactive': tup_ret[7],
-            'kbinact': tup_ret[8],
-            'kbdirty': tup_ret[9],
-            'status': 0,
-        }
+        cmd_Average = '"' + settings.cmd_lang[settings.languarge] + '"' #根据系统的语言设置返回的Average字符
 
-    return value_dic
+        """执行 sar 命令，获取linux系统的返回结果，放入字典并返回"""
+        shell_command = 'sar -r 1 3|grep ' + cmd_Average # Linux系统命令
+        shell_command = shell_command.encode(locale.getdefaultlocale()[1])  # 本地化中文字符
+        cmd_ret = subprocess.Popen(shell_command, shell=True, stdout=subprocess.PIPE).stdout.read()
+        result = str(cmd_ret, encoding='utf-8')
+
+        if result != '':
+            tup_ret = result.split()[1:]
+            value_dic = {
+                'kbmemfree': tup_ret[0],
+                'kbmemused': tup_ret[1],
+                'memused': tup_ret[2],
+                'kbbuffers': tup_ret[3],
+                'kbcached': tup_ret[4],
+                'kbcommit': tup_ret[5],
+                'commit': tup_ret[6],
+                'kbactive': tup_ret[7],
+                'kbinact': tup_ret[8],
+                'kbdirty': tup_ret[9],
+                'status': 0,
+            }
+    except Exception as ex:
+        log.error('%s' % ex)
+        # print(ex)
+    finally:
+        return value_dic

@@ -22,6 +22,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('app01.api_urls')),# MonitorClient端数据接口
-    url(r'^frontend/', include('app01.urls')),# web端数据接口
+    url(r'^frontend/', include('app01.front_urls')),# web端数据接口
     url(r'^$', TemplateView.as_view(template_name="index.html")), # 使用通用视图创建最简单的模板控制器，访问 『/』时直接返回 index.html
 ]

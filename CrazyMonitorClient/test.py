@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+from conf import settings
+import sys, os
 
 result = """
 平均时间:     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
@@ -29,13 +30,50 @@ def resolve_data_type(result):
 
     return ret_dict
 
-def main():
-    value_dic = {
-        'status': 0,
-        'data': resolve_data_type(result),
-    }
 
-    print(value_dic)
+def help_msg():
+    valid_command = '''
+    command is not right.
+    params[1]:
+    start      start monitor client.
+    stop       stop monitor client.
+    params[2]:
+    cn         Chinese
+    en         English
+    '''
+    exit(valid_command) # 交互式shell
+
+
+def main(argv):
+    # value_dic = {
+    #     'status': 0,
+    #     'data': resolve_data_type(result),
+    # }
+    #
+    # print(value_dic)
+
+    # 如参数长度小于2
+    if len(argv) < 3:
+        # print(help_msg())
+        exit(help_msg())
+
+    if (argv[2] in settings.cmd_lang):
+        # 设置语言
+        settings.languarge = argv[2]
+
+        cmd_Average = '"' + settings.cmd_lang[settings.languarge] + '"'
+        shell_command = 'sar 1 3|grep ' + cmd_Average  # Linux系统命令
+
+        if (argv[1] in ['start', 'stop']):
+            print(shell_command)
+            print('run cmd....')
+        else:
+            exit(help_msg())
+    else:
+        exit(help_msg())
+    # cmd_str = '"'+settings.cmd_lang[settings.languarge]+'"'
+    # print(cmd_str)
+
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)

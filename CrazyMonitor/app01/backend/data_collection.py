@@ -15,6 +15,7 @@ class Collection(object):
     def __init__(self, redis_conn):
         self.redis = redis_conn
 
+
     def get_all_hostgroup(self):
         """
         获取所有的主机组信息.
@@ -26,9 +27,16 @@ class Collection(object):
             ret['data'] = list(groups_obj)
             ret['status'] = 1
 
+
+
             for item in ret['data']:
-                item['services'] = self.get_group_services(item['id'])
-                item['trigger'] = self.get_group_triggers(item['id'])
+                group_id = item['id']
+                item['services'] = self.get_group_services(group_id)
+                item['triggers'] = self.get_group_triggers(group_id)
+                hosts_obj = models.Host.objects.filter(host_group__id=group_id).values(
+                    'id', 'name', 'memo')
+                item['hosts'] = list(hosts_obj)
+
         except Exception as ex:
             print(ex)
             ret['err'] = str(ex)

@@ -7,5 +7,9 @@ sys.path.append(BASE_DIR)
 
 from core.main import command_handler
 
+import logging
+import logging.config
+logging.config.fileConfig("conf/logging.conf")
+
 if __name__ == '__main__':
     client = command_handler(sys.argv)

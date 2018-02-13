@@ -121,8 +121,8 @@ def server_data_report(request):
     return HttpResponse(json.dumps({'status': 'ok'}))
 
 def test(request):
-    # ret = collection.get_redis_data_by_hostid(1,-1)
-    # return JsonResponse(ret,safe=False)
+    ret = collection.get_redis_data_by_hostid(1,-1)
+    return JsonResponse(ret,safe=False)
     pass
     # # 从redis中取出的原始数据，从最后一个（-1)开始，往前取 approximate_data_points 个
     # data_range_raw = REDIS_OBJ.lrange('StatusData_1_LinuxNIC_latest', -10, -1)

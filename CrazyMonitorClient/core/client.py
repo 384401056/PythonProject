@@ -6,9 +6,11 @@ import json
 import requests
 import threading
 import locale
+import logging
 from conf import settings
 from plugins import plugin_api
 
+log = logging.getLogger('crazyclient')
 
 class ClientHandler(object):
 
@@ -27,15 +29,13 @@ class ClientHandler(object):
         exit_flag = False  # 循环停止位.
         config_last_update_time = 0  # 最后一次更新配置的时间.
         while not exit_flag:
-            # 如果当前时间-最后一次更新的时间(ConfigUpdateInterval).就去服务器端获取配置数据。
+            # 如果当前时间减最后一次更新的时间(ConfigUpdateInterval).就去服务器端获取配置数据。
             if time.time() - config_last_update_time > settings.configs['ConfigUpdateInterval']:
                 self.load_last_configs()
                 config_last_update_time = time.time()
 
             # 解析主机的配置信息
             for serv_name, val in self.monitor_services['services'].items():
-                # print('serv_name:', serv_name)
-                # print('val:', val)
 
                 if len(val) == 2:
                     # 对json字符串本身进行修改，在服务名对应的值中，加入一个0，用于记录上次采集数据的时间
@@ -50,10 +50,13 @@ class ClientHandler(object):
                     self.monitor_services['services'][serv_name][2] = time.time()  # 重置时间。
                     t = threading.Thread(target=self.invoke_plugin, args=(serv_name, val))
                     t.start()
-                    print('Going to monitor [%s]' % serv_name)
+                    # print('Going to monitor [%s]' % serv_name)
+                    # log.info('Going to monitor [%s]' % serv_name)
+
                 else:
                     invoke_time = round(monitor_interval - (time.time() - last_invoke_time))  # 采集时间倒计时.round四舍五入
-                    print('Going to monitor [%s] in [%s]' % (serv_name, invoke_time,))
+                    # print('Going to monitor [%s] in [%s]' % (serv_name, invoke_time,))
+                    # log.info('Going to monitor [%s] in [%s]' % (serv_name, invoke_time,))
 
             # print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
             time.sleep(1)  # 1秒循环一次。
@@ -67,19 +70,25 @@ class ClientHandler(object):
         if hasattr(plugin_api, plugin_name):
             func = getattr(plugin_api, plugin_name)
             plugin_ret = func()
-            print('plugin_ret', plugin_ret)
             report_data = {
                 'client_id': settings.configs['HostID'],
                 'server_name': serv_name,
                 'data': json.dumps(plugin_ret)
             }
 
+
             # 上报数据
             report_type = settings.configs['urls']['server_report'][1]
             # 拼接URL，带上客户端的id.
             report_url = settings.configs['urls']['server_report'][0]
             ret = self.url_request(report_type, report_url, data=report_data)
-            print('from server:', ret)
+            # print('report_data:', report_data)
+            # print('rul_request:', report_url)
+            # print('ret:', ret)
+
+            log.info('report_Url: [%s]' % report_url)
+            log.info('report_data: [%s]' % report_data)
+            log.info('server response: [%s]' % ret)
 
 
     def load_last_configs(self):
@@ -94,7 +103,8 @@ class ClientHandler(object):
         ret = self.url_request(request_type, url)
         latest_configs = json.loads(ret)
         self.monitor_services.update(latest_configs)
-        print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
+        # print('configs:', self.monitor_services)  # 打印出获取到的配置信息。
+        log.info('load_last_configs: %s' % self.monitor_services)
 
     def url_request(self, method, url, **extra_data):
         """
@@ -120,7 +130,8 @@ class ClientHandler(object):
                 response_data = response.text
                 return response_data
             except Exception as ex:
-                print(ex)
+                log.error(ex)
+                # print(ex)
                 exit()
         elif method.upper() == 'POST':
             try:
@@ -128,7 +139,9 @@ class ClientHandler(object):
                 response_data = response.text
                 return response_data
             except Exception as ex:
-                print(ex)
+                log.error('%s - %s - %s :' % (ex, abs_url, extra_data['data']))
+                # print('%s - %s :' % (abs_url, extra_data['data']) )
+                # print(ex)
                 exit()
 
 def main():
