@@ -9,19 +9,18 @@ class HostAdmin(admin.ModelAdmin):
     # 设置列表视图
     list_display = ('id', 'name', 'ip_addr', 'status')
 
+class HostGroupAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
 
 class TemplateAdmin(admin.ModelAdmin):
     filter_horizontal = ('services', 'trigger')
-
 
 class ServiceAdmin(admin.ModelAdmin):
     filter_horizontal = ('items',)
     list_display = ('id', 'name', 'interval', 'plugin_name')
 
-
 class TriggerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'serverity', 'enable')
-
 
 class TriggerExpressionAdmin(admin.ModelAdmin):
     list_display = (
@@ -39,7 +38,7 @@ class TriggerExpressionAdmin(admin.ModelAdmin):
 admin.site.register(models.Action)
 admin.site.register(models.ActionOperation)
 admin.site.register(models.Host, HostAdmin)
-admin.site.register(models.HostGroup)
+admin.site.register(models.HostGroup, HostGroupAdmin)
 admin.site.register(models.Service, ServiceAdmin)
 admin.site.register(models.ServiceIndex)
 admin.site.register(models.Template, TemplateAdmin)

@@ -99,7 +99,7 @@ class TriggerExpression(models.Model):
         ('last','Last'),
     )
     data_clac_func = models.CharField(choices=data_clac_type_choices, max_length=32, verbose_name='数据处理方式') # 函数处理方式.
-    data_clac_args = models.CharField(max_length=64, help_text='若是多个参数，用,号分开。', verbose_name='函数传入参数') # 函数处理方式.
+    data_clac_args = models.CharField(max_length=64, help_text='若是多个参数，用,号分开。', verbose_name='取数据的时间范围(参数)') # 参数.取数据的时间范围
     threshold = models.IntegerField(verbose_name='阀值')
 
     operator_type_choices = (
