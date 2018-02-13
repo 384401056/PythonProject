@@ -1,8 +1,7 @@
 <template>
   <div id="loginForm">
-    <el-container>
       <el-container>
-        <el-header>
+        <el-header height="80px">
         </el-header>
 
         <el-main>
@@ -31,7 +30,6 @@
         </el-main>
 
       </el-container>
-    </el-container>
   </div>
 </template>
 
@@ -70,7 +68,7 @@
 
 <style scoped>
   .el-header, .el-footer {
-    background-color: #FF8C00;
+    background-color: #FFA340;
     color: #333;
     text-align: center;
     line-height: 60px;
