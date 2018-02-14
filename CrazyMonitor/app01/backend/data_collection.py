@@ -148,6 +148,39 @@ class Collection(object):
             return ret
 
 
+    def get_redis_type_data_by_hostid(self,host_id, service_name, data_flag):
+        '''
+        获取最新的分时段数据 latest or 10mins or 30mins or 60mins
+        :param host_id:
+        :param data_flag: latest,10mins,30mins,60mins
+        :return:
+        '''
+        ret = {
+            'data':{},
+            'status':0,
+        }
+        try:
+            host_obj = models.Host.objects.filter(id=host_id).values('host_group__id').first()
+            # 获取Group的服务和主机的服务，进行去重后返回。
+            group_services = self.get_group_services(host_obj['host_group__id'])
+            host_services = self.get_host_services(host_id)
+            [host_services.append(service) for service in group_services if service not in host_services]
+
+            key_in_redis = 'StatusData_%s_%s_%s' % (host_id, service_name, data_flag)
+            real_data = self.redis.lrange(key_in_redis, 0, -1)  # 取出最新的数据latest
+            # print(real_data)
+            data = self.format_redis_data(real_data)
+            # print(data)
+            ret['data'][service_name] = data
+            ret['status'] = 1
+            return ret
+        except Exception as ex:
+            print(ex)
+            ret['err'] = str(ex)
+        finally:
+            return ret
+        pass
+
     def get_redis_data_by_hostid(self,host_id,flag):
         '''
         根据host_id获取主机最新的监控数据。host_id是客户端id, flag: 如果为0则取出所有的，如果为-1则取出最新

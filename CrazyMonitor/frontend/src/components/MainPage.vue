@@ -31,18 +31,17 @@
         activeIndex2: '1'
       }
     },
-    mounted(){
-      this.$router.push('/mainPage/monitorcenter');
-    },
+//    mounted(){
+//      this.$router.push('/mainPage/monitorcenter');
+//    },
     methods: {
       handleSelect(key, keyPath) {
         switch(key[0])
           {
           case "1":
-            this.$router.push('/mainPage/monitorcenter');
+            this.$router.push('/mainPage');
             break;
           case "2":
-            this.$router.push('/mainPage/content2');
             break;
           default:
             break;

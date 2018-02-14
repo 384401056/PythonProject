@@ -37,6 +37,20 @@ def get_hosts_by_groupid(request, group_id):
     ret = collection.get_hosts_by_groupid(group_id)
     return JsonResponse(ret)
 
+def get_redis_latest_data_by_hostid(request,host_id,servic_name,time_flag):
+    '''
+    根据主机id和flag来获取主机的最新的latest数据
+    :param request:
+    :param host_id:
+    :return:
+    '''
+    print(host_id)
+    print(servic_name)
+    print(time_flag)
+    ret = collection.get_redis_type_data_by_hostid(host_id, servic_name, time_flag)
+    return JsonResponse(ret, safe=False)
+
+
 def get_real_data_by_hostid(request, host_id):
     '''
     根据主机id和flag来获取主机的最新数据

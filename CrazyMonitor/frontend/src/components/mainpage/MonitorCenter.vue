@@ -2,12 +2,10 @@
   <div id="MonitorCenter">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/mainPage/content' }">监控中心</el-breadcrumb-item>
-      <el-breadcrumb-item>主机管理</el-breadcrumb-item>
-      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
     </el-breadcrumb>
     <div  v-for="item in hg_data.data">
       <el-card class="box-card">
-        <div slot="header" class="clearfix" @click="toHostList">
+        <div slot="header" class="clearfix" @click="toHostList(item.id)">
           主机组:
             <span style="margin-left: 10px;color:#FFA340;" v-text="item.name"></span>
         </div>
@@ -81,8 +79,13 @@
       })
     },
     methods:{
-      toHostList(){
-        this.$router.push('/mainPage/hostinfopage');
+      toHostList(group_id){
+        this.$router.push({
+          name: 'hostinfopage',
+          params: {
+            group_id: group_id
+          }
+        });
       }
     }
   }
