@@ -8,7 +8,7 @@
         <el-aside width="200px">
           <el-menu :default-active="activeIndex" class="el-menu-demo" mode="vertical" @select="handleSelect">
             <el-menu-item index="1">监控中心</el-menu-item>
-            <el-menu-item index="2">订单管理</el-menu-item>
+            <el-menu-item index="2">主机管理</el-menu-item>
           </el-menu>
         </el-aside>
 
@@ -28,7 +28,6 @@
     data(){
       return {
         activeIndex: '1',
-        activeIndex2: '1'
       }
     },
 //    mounted(){
@@ -48,7 +47,7 @@
           }
       },
       getRquest(){
-        this.$http.get('http://127.0.0.1:8000/frontend/getAllHostGroup')
+        this.$http.get(this.$serverip+'/frontend/getAllHostGroup')
           .then(res=>{
             console.log(res.data)
           }).then(err=>{

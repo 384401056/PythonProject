@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: redis:4-alpine
+    volumes:
+      - /home/gyb/volumes/redisData:/data
+    ports:
+      - 6379:6379
+  django:
+    image: python_django:0.3
+    working_dir: /usr/src/CrazyMonitor
+    volumes:
+      - /home/gyb/volumes/CrazyMonitor:/usr/src/CrazyMonitor
+    env_file: ./common.env
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    links:
+      - db
+    depends_on:
+      - db

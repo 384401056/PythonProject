@@ -44,9 +44,9 @@ def get_redis_latest_data_by_hostid(request,host_id,servic_name,time_flag):
     :param host_id:
     :return:
     '''
-    print(host_id)
-    print(servic_name)
-    print(time_flag)
+    # print(host_id)
+    # print(servic_name)
+    # print(time_flag)
     ret = collection.get_redis_type_data_by_hostid(host_id, servic_name, time_flag)
     return JsonResponse(ret, safe=False)
 

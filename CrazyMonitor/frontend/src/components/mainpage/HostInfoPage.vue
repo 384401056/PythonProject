@@ -2,7 +2,7 @@
   <div id="HostInfoPage">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/mainPage' }">监控中心</el-breadcrumb-item>
-      <el-breadcrumb-item>主机信息</el-breadcrumb-item>
+      <el-breadcrumb-item>{{ group_name }}</el-breadcrumb-item>
     </el-breadcrumb>
 
     <!--提示信息-->
@@ -15,7 +15,7 @@
     <!--主机卡片-->
     <div v-for="item in host_list">
       <el-card class="box-card" v-show="!flag">
-        <div slot="header" class="clearfix" @click="toHostDetail(item.id)">
+        <div slot="header" class="clearfix" @click="toHostDetail(item.id, item.name, item.services)">
           <el-row>
             <el-col :span="12">
               <div class="grid-content bg-purple">
@@ -55,8 +55,8 @@
               <el-col :span="4" ><div class="grid-content bg-purple">监控服务:</div></el-col>
               <el-col :span="4" v-for="service,key in item.services" :key="key">
                 <el-tooltip :content="service.memo" placement="bottom" effect="light">
-                  <el-button v-text="service.name" class="text-button">
-                  </el-button></el-tooltip>
+                  <el-button v-text="service.name" class="text-button"></el-button>
+                </el-tooltip>
               </el-col>
             </el-row>
           </div>
@@ -82,6 +82,7 @@
     data(){
       return {
         group_id:'',
+        group_name:'',
         host_list:[],
         flag:true,
         text_update:'更新数据',
@@ -92,7 +93,9 @@
     },
     mounted(){
       this.group_id = this.$route.params.group_id;
-      this.$http.get('http://127.0.0.1:8000/frontend/getHostsByGroupId/'+this.group_id)
+      this.group_name = this.$route.params.group_name;
+
+      this.$http.get(this.$serverip+'/frontend/getHostsByGroupId/'+this.group_id)
         .then(res=>{
           if (res.data.status == 1){
             this.host_list = res.data;
@@ -106,11 +109,12 @@
         }).then(err=>{
         console.log(err);
       });
+
     },
     methods:{
       update_host_data(host_id){
         console.log(host_id)
-        this.$http.get('http://127.0.0.1:8000/frontend/getRealLastestDataByHostId/'+host_id)
+        this.$http.get(this.$serverip+'/frontend/getRealLastestDataByHostId/'+host_id)
           .then(res=>{
             if (res.data.status == 1){
               this.host_data = res.data.data;
@@ -120,6 +124,18 @@
           console.log(err);
         })
       },
+      toHostDetail(host_id, host_name, host_services){
+        this.$router.push({
+          name: 'charts',
+          params: {
+            host_id: host_id,
+            host_name: host_name,
+            host_services:host_services,
+            group_id:this.group_id,
+            group_name:this.group_name,
+          }
+        });
+      }
     }
   }
 
@@ -128,10 +144,21 @@
 
 <style scoped>
 
+  .clearfix {
+    cursor: pointer;
+  }
+
+
   #pagination{
     margin-top: 30px;
   }
 
+  .text-button {
+    cursor: Default;
+    border: none;
+    padding: 5px 5px;
+    background-color: #fff;
+  }
 
   .update_btn{
     cursor: pointer;

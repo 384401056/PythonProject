@@ -1,0 +1,9 @@
+version: "2"
+services:
+  djangoapp:
+    image:  python:3.6.4-onbuild
+    ports:
+        - "8000:8000"
+        volumes:
+            - "/data"
+            -

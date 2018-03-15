@@ -39,6 +39,13 @@ def monitor(first_invoke=1):
                 'bwrtn/s': tup_ret[4],
                 'status': 0,
             }
+            '''
+            tps：每秒钟物理设备的 I/O传输总量
+            rtps：每秒钟从物理设备读入的数据总量
+            wtps：每秒钟向物理设备写入的数据总量
+            bread/s：每秒钟从物理设备读入的数据量，单位为块/s
+            bwrtn/s：每秒钟向物理设备写入的数据量，单位为块/s
+            '''
 
     except Exception as ex:
         log.error('%s' % ex)
