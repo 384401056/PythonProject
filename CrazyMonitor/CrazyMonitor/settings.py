@@ -146,7 +146,8 @@ STATICFILES_DIRS = (
 
 # 自定义redis配置
 REDIS_CONN = {
-    'HOST': '127.0.0.1',
+    'HOST': 'localhost',
+    # 'HOST': 'db', # 此db为docker中redis的容器名。
     'PORT': 6379,
     'PASSWD': '',
     'DB': 1,

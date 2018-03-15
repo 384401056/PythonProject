@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import MainPage from '@/components/MainPage'
 import MonitorCenter from '@/components/mainpage/MonitorCenter'
 import HostInfoPage from '@/components/mainpage/HostInfoPage'
+import Charts from '@/components/mainpage/Charts'
 
 Vue.use(Router)
 
@@ -19,17 +20,22 @@ export default new Router({
         //name:'mainPage', //由于此路由设置了默认路由，所以不能再设置name属性，否则会有告警。
         component: MainPage,
         children:[
-            {
-                name:'monitorcenter',
-                path: '', //此外设置为空，就是上层路由的默认路由。
-                component: MonitorCenter
-            },
-            {
-              name:'hostinfopage',
-              path: 'hostinfopage/:group_id',
-              component: HostInfoPage
-            },
-          ]
+          {
+            name: 'monitorcenter',
+            path: '', //此外设置为空，就是上层路由的默认路由。
+            component: MonitorCenter
+          },
+          {
+            name: 'hostinfopage',
+            path: 'hostinfopage',
+            component: HostInfoPage,
+          },
+          {
+            name: 'charts',
+            path: 'charts',
+            component: Charts
+          }
+        ]
     },
     {
         //其它路由，重定向

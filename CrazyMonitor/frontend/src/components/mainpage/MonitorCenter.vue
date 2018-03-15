@@ -1,11 +1,11 @@
 <template>
   <div id="MonitorCenter">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/mainPage/content' }">监控中心</el-breadcrumb-item>
+      <el-breadcrumb-item>监控中心</el-breadcrumb-item>
     </el-breadcrumb>
     <div  v-for="item in hg_data.data">
       <el-card class="box-card">
-        <div slot="header" class="clearfix" @click="toHostList(item.id)">
+        <div slot="header" class="clearfix" @click="toHostList(item.id,item.name)">
           主机组:
             <span style="margin-left: 10px;color:#FFA340;" v-text="item.name"></span>
         </div>
@@ -51,27 +51,10 @@
     data(){
       return {
         hg_data:{},
-        gridData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
       }
     },
     mounted(){
-      this.$http.get('http://127.0.0.1:8000/frontend/getAllHostGroup')
+      this.$http.get(this.$serverip+'/frontend/getAllHostGroup')
         .then(res=>{
           this.hg_data = res.data
       }).then(err=>{
@@ -79,11 +62,12 @@
       })
     },
     methods:{
-      toHostList(group_id){
+      toHostList(group_id, group_name){
         this.$router.push({
           name: 'hostinfopage',
           params: {
-            group_id: group_id
+            group_id: group_id,
+            group_name:group_name,
           }
         });
       }
