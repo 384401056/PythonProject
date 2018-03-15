@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import *
 from django.template import RequestContext, loader
-from . import models
+from booktest import models
 from django.db.models import F,Q,Count
 import json
 
@@ -252,12 +252,14 @@ def index(request):
     # ret = models.HeroInfo.objects.all().values('age').annotate(Count('id'))
     # print(ret)
 
+
+    # ret = {
+    #     "name":"gaoyanbin",
+    #     "age":100,
+    # }
+
+    # return JsonResponse(json.dumps(ret))
     return HttpResponse('Django OK')
-
-
-
-
-
 
 
     # temp = loader.get_template('booktest/index_bak.html')
