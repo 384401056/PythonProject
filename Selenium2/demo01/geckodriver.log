@@ -296,3 +296,47 @@ Unable to read VR Path Registry from C:\Users\Administrator.USER-20160621QE\AppD
 [Parent 10128, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
 Unable to read VR Path Registry from C:\Users\Administrator.USER-20160621QE\AppData\Local\openvr\openvrpaths.vrpath
 [Child 2816, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1521253213368	geckodriver	INFO	geckodriver 0.20.0
+1521253213381	geckodriver	INFO	Listening on 127.0.0.1:50206
+1521253216392	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.XeLdmoPGdKU4"
+1521253228638	Marionette	INFO	Enabled via --marionette
+1521253235874	Marionette	INFO	Listening on port 50216
+[Child 9596, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9596, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1521253236920	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=S&json=1&p=3&sid=1458_21124_20927&req=2&csor=1&cb=jQuery11020718382568039761_1521253237734&_=1521253237736, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Se&json=1&p=3&sid=1458_21124_20927&req=2&csor=2&pwd=S&cb=jQuery11020718382568039761_1521253237734&_=1521253237737, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Seleniu&json=1&p=3&sid=1458_21124_20927&req=2&csor=7&pwd=Seleni&cb=jQuery11020718382568039761_1521253237734&_=1521253237742, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Selenium&json=1&p=3&sid=1458_21124_20927&req=2&csor=8&pwd=Seleniu&cb=jQuery11020718382568039761_1521253237734&_=1521253237743, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Sel&json=1&p=3&sid=1458_21124_20927&req=2&csor=3&pwd=Se&cb=jQuery11020718382568039761_1521253237734&_=1521253237738, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Sele&json=1&p=3&sid=1458_21124_20927&req=2&csor=4&pwd=Sel&cb=jQuery11020718382568039761_1521253237734&_=1521253237739, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Selen&json=1&p=3&sid=1458_21124_20927&req=2&csor=5&pwd=Sele&cb=jQuery11020718382568039761_1521253237734&_=1521253237740, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Seleni&json=1&p=3&sid=1458_21124_20927&req=2&csor=6&pwd=Selen&cb=jQuery11020718382568039761_1521253237734&_=1521253237741, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Selenium2&json=1&p=3&sid=1458_21124_20927&req=2&csor=9&pwd=Selenium&cb=jQuery11020718382568039761_1521253237734&_=1521253237744, line 1: TypeError: jQuery11020718382568039761_1521253237734 is not a function
+[Parent 11596, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 11596, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6420, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6420, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 11716, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 11716, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9108, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9108, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1521253249135	geckodriver	INFO	geckodriver 0.20.0
+1521253249146	geckodriver	INFO	Listening on 127.0.0.1:50306
+1521253252185	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.hMCd2xo6pcgW"
+1521253259328	Marionette	INFO	Enabled via --marionette
+1521253263540	Marionette	INFO	Listening on port 50316
+1521253264184	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 12844, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 12844, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+[GPU 10236, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

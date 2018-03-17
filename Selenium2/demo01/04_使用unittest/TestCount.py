@@ -4,11 +4,10 @@
 from calculator import Count
 import unittest
 
-
 class TestCount(unittest.TestCase):
 
     def setUp(self):
-        super().setUp()
+        print('test start')
 
     '''unittest.main() 用Testloader类会自动寻找以test开头的方法'''
     def test_add(self):
@@ -16,7 +15,6 @@ class TestCount(unittest.TestCase):
         self.assertEqual(j.add(), 5)
 
     def tearDown(self):
-        super().tearDown()
         print("test end!")
 
 
