@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from selenium import webself.driver
+from selenium import webdriver
 from selenium.webself.driver.common.by import By
 
 def main():
@@ -12,7 +12,6 @@ def main():
 
     # self.driver.find_element_by_xpath('//*[@id="kw"]').send_keys('Python')
     # self.driver.find_element_by_xpath('//*[@id="su"]').click()
-
 
     self.driver.find_element_by_id('kw').send_keys('Selenium2')
     self.driver.find_element_by_id('su').click()
