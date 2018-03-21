@@ -36,15 +36,24 @@ def even_manage(request):
     return render(request, 'event_manage.html', {'user':username,'event_list':event_list})
 
 @login_required
-def gues_manage(request):
-    pass
+def guest_manage(request):
+    if request.method=='GET':
+        guest_list = Guest.objects.all()
+        username = request.session.get('user', '')  # 读取浏览器session
+        return render(request, 'guest_manage.html', {'user': username, 'guest_list': guest_list})
 
 
 @login_required
-def search_name(request):
+def search_event(request):
     if request.method == 'GET':
         username = request.session.get('user', '')
         keyword = request.GET.get('keyword', '')
         event_list = Event.objects.filter(name__contains=keyword)
         return render(request, 'event_manage.html', {'user': username, 'event_list': event_list})
 
+def search_guest(request):
+    if request.method == 'GET':
+        username = request.session.get('user', '')
+        keyword = request.GET.get('keyword', '')
+        guest_list = Guest.objects.filter(realname__contains=keyword)
+        return render(request, 'guest_manage.html', {'user': username, 'guest_list': guest_list})

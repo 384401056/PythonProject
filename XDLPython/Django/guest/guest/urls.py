@@ -24,8 +24,9 @@ urlpatterns = [
     url(r'^index/', views.index),
     url(r'^login_action/', views.login_action),
     url(r'^even_manage/', views.even_manage),
-    url(r'^gues_manage/', views.gues_manage),
-    url(r'^search_name/', views.search_name),
+    url(r'^guest_manage/', views.guest_manage),
+    url(r'^search_event/', views.search_event),
+    url(r'^search_guest/', views.search_guest),
 
     url(r'^accounts/login/', views.index),# 用户没有登录时的url路由
 ]
