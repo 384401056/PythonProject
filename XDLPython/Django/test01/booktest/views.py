@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render
 from django.http import *
 from django.template import RequestContext, loader
@@ -267,7 +267,7 @@ def index(request):
     # return HttpResponse(temp.render())
     # 以上两行合为一行代码
     # return render(request, template_name='booktest/index_bak.html')
-=======
+
 from django.shortcuts import render
 from django.http import *
 from django.template import RequestContext, loader
@@ -525,13 +525,7 @@ def index(request):
     return HttpResponse('Django OK')
 
 
-
-
-
-
-
     # temp = loader.get_template('booktest/index_bak.html')
     # return HttpResponse(temp.render())
     # 以上两行合为一行代码
     # return render(request, template_name='booktest/index_bak.html')
->>>>>>> ca7f6f629fa641db4f3218303df7f79542031407
