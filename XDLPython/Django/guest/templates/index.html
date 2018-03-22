@@ -14,7 +14,7 @@
             <h1>发布会管理</h1>
         </div>
         <div class="panel-body">
-            <form method="post" action="/login_action/">
+            <form method="post" action="{% url 'login_action' %}">
                 <div class="form-group">
                     <label for="exampleInputEmail1">用户名：</label>
                     <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名">
