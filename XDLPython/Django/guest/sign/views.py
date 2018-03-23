@@ -24,13 +24,13 @@ def login_action(request):
             auth.login(request, user)
             request.session['user'] = username # 添加浏览器session.
             # response.set_cookie('user', username, 3600) # 添加浏览器cookie,3600秒为cookie保存时间。
-            response = HttpResponseRedirect(reverse('even_manage'))
+            response = HttpResponseRedirect(reverse('event_manage'))
             return response
         else:
             return render(request, 'index.html',{'error':'用户名密码错误'})
 
 @login_required
-def even_manage(request):
+def event_manage(request):
     """发布会管理"""
     if request.method == 'GET':
         pageNumber = request.GET.get('pageNumber', '1')  # 默认为第一页

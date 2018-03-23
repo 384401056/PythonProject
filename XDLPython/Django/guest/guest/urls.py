@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$', views.index, name='index'),
     url(r'^login_action/$', views.login_action, name='login_action'),
-    url(r'^even_manage/$', views.even_manage, name='even_manage'),
+    url(r'^event_manage/$', views.event_manage, name='event_manage'),
     url(r'^guest_manage/$', views.guest_manage, name='guest_manage'),
     url(r'^search_even/$', views.search_even, name='search_even'),
     url(r'^search_gues/$', views.search_gues, name='search_gues'),

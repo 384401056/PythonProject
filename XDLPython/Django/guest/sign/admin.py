@@ -5,7 +5,7 @@ from sign.models import *
 # Register your models here.
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'status', 'address', 'start_time']
+    list_display = ['id', 'name', 'status', 'address', 'start_time', 'create_time']
 
 
 class GuestAdmin(admin.ModelAdmin):

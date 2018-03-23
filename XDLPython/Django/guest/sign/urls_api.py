@@ -21,4 +21,5 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^addEvent$', views_if.add_event, name='add_event'),
+    url(r'^getEventInfo$', views_if.get_event_info, name='get_event_info'),
 ]
