@@ -6,6 +6,14 @@ import tornado.web
 import json
 
 
+class BaseHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")  # 这个地方可以写域名
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header('Content-Type', 'application/json;charset=UTF-8')
+
+
 class QueryParcel(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
         ret = {
@@ -383,3 +391,23 @@ class KnowledgeContent(tornado.web.RequestHandler):
             }
         }
         self.write(json.dumps(ret))
+
+
+class IndexHandler(BaseHandler):
+
+    def get(self, *args, **kwargs):
+        self.write(json.dumps(({"name": "gaoyanbin", "age": 2000})))
+
+    def post(self, *args, **kwargs):
+        # 当post的请求头是application/x-www-form-urlencoded时，用以下方法接收数据。
+        # param1 = self.get_argument('age')
+        # param2 = self.get_argument('username')
+        # print(param1)
+        # print(param2)
+
+        # 当post的请求头是application/json时，用以下方法接收数据。
+        # param = self.request.body.decode('utf-8')
+        # param = json.loads(param)
+        # print(param)
+
+        self.write(json.dumps({"status": "OK"}))
