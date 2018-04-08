@@ -7,4 +7,5 @@ def make_app():
     return tornado.web.Application([
         (r"/fwk-service-parcel/parcel/queryParcel", QueryParcel),
         (r"/agrithings/mobile/agrithings/treasure/knowledge/content", KnowledgeContent),
+        (r"/index",IndexHandler)
     ])
