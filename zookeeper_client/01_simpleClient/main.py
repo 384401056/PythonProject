@@ -7,7 +7,7 @@ from kazoo.recipe.watchers import ChildrenWatch, DataWatch, PatientChildrenWatch
 class ValidatorDetector:
     def __init__(self):
         # 获取Client实例。
-        self.zk = KazooClient(hosts="192.168.21.136:2181,192.168.21.137:2181,192.168.21.138:2181", timeout=2)
+        self.zk = KazooClient(hosts="192.168.21.145:2181,192.168.21.144:2181,192.168.21.141:2181", timeout=2)
 
         # 设置节点监听和数值监听。
         self.my_watch1 = ChildrenWatch(client=self.zk, path="/", func=self.validator_watcher_fun) # func= 设置监听函数，这个监听会一直有效。
@@ -18,7 +18,11 @@ class ValidatorDetector:
 
 
     def validator_watcher_fun(self, children):
-        """监听函数"""
+        """
+        监听函数
+        :param children: 返回的字节点
+        :return:
+        """
         print("The children now are:", children)
         # self.zk.get_children("/", )
 
@@ -76,5 +80,5 @@ if __name__ == '__main__':
     # vd.is_exist('/app7')
     # vd.getData('/app7')
     # vd.delete('/app8')
-    vd.setData('/app7', 'this is app7 data ....')
+    # vd.setData('/app7', 'this is app7 data ....')
     time.sleep(100000)

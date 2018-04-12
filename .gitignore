@@ -4,3 +4,4 @@
 /CoapServer/coap/*.log
 /CoapServer/coap2/*.log
 /CoapServer/coap2/*.pyc
+/zookeeper_client/__pycache__
