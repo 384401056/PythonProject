@@ -30,6 +30,7 @@ def main():
     print(li)
     with work_state(li, 'gaoyanbin'):
         print(li)
+
     print(li)
 
 
