@@ -5,4 +5,7 @@ from setuptools import setup
 
 setup(
     name = 'mypackage',
+    install_requires=[
+        'requests'
+    ]
 )
