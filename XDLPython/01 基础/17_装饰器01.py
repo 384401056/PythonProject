@@ -20,6 +20,8 @@ def f1():
 
 def main():
     print(f1) # 执行带有装饰器的函数。
+    # a = f1()
+    # print(a)
 
 
 if __name__ == '__main__':
