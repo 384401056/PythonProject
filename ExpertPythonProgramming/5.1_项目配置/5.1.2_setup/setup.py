@@ -4,5 +4,6 @@
 from setuptools import setup
 
 setup(
-    name = 'mypackage',
+    name='mypackage',
+    install_requires=['request', 'flask', 'falcon']
 )
