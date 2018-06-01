@@ -5,3 +5,4 @@
 /CoapServer/coap2/*.log
 /CoapServer/coap2/*.pyc
 /zookeeper_client/__pycache__
+/Vue测试服务/WebSocket/__pycache__
