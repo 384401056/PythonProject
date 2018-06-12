@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'User',
 ]
 
+AUTH_USER_MODEL="User.userPro"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,7 +89,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123456',
     # CenOS7虚拟机
-        'HOST': '192.168.1.102'
+    #     'HOST': '192.168.1.102'
+        'HOST': '127.0.0.1',
     }
 }
 
