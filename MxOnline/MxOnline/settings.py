@@ -10,10 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
+import os, sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# 当对目录中的文件夹使用了Mark Sources Root，需要在此处加入路径，否则在发布环境中Sources Root是不会生效的
+sys.path.insert(0, os.path.join(BASE_DIR, "Apps"))
+sys.path.insert(0, os.path.join(BASE_DIR, "extra_apps"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,9 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'User',
+    "Courses",
+    "Organization",
+    "Operation",
+    "xadmin",
+    "crispy_forms",
 ]
 
-AUTH_USER_MODEL="User.userPro"
+
+AUTH_USER_MODEL="User.UserProfile"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,15 +127,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True # 使用UTC时间
+USE_TZ = False # 使用本地时间
 
 
 # Static files (CSS, JavaScript, Images)
