@@ -11,9 +11,14 @@ class CityDict(models.Model):
     desc = models.CharField(max_length=200, verbose_name="城市描述")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "城市"
         verbose_name_plural = verbose_name
+
+
 
 
 class CourseOrg(models.Model):
@@ -21,10 +26,13 @@ class CourseOrg(models.Model):
     desc = models.CharField(max_length=200, verbose_name="机构描述")
     fav_nums = models.IntegerField(default=0, verbose_name="收藏人数")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
-    image = models.ImageField(upload_to='Organization/images/%Y/%m', max_length=200, verbose_name="封面图")
+    image = models.ImageField(upload_to='static/CourseOrg/images/%Y/%m', max_length=200, verbose_name="封面图")
     address = models.CharField(max_length=200, verbose_name="机构地址")
     city = models.ForeignKey(CityDict, on_delete=models.CASCADE, verbose_name="所在城市")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "课程机构"
@@ -39,7 +47,11 @@ class Teacher(models.Model):
     points = models.CharField(max_length=100, verbose_name="教学特点")
     fav_nums = models.IntegerField(default=0, verbose_name="收藏人数")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
-    image = models.ImageField(upload_to='Organization/images/%Y/%m', max_length=200, verbose_name="封面图")
+    image = models.ImageField(upload_to='static/Teacher/images/%Y/%m', max_length=200, verbose_name="封面图")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "教师"

@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 当对目录中的文件夹使用了Mark Sources Root，需要在此处加入路径，否则在发布环境中Sources Root是不会生效的
 sys.path.insert(0, os.path.join(BASE_DIR, "Apps"))
-sys.path.insert(0, os.path.join(BASE_DIR, "extra_apps"))
+sys.path.insert(1, os.path.join(BASE_DIR, "extra_apps"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -145,3 +145,8 @@ USE_TZ = False # 使用本地时间
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 指定静态文件的路径
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
