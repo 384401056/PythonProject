@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from Apps.User.models import UserProfile
+from Apps.User.models import *
 from django.db import models
 
 from Apps.Courses.models import Course

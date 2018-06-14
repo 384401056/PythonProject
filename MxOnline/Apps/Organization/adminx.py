@@ -5,7 +5,7 @@ __date__ = '2018/6/13 10:38'
 
 import xadmin
 
-from Apps.Organization.models import CityDict, CourseOrg, Teacher
+from Apps.Organization.models import *
 
 class CityDictAdmin(object):
     list_display = ["name", "desc", "add_time"]

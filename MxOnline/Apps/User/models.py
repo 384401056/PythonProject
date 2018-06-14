@@ -34,7 +34,7 @@ class EmailVerifyRecord(models.Model):
     '''
     邮箱验证码
     '''
-    code = models.CharField(max_length=20, verbose_name="验证码")
+    code = models.CharField(max_length=20, verbose_name="邮箱验证码")
     email = models.EmailField(max_length=50, verbose_name="邮箱")
     send_type = models.CharField(choices=(("register", "注册"),("forget","找回密码")), max_length=10, verbose_name="发送类型")# 用于区分注册和找回密码
     send_time = models.DateTimeField(default=datetime.now, verbose_name="发送时间") # 这里的now不要加(),否则就会以model编译的时间做为默认时，不加()才会以实例化的时间来生成。

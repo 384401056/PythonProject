@@ -15,10 +15,6 @@ import os, sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# 当对目录中的文件夹使用了Mark Sources Root，需要在此处加入路径，否则在发布环境中Sources Root是不会生效的
-sys.path.insert(0, os.path.join(BASE_DIR, "Apps"))
-sys.path.insert(1, os.path.join(BASE_DIR, "extra_apps"))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -32,8 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
 
+
+# 当对目录中的文件夹使用了Mark Sources Root，需要在此处加入路径，否则在发布环境中Sources Root是不会生效的
+sys.path.insert(0, os.path.join(BASE_DIR, "Apps"))
+sys.path.insert(1, os.path.join(BASE_DIR, "extra_apps"))
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,16 +42,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'User',
-    "Courses",
-    "Organization",
-    "Operation",
-    "xadmin",
+    'Apps.User',
+    "Apps.Courses",
+    "Apps.Organization",
+    "Apps.Operation",
+
+    # 使用xamdin要注册的App
+    "extra_apps.xadmin",
     "crispy_forms",
+
+    # 验证码
+    "captcha",
 ]
 
 
 AUTH_USER_MODEL="User.UserProfile"
+
+
+AUTHENTICATION_BACKENDS = (
+    "User.views.CustomBackend",
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,3 +161,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+# Django邮件发送的参数配置
+EMAIL_HOST = "smtp.mxhichina.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "gaoyanbin@agrithings.cn"
+EMAIL_HOST_PASSWORD = "bin123BIN456"
+EMAIL_USE_TLS = False
+EMAIL_FROM = "gaoyanbin@agrithings.cn"

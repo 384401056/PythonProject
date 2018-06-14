@@ -3,7 +3,7 @@
 __author__ = 'Blueice'
 __date__ = '2018/6/13 10:20'
 
-from Apps.Courses.models import Course, Lesson, Video, CourseResource
+from Apps.Courses.models import *
 import xadmin
 
 class CourseAdmin(object):
