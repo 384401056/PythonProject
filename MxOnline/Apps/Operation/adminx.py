@@ -5,7 +5,7 @@ __date__ = '2018/6/13 11:08'
 
 import xadmin
 
-from Apps.Operation.models import UserAsk, CourseComments, UserFavorite, UserMessage, UserCourse
+from Apps.Operation.models import *
 
 
 class UserAskAdmin(object):

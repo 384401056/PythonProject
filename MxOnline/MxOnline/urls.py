@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 import xadmin
 from Apps.User.views import *
-from Apps.User.views import LoginView, RegisterView
+from Apps.Organization.views import *
 import captcha
 
 urlpatterns = [
@@ -28,5 +28,10 @@ urlpatterns = [
     # path(r'login/', user_login, name="login")
     path(r'login/', LoginView.as_view(), name="login"),  # 使用类来处理路由, 处理用户登录请求
     path(r'register/', RegisterView.as_view(), name="register"),  # 处理用户注册请求
+    path(r'active/<str:code>', ActiveUserVeiw.as_view(), name="activeUser"),
     path(r'captcha/', include('captcha.urls')), # 处理注册验证码的路由
+    path(r'forget/', ForgetPwdView.as_view(), name="forget_pwd"),
+    path(r'reset/<str:code>', ResetView.as_view(), name="reset_pwd"),
+    path(r'modifypwd/', ModifyPwdView.as_view(), name="modify_pwd"),
+    path(r'orglist/', OrgListView.as_view(), name="org_list"),
 ]

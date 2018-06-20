@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-
-from Apps.User.models import *
 from django.db import models
 
+from Apps.User.models import UserProfile
 from Apps.Courses.models import Course
 
 
@@ -25,10 +24,9 @@ class UserAsk(models.Model):
         return self.name
 
 
-
 class CourseComments(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name="用户名")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="课程")
+    user = models.ForeignKey(UserProfile,blank=True, null=True,on_delete=models.CASCADE, verbose_name="用户名")
+    course = models.ForeignKey(Course,blank=True, null=True, on_delete=models.CASCADE, verbose_name="课程")
     comments = models.CharField(max_length=200, verbose_name="评论")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="评论时间")
 
@@ -37,11 +35,11 @@ class CourseComments(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.name
+        return self.user.nick_name
 
 
 class UserFavorite(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name="用户")
+    user = models.ForeignKey(UserProfile,blank=True, null=True, on_delete=models.CASCADE, verbose_name="用户")
     fav_id = models.IntegerField(default=0 , verbose_name="数据ID")
     fav_type = models.IntegerField(choices=((1,"课程"),(2,"机构"),(3,"讲师")), default=1, verbose_name="收藏类型")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="创建时间")
@@ -51,7 +49,7 @@ class UserFavorite(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s (%s)' % (self.user, self.fav_type)
+        return self.user.nick_name
 
 
 class UserMessage(models.Model):
@@ -65,12 +63,12 @@ class UserMessage(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s (%s)' % (self.user, self.has_read)
+        return '%s (%s)' % (self.user.nick_name, self.has_read)
 
 
 class UserCourse(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name="用户名")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="课程")
+    user = models.ForeignKey(UserProfile, blank=True, null=True,on_delete=models.CASCADE, verbose_name="用户名")
+    course = models.ForeignKey(Course, blank=True, null=True,on_delete=models.CASCADE, verbose_name="课程")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="创建时间")
 
     class Meta:
@@ -78,7 +76,7 @@ class UserCourse(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.user
+        return self.user.nick_name
 
 
 

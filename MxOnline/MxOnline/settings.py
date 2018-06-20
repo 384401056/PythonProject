@@ -170,3 +170,7 @@ EMAIL_HOST_USER = "gaoyanbin@agrithings.cn"
 EMAIL_HOST_PASSWORD = "bin123BIN456"
 EMAIL_USE_TLS = False
 EMAIL_FROM = "gaoyanbin@agrithings.cn"
+
+# 上传图片的路径设置
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
