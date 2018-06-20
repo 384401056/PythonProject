@@ -2,23 +2,9 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from datetime import datetime
-import os
-from MxOnline import settings
-
+from utils import upload_file
 # Create your models here.
-
-def upload_to(instance, filename):
-    '''
-    让上传的文件路径动态地与model的名字有关
-    :param instance: 使用这处upload_to函数的model。
-    :param filename: 上传的文件名。
-    :return:
-    '''
-    className = str(type(instance))[:-2].split('.')[-1] # 类名
-    nowTime = datetime.now().strftime('%Y-%m-%d')  # 时间
-    return os.path.join(settings.BASE_DIR, settings.MEDIA_ROOT, className, str(instance), nowTime, filename)
 
 
 
@@ -34,7 +20,7 @@ class UserProfile(AbstractUser):
     address = models.CharField(max_length=100, default="", verbose_name="地址")
     mobile = models.CharField(max_length=11, null=True, blank=True, verbose_name="手机号码")  # 可为空
     # image = models.ImageField(upload_to="user/images/%Y/%m", default="image/default.png", max_length=200, verbose_name="用户头像")
-    image = models.ImageField(upload_to=upload_to, default="/static/image/default.png", max_length=200, verbose_name="用户头像")
+    image = models.ImageField(upload_to=upload_file.upload_to, blank=True, null=True, default="/static/image/default.png", max_length=200, verbose_name="用户头像")
 
     class Meta:
         verbose_name = "用户信息"
@@ -67,7 +53,7 @@ class Banner(models.Model):
     '''
     title = models.CharField(max_length=100,verbose_name="标题")
     # image = models.ImageField(upload_to="banner/%Y/%m/", verbose_name="轮播图片", max_length=100)
-    image = models.ImageField(upload_to=upload_to, verbose_name="轮播图片", max_length=100)
+    image = models.ImageField(upload_to=upload_file.upload_to, blank=True, null=True,verbose_name="轮播图片", max_length=100)
     url = models.URLField(max_length=200, verbose_name="访问地址") # 轮播图的url地址.
     index = models.IntegerField(default=100, verbose_name="顺序") # 轮播图的顺序字段.
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")

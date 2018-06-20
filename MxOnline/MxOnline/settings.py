@@ -51,8 +51,11 @@ INSTALLED_APPS = [
     "extra_apps.xadmin",
     "crispy_forms",
 
-    # 验证码
+    # 第三方验证码
     "captcha",
+
+    # 第三方分页
+    'pure_pagination',
 ]
 
 
@@ -87,6 +90,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # 配置了这行，才能在模板文件中使用全局的变量如：MEDIA_URL
             ],
         },
     },
@@ -174,3 +178,10 @@ EMAIL_FROM = "gaoyanbin@agrithings.cn"
 # 上传图片的路径设置
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 分页设置
+# PAGINATION_SETTINGS = {
+#     'PAGE_RANGE_DISPLAYED': 4,
+#     'MARGIN_PAGES_DISPLAYED': 3,
+#     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+# }

@@ -3,9 +3,6 @@
 __author__ = 'Blueice'
 __date__ = '2018/6/14 16:43'
 
-# import os,django
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MxOnline.settings")
-# django.setup()
 
 from django.core import mail
 from Apps.User.models import EmailVerifyRecord

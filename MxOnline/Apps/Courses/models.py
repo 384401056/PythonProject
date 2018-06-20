@@ -1,23 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-import os
 from django.db import models
-from MxOnline import settings
-
+from utils import upload_file
 # Create your models here.
-
-
-def upload_to(instance, filename):
-    '''
-    让上传的文件路径动态地与model的名字有关
-    :param instance: 使用这处upload_to函数的model。
-    :param filename: 上传的文件名。
-    :return:
-    '''
-    className = str(type(instance))[:-2].split('.')[-1] # 类名
-    nowTime = datetime.now().strftime('%Y-%m-%d')  # 时间
-    return os.path.join(settings.BASE_DIR, settings.MEDIA_ROOT, className, str(instance), nowTime, filename)
 
 
 class Course(models.Model):
@@ -29,7 +15,7 @@ class Course(models.Model):
     students = models.IntegerField(default=0, verbose_name="学习人数")
     fav_nums = models.IntegerField(default=0, verbose_name="收藏人数")
     # image = models.ImageField(upload_to='courses/images/%Y/%m', max_length=200, verbose_name="封面图")
-    image = models.ImageField(upload_to=upload_to, max_length=200, verbose_name="封面图")
+    image = models.ImageField(upload_to=upload_file.upload_to, blank=True, null=True,max_length=200, verbose_name="封面图")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
@@ -71,7 +57,7 @@ class CourseResource(models.Model):
     course = models.ForeignKey(Course,blank=True, null=True, on_delete=models.CASCADE, verbose_name="所属课程")  # 外键
     name = models.CharField(max_length=50, verbose_name="资源名称")
     # download = models.FileField(upload_to='static/Courses/resource/%Y/%m', max_length=200, verbose_name="资源文件")
-    download = models.FileField(upload_to=upload_to, max_length=200, verbose_name="资源文件")
+    download = models.FileField(upload_to=upload_file.upload_to,blank=True, null=True, max_length=200, verbose_name="资源文件")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     class Meta:

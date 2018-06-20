@@ -1,26 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import os
+
 from datetime import datetime
-
 from django.db import models
-
-from MxOnline import settings
+from utils import upload_file
 
 
 # Create your models here.
-
-
-def upload_to(instance, filename):
-    '''
-    让上传的文件路径动态地与model的名字有关
-    :param instance: 使用这处upload_to函数的model。
-    :param filename: 上传的文件名。
-    :return:
-    '''
-    className = str(type(instance))[:-2].split('.')[-1] # 类名
-    nowTime = datetime.now().strftime('%Y-%m-%d')  # 时间
-    return os.path.join(settings.BASE_DIR, settings.MEDIA_ROOT, className, str(instance), nowTime, filename)
 
 
 
@@ -44,7 +30,7 @@ class CourseOrg(models.Model):
     fav_nums = models.IntegerField(default=0, verbose_name="收藏人数")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
     # image = models.ImageField(upload_to='courseOrg/images/%Y/%m', max_length=200, verbose_name="封面图")
-    image = models.ImageField(upload_to=upload_to, max_length=200, verbose_name="封面图")
+    image = models.ImageField(upload_to=upload_file.upload_to,blank=True, null=True, max_length=200, verbose_name="封面图")
     address = models.CharField(max_length=200, verbose_name="机构地址")
     city = models.ForeignKey(CityDict,blank=True, null=True, on_delete=models.CASCADE, verbose_name="所在城市")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
@@ -67,7 +53,7 @@ class Teacher(models.Model):
     fav_nums = models.IntegerField(default=0, verbose_name="收藏人数")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
     # image = models.ImageField(upload_to='teacher/images/%Y/%m', max_length=200, verbose_name="封面图")
-    image = models.ImageField(upload_to=upload_to, max_length=200, verbose_name="封面图")
+    image = models.ImageField(upload_to=upload_file.upload_to,blank=True, null=True, max_length=200, verbose_name="封面图")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     def __str__(self):
