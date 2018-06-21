@@ -3,6 +3,7 @@
 from datetime import datetime
 from django.db import models
 from utils import upload_file
+from Apps.Organization.models import CourseOrg, Teacher
 # Create your models here.
 
 
@@ -17,6 +18,7 @@ class Course(models.Model):
     # image = models.ImageField(upload_to='courses/images/%Y/%m', max_length=200, verbose_name="封面图")
     image = models.ImageField(upload_to=upload_file.upload_to, blank=True, null=True,max_length=200, verbose_name="封面图")
     click_num = models.IntegerField(default=0, verbose_name="点击量")
+    course_org = models.ForeignKey(CourseOrg, blank=True, null=True, on_delete=models.CASCADE, verbose_name="机构") # 课程所属机构
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     class Meta:

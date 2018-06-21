@@ -18,6 +18,7 @@ from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 import xadmin
 from Apps.User.views import *
+import Apps.Organization
 from Apps.Organization.views import *
 from django.views.static import serve # 处理静态资源的服务
 import captcha
@@ -35,6 +36,13 @@ urlpatterns = [
     path(r'forget/', ForgetPwdView.as_view(), name="forget_pwd"),
     path(r'reset/<str:code>', ResetView.as_view(), name="reset_pwd"),
     path(r'modifypwd/', ModifyPwdView.as_view(), name="modify_pwd"),
-    path(r'orglist/', OrgListView.as_view(), name="org_list"),
+
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root":MEDIA_ROOT}), # 静态图片的url处理。
+
+    # path(r'orglist/', OrgListView.as_view(), name="org_list"),
+
+    # 在Django2.0中，使用app_name的形式将namespace定义到 include 的 urls 文件中。
+    path(r'org/', include('Organization.urls')),
+
+
 ]
