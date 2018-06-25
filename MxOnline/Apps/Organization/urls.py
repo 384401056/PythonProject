@@ -13,9 +13,10 @@ app_name='org'
 
 urlpatterns = [
     path(r'list/', OrgListView.as_view(), name="org_list"),
-    path(r'add_ask/', AddUserAskView.as_view(), name="add_ask"),
+    path(r'add_ask/', AddUserAskView.as_view(), name="add_ask"), # 我要学习表单请求
     path(r'home/<int:org_id>', OrgHome.as_view(), name="home"),
     path(r'course/<int:org_id>', OrgCourse.as_view(), name="course"),
     path(r'desc/<int:org_id>', OrgDesc.as_view(), name="desc"),
     path(r'teachers/<int:org_id>', OrgTeacher.as_view(), name="teachers"),
+    path(r'favorite/', OrgAddFav.as_view(), name="favorite"), # 收藏机构请求
 ]

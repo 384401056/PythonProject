@@ -40,6 +40,14 @@ class CourseOrg(models.Model):
     def __str__(self):
         return self.name
 
+    def get_teachers_nums(self):
+        """
+        反向外键查询，本机构的老师数。
+        :return:
+        """
+        return self.teacher_set.all().count()
+
+
     class Meta:
         verbose_name = "课程机构"
         verbose_name_plural = verbose_name

@@ -185,7 +185,7 @@ class LoginView(View):
             # 如果返回的user不为空则证明登陆成功
             if (user is not None) and (user.is_active):
                 auth.login(request, user)
-                ret['data'] = user
+                ret['data'] = user # request中已经自带了一个user
                 ret['status'] = True
                 return render(request, "index.html", ret)
             # 否则就返回login页面。

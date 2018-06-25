@@ -42,7 +42,8 @@ urlpatterns = [
     # path(r'orglist/', OrgListView.as_view(), name="org_list"),
 
     # 在Django2.0中，使用app_name的形式将namespace定义到 include 的 urls 文件中。
-    path(r'org/', include('Organization.urls')),
+    path(r'org/', include('Organization.urls')),# 机构相关url
+    path(r'course/', include('Courses.urls')), # 课程相关url
 
 
 ]
